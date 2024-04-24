@@ -7,4 +7,19 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    // cor do cartão do curso
+    <color name="azulCartao">#80778CF9</color>
+
+    // Cor do botão da tela de início
+    <color name="lightGrey">#E3E3E3</color>
+
+    // Cor do atributo Hint para os campos
+    <color name="greyHint">#7C7C7C</color>
+
+    // Cor dos botões de avançar
+    <color name="greenButton">#56C500</color>
+
+    // Cor dos containers
+    <color name="blue">#1B32FF</color>
 </resources>

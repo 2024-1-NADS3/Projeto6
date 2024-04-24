@@ -8,7 +8,7 @@
 
     <View
         android:id="@+id/divider2"
-        android:layout_width="395dp"
+        android:layout_width="match_parent"
         android:layout_height="3dp"
         android:layout_marginBottom="18dp"
         android:background="#0057D8"
@@ -152,6 +152,7 @@
         android:backgroundTint="#A70000"
         android:onClick="clearFilters"
         android:text="LIMPAR FILTROS"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -159,13 +160,14 @@
 
     <Button
         android:id="@+id/button7"
-        android:layout_width="326dp"
+        android:layout_width="match_parent"
         android:layout_height="44dp"
         android:layout_marginStart="33dp"
         android:layout_marginEnd="33dp"
         android:backgroundTint="#4BA405"
         android:onClick="onFilter"
         android:text="Aplicar filtros"
+        android:textColor="#FDFDFD"
         app:layout_constraintBottom_toTopOf="@+id/button6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.526"

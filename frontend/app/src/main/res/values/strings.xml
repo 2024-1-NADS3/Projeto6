@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">frontend</string>
+
+
+    // Botão de acessar da tela de login
+    <string name="entrar">Acessar</string>
+    // Texto clicável na tela de login que direciona o usuário para a tela de cadastro
+    <string name="text_cadastro">Ainda não está na Educaliza? Crie sua conta</string>
+    //Título da Tela de login
+    <string name="titulo_login">Entrar</string>
+    // Texto clicável que irá direcionar o usuário para realizar a troca de senha caso esqueça
+    <string name="esqueci_senha">Esqueci minha senha</string>
+
+    // Título da tela de cadastro
+    <string name="titulo_cadastro">Criar Conta</string>
+
+    //TEla
+    <string name="tela_cadastro_login">Escolha como deseja se cadastrar!</string>
 </resources>
