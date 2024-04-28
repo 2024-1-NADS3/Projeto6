@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     CursoAdapter adapter;
     List<Curso> courses = new ArrayList<>();
     ProgressBar progressBar;
-    String finalURL = "https://dzlj63-4550.csb.app/cursos/todos";
+    String finalURL = "https://l8d9q4-4550.csb.app/cursos/todos";
     TextView errorTextView;
 
     @Override

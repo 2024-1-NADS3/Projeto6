@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#80778CF9"
-    tools:context=".ExpandedCourseScreen"
+    tools:context=".TelaCursoExpandido"
     >
 
     <ImageView
