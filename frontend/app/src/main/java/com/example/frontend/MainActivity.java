@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     CursoAdapter adapter;
     List<Curso> courses = new ArrayList<>();
     ProgressBar progressBar;
-    String finalURL = "https://l8d9q4-4550.csb.app/cursos/todos";
+    String finalURL = "http://192.168.0.10:4550/cursos/todos";
     TextView errorTextView;
 
     @Override
@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         errorTextView = findViewById(R.id.errorTextView);
         recyclerView = findViewById(R.id.recyclerView);
         progressBar = findViewById(R.id.progressBar);
+        GerenciadorToken token = new GerenciadorToken(this);
         filaRequest = Volley.newRequestQueue(this);
         fetchCoursesData(); // Inicia a busca de dados dos cursos.
 
@@ -66,6 +67,10 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+
+
+        Log.d("O token está aqui na main?", token.getToken());
     }
 
     // Método para buscar os dados dos cursos da API.

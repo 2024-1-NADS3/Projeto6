@@ -14,7 +14,7 @@ import org.json.JSONObject;
 import java.io.Serializable;
 
 public class InstituicaoParceira implements Serializable {
-    private static final String URL_CRIAR_PARCEIRO = "https://l8d9q4-4550.csb.app/parceiro/cadastrar";
+    private static final String URL_CRIAR_PARCEIRO = "http://192.168.0.10:4550/parceiro/cadastrar";
     private Context mContext;
     protected String instituitionName;
     protected String cnpj;

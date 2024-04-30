@@ -50,7 +50,7 @@ public class TelaCursoExpandido extends AppCompatActivity {
         // Você deve configurar os elementos da UI com os dados do curso aqui
         // Por exemplo:
 
-        String baseUrl = "https://l8d9q4-4550.csb.app";
+        String baseUrl = "http://192.168.0.10:4550";
         String imagePath = curso.getImg();
         String imageUrl = baseUrl + imagePath;
         Picasso.get().load(imageUrl).into(courseImgExpandend);

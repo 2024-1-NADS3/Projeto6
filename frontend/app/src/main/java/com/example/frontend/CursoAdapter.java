@@ -52,7 +52,7 @@ public class CursoAdapter extends RecyclerView.Adapter<CursoAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Curso curso = courses.get(position);
-        String baseUrl = "https://l8d9q4-4550.csb.app";
+        String baseUrl = "http://192.168.0.10:4550";
         String imagePath = curso.getImg();
         String imageUrl = baseUrl + imagePath;
 
