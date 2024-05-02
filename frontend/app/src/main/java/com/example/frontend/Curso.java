@@ -3,7 +3,7 @@ package com.example.frontend;
 import java.io.Serializable;
 
 public class Curso implements Serializable {
-    private int id;
+    private int courseid;
     private String title;
     private String type;
     private String category;
@@ -14,16 +14,20 @@ public class Curso implements Serializable {
     private int occupiedSlots;
     private int maxCapacity;
 
-    public int getId() {
-        return id;
-    }
+    private String initialDate;
 
-    public String getType() {
-        return type;
+    private String endDate;
+
+    public int getCourseid() {
+        return courseid;
     }
 
     public String getTitle() {
         return title;
+    }
+
+    public String getType() {
+        return type;
     }
 
     public String getCategory() {
@@ -34,13 +38,17 @@ public class Curso implements Serializable {
         return img;
     }
 
-    public String getDescription() { return description; }
+    public String getDescription() {
+        return description;
+    }
 
     public String getAddress() {
         return address;
     }
 
-    public String getZone() { return zone; }
+    public String getZone() {
+        return zone;
+    }
 
     public int getOccupiedSlots() {
         return occupiedSlots;
@@ -50,16 +58,24 @@ public class Curso implements Serializable {
         return maxCapacity;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public String getInitialDate() {
+        return initialDate;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public String getEndDate() {
+        return endDate;
+    }
+
+    public void setCourseid(int courseid) {
+        this.courseid = courseid;
     }
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public void setCategory(String category) {
@@ -70,13 +86,17 @@ public class Curso implements Serializable {
         this.img = img;
     }
 
-    public void setDescription(String description) { this.description = description; }
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public void setAddress(String address) {
         this.address = address;
     }
 
-    public void setZone(String zone) { this.zone = zone; }
+    public void setZone(String zone) {
+        this.zone = zone;
+    }
 
     public void setOccupiedSlots(int occupiedSlots) {
         this.occupiedSlots = occupiedSlots;
@@ -86,10 +106,18 @@ public class Curso implements Serializable {
         this.maxCapacity = maxCapacity;
     }
 
+    public void setInitialDate(String initialDate) {
+        this.initialDate = initialDate;
+    }
+
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
+    }
+
     @Override
     public String toString() {
         return
-                "id=" + id + ", title='" + title + '\'' +
+                "id=" + courseid + ", title='" + title + '\'' +
                         ", category='" + category + '\'' +
                         ", img='" + img + '\'' +
                         ", address='" + address + '\'' + ", zone='" + zone + '\'' +
@@ -98,17 +126,22 @@ public class Curso implements Serializable {
                 ;
     }
 
-    public Curso(int id, String title, String type, String category, String img, String description, String address, int occupiedSlots, int maxCapacity) {
-        this.id = id;
+
+    public Curso(int courseid, String title, String type, String category, String img, String description, String address, String zone, int occupiedSlots, int maxCapacity, String initialDate, String endDate) {
+        this.courseid = courseid;
         this.title = title;
         this.type = type;
         this.category = category;
         this.img = img;
         this.description = description;
         this.address = address;
+        this.zone = zone;
         this.occupiedSlots = occupiedSlots;
         this.maxCapacity = maxCapacity;
+        this.initialDate = initialDate;
+        this.endDate = endDate;
     }
+
 
     public Curso() {}
 }

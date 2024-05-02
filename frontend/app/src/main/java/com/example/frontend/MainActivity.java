@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         errorTextView = findViewById(R.id.errorTextView);
         recyclerView = findViewById(R.id.recyclerView);
         progressBar = findViewById(R.id.progressBar);
-        GerenciadorToken token = new GerenciadorToken(this);
+
         filaRequest = Volley.newRequestQueue(this);
         fetchCoursesData(); // Inicia a busca de dados dos cursos.
 
@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        Log.d("O token está aqui na main?", token.getToken());
+        //Log.d("O token está aqui na main?", token.getToken());
     }
 
     // Método para buscar os dados dos cursos da API.
@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     JSONObject cursoJson = response.getJSONObject(i);
                     Curso curso = new Curso();
-                    curso.setId(cursoJson.getInt("id"));
+                    curso.setCourseid(cursoJson.getInt("courseid"));
                     curso.setTitle(cursoJson.getString("title"));
                     curso.setType(cursoJson.getString("type"));
                     curso.setCategory(cursoJson.getString("category"));
@@ -113,6 +113,8 @@ public class MainActivity extends AppCompatActivity {
                     curso.setZone(cursoJson.getString("zone"));
                     curso.setOccupiedSlots(cursoJson.getInt("occupiedSlots"));
                     curso.setMaxCapacity(cursoJson.getInt("maxCapacity"));
+                    curso.setInitialDate(cursoJson.getString("initialDate"));
+                    curso.setEndDate(cursoJson.getString("endDate"));
                     courses.add(curso);
                 } catch (JSONException e) {
                     Log.e("Volley", "Erro no JSON", e); // Registra um erro no JSON.

@@ -76,6 +76,7 @@
                 android:id="@+id/courseAddress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:singleLine="true"
                 android:textSize="11sp"
                 android:textStyle="bold"
                 tools:text="Endereço do Curso" />
