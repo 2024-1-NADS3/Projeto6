@@ -31,7 +31,7 @@ public class FormCadastroPJ extends AppCompatActivity implements VolleyCallback 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form_cadastro_pj);
-        getSupportActionBar().hide();
+        getSupportActionBar();
 
         voltarLogin = findViewById(R.id.voltar_login);
 

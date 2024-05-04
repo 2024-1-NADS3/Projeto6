@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -34,6 +35,7 @@ public class PerfilPaceiro extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil_paceiro);
+        actionBar();
 
         urlBase = "http://192.168.0.10:4550";
 
@@ -47,6 +49,26 @@ public class PerfilPaceiro extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         verificarSeEstaLogado();
+    }
+
+    public void actionBar() {
+        //Button botaoUsuario = findViewById(R.id.ic_usuario);
+//        botaoUsuario.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent (MainActivity.this, TelaUsuario.class);
+//                startActivity(intent);
+//            }
+//        });
+
+        TextView botaoTitulo = findViewById(R.id.titulo_PerfilParceiro);
+        botaoTitulo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent (PerfilPaceiro.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     /* Método para deslogar no perfil do parceiro */

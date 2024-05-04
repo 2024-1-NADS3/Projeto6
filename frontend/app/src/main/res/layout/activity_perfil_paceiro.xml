@@ -6,6 +6,58 @@
     android:layout_height="match_parent"
     tools:context=".PerfilPaceiro">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/AppBarLayout_TelaPerfilParceiro"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:alpha="0.8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Toolbar
+                android:id="@+id/Toolbar_TelaPerfilParceiro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/blue_educaliza"
+                android:titleTextColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/titulo_PerfilParceiro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Educaliza"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/Toolbar_TelaPerfilParceiro"
+                app:layout_constraintEnd_toStartOf="@id/ic_usuario"
+                app:layout_constraintHorizontal_bias="0.57"
+                app:layout_constraintStart_toStartOf="@+id/Toolbar_TelaPerfilParceiro"
+                app:layout_constraintTop_toTopOf="@id/Toolbar_TelaPerfilParceiro"
+                app:layout_constraintVertical_bias="0.517" />
+
+            <Button
+                android:id="@+id/ic_usuario"
+                android:layout_width="40dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center_vertical"
+                android:background="@android:color/transparent"
+                android:contentDescription="Botão de Usuário"
+                android:drawableTop="@drawable/ic_usuario"
+                app:layout_constraintBottom_toBottomOf="@id/Toolbar_TelaPerfilParceiro"
+                app:layout_constraintEnd_toEndOf="@id/Toolbar_TelaPerfilParceiro"
+                app:layout_constraintTop_toTopOf="@id/Toolbar_TelaPerfilParceiro" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -34,12 +86,11 @@
         android:id="@+id/button8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="216dp"
+        android:layout_marginTop="176dp"
         android:onClick="deletarConta"
         android:text="Deletar conta"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/AppBarLayout_TelaPerfilParceiro" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

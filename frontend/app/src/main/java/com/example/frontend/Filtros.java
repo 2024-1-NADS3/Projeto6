@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 public class Filtros extends AppCompatActivity {
 
@@ -25,6 +26,7 @@ public class Filtros extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_filtros);
 
+        actionBar();
         // Configura os RadioGroups para as categorias, tipos e zonas.
         radioGroup_types = findViewById(R.id.radioGroup_types);
         radioGroup_zones1 = findViewById(R.id.radioGroup_zones1);
@@ -71,6 +73,17 @@ public class Filtros extends AppCompatActivity {
                     radioGroup_zones1.clearCheck();
                     isProgrammaticZoneCheck = false;
                 }
+            }
+        });
+    }
+
+    public void actionBar() {
+        TextView botaoTitulo = findViewById(R.id.titulo_TelaFiltro);
+        botaoTitulo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent (Filtros.this, MainActivity.class);
+                startActivity(intent);
             }
         });
     }

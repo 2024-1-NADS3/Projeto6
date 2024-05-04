@@ -61,6 +61,7 @@ public class TelaCursoExpandido extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_curso_expandido);
+        actionBar();
         urlBase = "http://192.168.0.10:4550";
         curso = (Curso) getIntent().getSerializableExtra("curso");
         pegarNomeDaInstituicao();
@@ -84,6 +85,16 @@ public class TelaCursoExpandido extends AppCompatActivity {
         Log.d("id do curso", String.valueOf(curso.getCourseid()));
     }
 
+    public void actionBar() {
+        TextView botaoTitulo = findViewById(R.id.titulo_CursoExpandido);
+        botaoTitulo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent (TelaCursoExpandido.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
     void pegarNomeDaInstituicao() {
         RequestQueue mRequestQueue;
         String courseId = String.valueOf(curso.getCourseid());

@@ -15,7 +15,7 @@ public class TelaEscolhaCadastro extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_escolha_cadastro);
-        getSupportActionBar().hide();
+        getSupportActionBar();
 
         voltarLogin = findViewById(R.id.voltar_login);
 

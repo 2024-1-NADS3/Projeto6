@@ -13,7 +13,6 @@ public class TelaLoading extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_loading);
-        getSupportActionBar().hide();
 
         // Função que atribui um delay de 2 segundos ao mudar de tela
         Handler handler = new Handler();

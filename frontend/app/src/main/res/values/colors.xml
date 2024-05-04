@@ -22,4 +22,6 @@
 
     // Cor dos containers
     <color name="blue">#1B32FF</color>
+
+    <color name="blue_educaliza">#1B32FF</color>
 </resources>

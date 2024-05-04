@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -33,6 +35,7 @@ public class PerfilUsuario extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil_usuario);
+        actionBar();
         urlBase = "http://192.168.0.10:4550";
 
         token = new GerenciadorToken(this);
@@ -45,6 +48,25 @@ public class PerfilUsuario extends AppCompatActivity {
         verificarSeEstaLogado();
     }
 
+    public void actionBar() {
+        //Button botaoUsuario = findViewById(R.id.ic_usuario);
+//        botaoUsuario.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent (MainActivity.this, TelaUsuario.class);
+//                startActivity(intent);
+//            }
+//        });
+
+        TextView botaoTitulo = findViewById(R.id.titulo_PerfilUsuario);
+        botaoTitulo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent (PerfilUsuario.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
     public void sair(View view) {
         token.clearToken();
         Intent mudarTelaParaMainAcitivity = new Intent(PerfilUsuario.this, MainActivity.class);

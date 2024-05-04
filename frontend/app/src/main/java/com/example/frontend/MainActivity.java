@@ -9,15 +9,19 @@ import android.os.Bundle;
 
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.RequestQueue;
 import com.android.volley.VolleyError;
 import com.android.volley.Response;
 import com.android.volley.Request;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
@@ -25,7 +29,9 @@ import org.json.JSONObject;
 import org.json.JSONArray;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class MainActivity extends AppCompatActivity {
@@ -36,7 +42,9 @@ public class MainActivity extends AppCompatActivity {
     CursoAdapter adapter;
     List<Curso> courses = new ArrayList<>();
     ProgressBar progressBar;
-    String finalURL = "http://192.168.0.10:4550/cursos/todos";
+
+    String urlBase = "http://192.168.0.10:4550";
+    String finalURL = urlBase + "/cursos/todos";
     TextView errorTextView;
 
     @Override
@@ -44,6 +52,9 @@ public class MainActivity extends AppCompatActivity {
         // Inicializa a Activity, define o layout e configura os componentes da UI.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        actionBar();
+
         errorTextView = findViewById(R.id.errorTextView);
         recyclerView = findViewById(R.id.recyclerView);
         progressBar = findViewById(R.id.progressBar);
@@ -68,9 +79,84 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
         //Log.d("O token está aqui na main?", token.getToken());
+    }
+
+    public void actionBar() {
+        GerenciadorToken token = new GerenciadorToken(this);
+
+        Button botaoFiltro = findViewById(R.id.ic_filtro);
+        botaoFiltro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent (MainActivity.this, Filtros.class);
+                startActivity(intent);
+            }
+        });
+
+        Button botaoUsuario = findViewById(R.id.ic_usuario);
+        botaoUsuario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String tokenString = token.getToken();
+                if (tokenString.equals("")) {
+                    Intent mudarTelaParaLogin = new Intent(MainActivity.this, FormLogin.class);
+                    startActivity(mudarTelaParaLogin);
+                } else {
+                    redirecionarUsuario(token);
+                }
+
+//                Intent intent = new Intent (MainActivity.this, TelaUsuario.class);
+//                startActivity(intent);
+            }
+        });
+
+        TextView botaoTitulo = findViewById(R.id.titulo);
+        botaoTitulo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent (MainActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    public void redirecionarUsuario(GerenciadorToken GToken) {
+        String urlInfo = urlBase + "/user-type";
+        String token = GToken.getToken(); // Obtenha o token JWT armazenado
+
+        JsonObjectRequest jsonObjectRequestInfo = new JsonObjectRequest(Request.Method.GET, urlInfo, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        // Aqui você recebe o tipo de usuário na resposta
+                        String userType = response.optString("userType");
+
+                        if (userType.equals("partner")) {
+                            Intent mudarTelaPerfilParceiro = new Intent(MainActivity.this,PerfilPaceiro.class);
+                            startActivity(mudarTelaPerfilParceiro);
+                        } else {
+                            Intent mudarTelaPerfilUsuario = new Intent(MainActivity.this,PerfilUsuario.class);
+                            startActivity(mudarTelaPerfilUsuario);
+                        }
+                        // Redirecionar para a activity correta com base no tipo de usuário
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("erro", ":" + error);
+            }
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> headers = new HashMap<>();
+                headers.put("Authorization", "Bearer " + token);
+                return headers;
+            }
+        };
+
+        RequestQueue requestQueueInfo = Volley.newRequestQueue(getApplicationContext());
+        requestQueueInfo.add(jsonObjectRequestInfo);
     }
 
     // Método para buscar os dados dos cursos da API.
@@ -132,12 +218,6 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
         adapter = new CursoAdapter(MainActivity.this, courses);
         recyclerView.setAdapter(adapter);
-    }
-
-    // Método para mudar para a Activity de filtros.
-    public void changeActivityToFilters(View view) {
-        Intent intent = new Intent(getApplicationContext(), Filtros.class);
-        startActivity(intent);
     }
 
     // Aplica filtros se disponíveis, obtidos da Intent anterior.

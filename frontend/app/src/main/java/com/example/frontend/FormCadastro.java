@@ -32,7 +32,7 @@ public class FormCadastro extends AppCompatActivity implements VolleyCallback {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form_cadastro);
-        getSupportActionBar().hide();
+        getSupportActionBar();
 
         voltarLogin = findViewById(R.id.voltar_login);
 
