@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -36,6 +38,8 @@ import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class TelaCursoExpandido extends AppCompatActivity {
 
@@ -82,7 +86,7 @@ public class TelaCursoExpandido extends AppCompatActivity {
 
         preencherComDado(curso);
 
-        Log.d("id do curso", String.valueOf(curso.getCourseid()));
+        Log.d("id do curso", String.valueOf(curso.getCourseId()));
     }
 
     public void actionBar() {
@@ -97,8 +101,8 @@ public class TelaCursoExpandido extends AppCompatActivity {
     }
     void pegarNomeDaInstituicao() {
         RequestQueue mRequestQueue;
-        String courseId = String.valueOf(curso.getCourseid());
-        String finalURL = urlBase + "/parceiro/nomeInstituicao?id=" + courseId;
+        String courseId = String.valueOf(curso.getCourseId());
+        String finalURL = urlBase + "/parceiro/nome-instituicao?id=" + courseId;
 
         mRequestQueue = Volley.newRequestQueue(this);
 
@@ -180,62 +184,95 @@ public class TelaCursoExpandido extends AppCompatActivity {
     }
 
     // Terminar dps
-    public void inscreverse (View view) {
-        String urlFinalParaLogar = urlBase + "/inscriverseCurso" ;
+    public void inscricao (View view) {
+        String urlFinalParaInscricao = urlBase + "/usuario/inscricao-curso" ;
         Log.d("Clicou", "Clicou");
-//
-//        // FALTA COMEÇAR ESSA AQUI
-//
-//        // Criação do RequestQueue
-//        RequestQueue queue = Volley.newRequestQueue(this);
-//
-//        // Parâmetros da requisição
-//        JSONObject params = new JSONObject();
-//        try {
-//            params.put("cursoId", curso.getId());
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-//
-//        // JsonObjectRequest
-//        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, urlFinalParaLogar, params,
-//                new Response.Listener<JSONObject>() {
-//                    @Override
-//                    public void onResponse(JSONObject response) {
-//
-//                    }
-//                }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-////                // Trata o erro
-////                String errorMessage = "Desculpe, ocorreu um erro. Por favor, tente novamente mais tarde.";
-////
-////                if (error.networkResponse != null && error.networkResponse.statusCode != 0) {
-////                    if (error.networkResponse.statusCode == 401) {
-////                        try {
-////                            String errorBody = new String(error.networkResponse.data, "UTF-8");
-////                            JSONObject errorJson = new JSONObject(errorBody);
-////                            errorMessage = errorJson.getString("error");
-////                        } catch (UnsupportedEncodingException | JSONException e) {
-////                            e.printStackTrace();
-////                        }
-////                    }
-////                } else if (error instanceof NetworkError) {
-////                    errorMessage = "Sem conexão com a internet. Por favor, verifique sua conexão.";
-////                } else if (error instanceof ServerError) {
-////                    errorMessage = "O servidor está enfrentando problemas. Por favor, tente novamente mais tarde.";
-////                } else if (error instanceof TimeoutError) {
-////                    errorMessage = "A solicitação demorou muito para ser processada. Por favor, tente novamente mais tarde.";
-////                }
-////                Log.e("LoginError", error.toString());
-////
-////                // Exibe o AlertDialog com a mensagem de erro
-//
-//            }
-//        });
-//
-//        // Adiciona a requisição à fila
-//        queue.add(jsonObjectRequest);
+
+        // Criação do RequestQueue
+        RequestQueue queue = Volley.newRequestQueue(this);
+
+        // Parâmetros da requisição
+        JSONObject params = new JSONObject();
+        try {
+            params.put("courseId", curso.getCourseId());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        // JsonObjectRequest
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, urlFinalParaInscricao, params,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Toast.makeText(TelaCursoExpandido.this, "Inscrição feita com sucesso!", Toast.LENGTH_SHORT).show();
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                String errorMessage = "Desculpe, ocorreu um erro. Por favor, tente novamente mais tarde.";
+
+                if (error.networkResponse != null && error.networkResponse.statusCode != 0) {
+                    if (error.networkResponse.statusCode == 400) {
+                        try {
+                            String errorBody = new String(error.networkResponse.data, "UTF-8");
+                            JSONObject errorJson = new JSONObject(errorBody);
+                            errorMessage = errorJson.getString("message");
+                        } catch (UnsupportedEncodingException | JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    if (error.networkResponse.statusCode == 401) {
+                        errorMessage = "Sessão de login expirada. Faça o login novamente";
+                        token.clearToken();
+
+                        Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                Intent intent = new Intent(TelaCursoExpandido.this, FormLogin.class);
+                                startActivity(intent);
+                            }
+                        }, 2000);
+
+                    }
+                    if (error.networkResponse.statusCode == 403) {
+                        try {
+                            String errorBody = new String(error.networkResponse.data, "UTF-8");
+                            JSONObject errorJson = new JSONObject(errorBody);
+                            errorMessage = errorJson.getString("message");
+                        } catch (UnsupportedEncodingException | JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                } else if (error instanceof NetworkError) {
+                    errorMessage = "Sem conexão com a internet. Por favor, verifique sua conexão.";
+                } else if (error instanceof ServerError) {
+                    errorMessage = "O servidor está enfrentando problemas. Por favor, tente novamente mais tarde.";
+                } else if (error instanceof TimeoutError) {
+                    errorMessage = "A solicitação demorou muito para ser processada. Por favor, tente novamente mais tarde.";
+                }
+
+                Log.e("Inscription error", error.toString());
+
+                new AlertDialog.Builder(TelaCursoExpandido.this)
+                        .setTitle("Erro")
+                        .setMessage(errorMessage)
+                        .setPositiveButton("OK", null)
+                        .show();
+
+            }
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> headers = new HashMap<>();
+                headers.put("Authorization", "Bearer " + token.getToken()); // Substitua "Bearer " + token pelo seu token JWT
+                return headers;
+            }
+        };;
+
+
+        // Adiciona a requisição à fila
+        queue.add(jsonObjectRequest);
     }
 
 }

@@ -113,7 +113,7 @@ public class PerfilPaceiro extends AppCompatActivity {
     }
 
     public void deletarContaReq() {
-        String deleteUrl = urlBase + "/parceiro/deletarParceiro";
+        String deleteUrl = urlBase + "/parceiro/deletar-parceiro";
 
         RequestQueue queue = Volley.newRequestQueue(this);
 

@@ -189,7 +189,7 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     JSONObject cursoJson = response.getJSONObject(i);
                     Curso curso = new Curso();
-                    curso.setCourseid(cursoJson.getInt("courseid"));
+                    curso.setCourseId(cursoJson.getInt("courseId"));
                     curso.setTitle(cursoJson.getString("title"));
                     curso.setType(cursoJson.getString("type"));
                     curso.setCategory(cursoJson.getString("category"));

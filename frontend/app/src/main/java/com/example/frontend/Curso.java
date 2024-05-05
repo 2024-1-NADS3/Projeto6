@@ -3,7 +3,7 @@ package com.example.frontend;
 import java.io.Serializable;
 
 public class Curso implements Serializable {
-    private int courseid;
+    private int courseId;
     private String title;
     private String type;
     private String category;
@@ -18,8 +18,8 @@ public class Curso implements Serializable {
 
     private String endDate;
 
-    public int getCourseid() {
-        return courseid;
+    public int getCourseId() {
+        return courseId;
     }
 
     public String getTitle() {
@@ -66,8 +66,8 @@ public class Curso implements Serializable {
         return endDate;
     }
 
-    public void setCourseid(int courseid) {
-        this.courseid = courseid;
+    public void setCourseId(int courseId) {
+        this.courseId = courseId;
     }
 
     public void setTitle(String title) {
@@ -117,7 +117,7 @@ public class Curso implements Serializable {
     @Override
     public String toString() {
         return
-                "id=" + courseid + ", title='" + title + '\'' +
+                "id=" + courseId + ", title='" + title + '\'' +
                         ", category='" + category + '\'' +
                         ", img='" + img + '\'' +
                         ", address='" + address + '\'' + ", zone='" + zone + '\'' +
@@ -127,8 +127,8 @@ public class Curso implements Serializable {
     }
 
 
-    public Curso(int courseid, String title, String type, String category, String img, String description, String address, String zone, int occupiedSlots, int maxCapacity, String initialDate, String endDate) {
-        this.courseid = courseid;
+    public Curso(int courseId, String title, String type, String category, String img, String description, String address, String zone, int occupiedSlots, int maxCapacity, String initialDate, String endDate) {
+        this.courseId = courseId;
         this.title = title;
         this.type = type;
         this.category = category;

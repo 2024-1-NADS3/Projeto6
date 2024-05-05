@@ -74,6 +74,7 @@ public class PerfilUsuario extends AppCompatActivity {
     }
 
     public void verificarSeEstaLogado() {
+        Log.d("erro na activity Perfil Usuario", "aaaaa");
         if (token != null) {
             String tokenString = token.getToken();
             if (tokenString.equals("")) {
@@ -107,7 +108,7 @@ public class PerfilUsuario extends AppCompatActivity {
     }
 
     public void deletarContaReq() {
-        String deleteUrl = urlBase + "/usuario/deletarUsuario";
+        String deleteUrl = urlBase + "/usuario/deletar-usuario";
 
         RequestQueue queue = Volley.newRequestQueue(this);
 
