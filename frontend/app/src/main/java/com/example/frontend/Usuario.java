@@ -14,8 +14,7 @@ import org.json.JSONObject;
 import java.io.Serializable;
 
 public class Usuario {
-    private static final String URL_CRIAR_USUARIO = "http://192.168.0.10:4550/usuario/cadastrar";
-
+    private static final String URL_CRIAR_USUARIO = Constants.BASE_URL + "/usuario/cadastrar";
     private Context mContext;
 
     protected String name;

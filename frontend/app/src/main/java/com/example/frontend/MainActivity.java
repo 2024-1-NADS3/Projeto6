@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -42,9 +43,8 @@ public class MainActivity extends AppCompatActivity {
     CursoAdapter adapter;
     List<Curso> courses = new ArrayList<>();
     ProgressBar progressBar;
-
-    String urlBase = "http://192.168.0.10:4550";
-    String finalURL = urlBase + "/cursos/todos";
+    GerenciadorToken token;
+    String finalURL = Constants.BASE_URL + "/cursos/todos";
     TextView errorTextView;
 
     @Override
@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void actionBar() {
-        GerenciadorToken token = new GerenciadorToken(this);
+        token = new GerenciadorToken(this);
 
         Button botaoFiltro = findViewById(R.id.ic_filtro);
         botaoFiltro.setOnClickListener(new View.OnClickListener() {
@@ -122,8 +122,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void redirecionarUsuario(GerenciadorToken GToken) {
-        String urlInfo = urlBase + "/user-type";
-        String token = GToken.getToken(); // Obtenha o token JWT armazenado
+        String urlInfo = Constants.BASE_URL + "/user-type";
+        String token = GToken.getToken();
 
         JsonObjectRequest jsonObjectRequestInfo = new JsonObjectRequest(Request.Method.GET, urlInfo, null,
                 new Response.Listener<JSONObject>() {
@@ -144,7 +144,11 @@ public class MainActivity extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.d("erro", ":" + error);
+                if (error.networkResponse.statusCode == 401) {
+                    GToken.clearToken();
+                    Intent intent = new Intent(MainActivity.this, FormLogin.class);
+                    startActivity(intent);
+                }
             }
         }) {
             @Override

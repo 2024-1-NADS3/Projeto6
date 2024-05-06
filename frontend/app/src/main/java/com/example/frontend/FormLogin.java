@@ -35,8 +35,6 @@ public class FormLogin extends AppCompatActivity {
     private TextView esqueci_senha;
     private TextView text_tela_cadastro;
     private ImageView voltar_tela_inicio;
-
-    String urlBase;
     private EditText campo_email, campo_senha;
 
     @Override
@@ -51,9 +49,6 @@ public class FormLogin extends AppCompatActivity {
 
         campo_email = findViewById(R.id.email);
         campo_senha = findViewById(R.id.senha);
-        // URL do endpoint de login
-        urlBase = "http://192.168.0.10:4550";
-
         text_tela_cadastro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,7 +99,7 @@ public class FormLogin extends AppCompatActivity {
     }
 
     public void requestLogin(String email, String password) {
-        String urlFinalParaLogar = urlBase + "/login" ;
+        String urlFinalParaLogar = Constants.BASE_URL + "/login" ;
 
         // Criação do RequestQueue
         RequestQueue queue = Volley.newRequestQueue(this);
@@ -171,7 +166,7 @@ public class FormLogin extends AppCompatActivity {
     }
 
     public void RedirecionarUsuario(GerenciadorToken GToken) {
-        String urlInfo = urlBase + "/user-type";
+        String urlInfo = Constants.BASE_URL + "/user-type";
         String token = GToken.getToken(); // Obtenha o token JWT armazenado
 
         JsonObjectRequest jsonObjectRequestInfo = new JsonObjectRequest(Request.Method.GET, urlInfo, null,

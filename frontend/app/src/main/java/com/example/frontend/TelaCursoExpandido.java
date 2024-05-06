@@ -48,7 +48,7 @@ public class TelaCursoExpandido extends AppCompatActivity {
     GerenciadorToken token;
     Button inscricaoButton;
 
-    String urlBase, instituitionName;
+    String instituitionName;
     Curso curso;
     TextView descriptionExpandend,
             courseTitleExpanded,
@@ -66,7 +66,6 @@ public class TelaCursoExpandido extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_curso_expandido);
         actionBar();
-        urlBase = "http://192.168.0.10:4550";
         curso = (Curso) getIntent().getSerializableExtra("curso");
         pegarNomeDaInstituicao();
 
@@ -102,7 +101,7 @@ public class TelaCursoExpandido extends AppCompatActivity {
     void pegarNomeDaInstituicao() {
         RequestQueue mRequestQueue;
         String courseId = String.valueOf(curso.getCourseId());
-        String finalURL = urlBase + "/parceiro/nome-instituicao?id=" + courseId;
+        String finalURL = Constants.BASE_URL + "/parceiro/nome-instituicao?id=" + courseId;
 
         mRequestQueue = Volley.newRequestQueue(this);
 
@@ -151,7 +150,7 @@ public class TelaCursoExpandido extends AppCompatActivity {
         descriptionExpandend = findViewById(R.id.descriptionExpandend);
 
         String imagePath = curso.getImg();
-        String imageUrl = urlBase + imagePath;
+        String imageUrl = Constants.BASE_URL + imagePath;
         Picasso.get().load(imageUrl).into(courseImgExpandend);
 
         courseTitleExpanded.setText(curso.getTitle());
@@ -185,7 +184,7 @@ public class TelaCursoExpandido extends AppCompatActivity {
 
     // Terminar dps
     public void inscricao (View view) {
-        String urlFinalParaInscricao = urlBase + "/usuario/inscricao-curso" ;
+        String urlFinalParaInscricao = Constants.BASE_URL + "/usuario/inscricao-curso" ;
         Log.d("Clicou", "Clicou");
 
         // Criação do RequestQueue
@@ -232,7 +231,7 @@ public class TelaCursoExpandido extends AppCompatActivity {
                                 Intent intent = new Intent(TelaCursoExpandido.this, FormLogin.class);
                                 startActivity(intent);
                             }
-                        }, 2000);
+                        }, 1500);
 
                     }
                     if (error.networkResponse.statusCode == 403) {
