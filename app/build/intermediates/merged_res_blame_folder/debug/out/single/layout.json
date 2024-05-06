@@ -1,0 +1,58 @@
+[
+    {
+        "merged": "com.example.frontend.app-mergeDebugResources-43:/layout/activity_perfil_paceiro.xml",
+        "source": "com.example.frontend.app-main-46:/layout/activity_perfil_paceiro.xml"
+    },
+    {
+        "merged": "com.example.frontend.app-mergeDebugResources-43:/layout/activity_filtros.xml",
+        "source": "com.example.frontend.app-main-46:/layout/activity_filtros.xml"
+    },
+    {
+        "merged": "com.example.frontend.app-mergeDebugResources-43:/layout/card_curso.xml",
+        "source": "com.example.frontend.app-main-46:/layout/card_curso.xml"
+    },
+    {
+        "merged": "com.example.frontend.app-mergeDebugResources-43:/layout/activity_form_cadastro.xml",
+        "source": "com.example.frontend.app-main-46:/layout/activity_form_cadastro.xml"
+    },
+    {
+        "merged": "com.example.frontend.app-mergeDebugResources-43:/layout/activity_form_login.xml",
+        "source": "com.example.frontend.app-main-46:/layout/activity_form_login.xml"
+    },
+    {
+        "merged": "com.example.frontend.app-mergeDebugResources-43:/layout/activity_tela_curso_expandido.xml",
+        "source": "com.example.frontend.app-main-46:/layout/activity_tela_curso_expandido.xml"
+    },
+    {
+        "merged": "com.example.frontend.app-mergeDebugResources-43:/layout/activity_pefil_parceiro_curso_expandido.xml",
+        "source": "com.example.frontend.app-main-46:/layout/activity_pefil_parceiro_curso_expandido.xml"
+    },
+    {
+        "merged": "com.example.frontend.app-mergeDebugResources-43:/layout/activity_tela_loading.xml",
+        "source": "com.example.frontend.app-main-46:/layout/activity_tela_loading.xml"
+    },
+    {
+        "merged": "com.example.frontend.app-mergeDebugResources-43:/layout/activity_perfil_usuario.xml",
+        "source": "com.example.frontend.app-main-46:/layout/activity_perfil_usuario.xml"
+    },
+    {
+        "merged": "com.example.frontend.app-mergeDebugResources-43:/layout/activity_form_cadastro_pj.xml",
+        "source": "com.example.frontend.app-main-46:/layout/activity_form_cadastro_pj.xml"
+    },
+    {
+        "merged": "com.example.frontend.app-mergeDebugResources-43:/layout/activity_tela_inicio.xml",
+        "source": "com.example.frontend.app-main-46:/layout/activity_tela_inicio.xml"
+    },
+    {
+        "merged": "com.example.frontend.app-mergeDebugResources-43:/layout/activity_tela_recuperar_senha.xml",
+        "source": "com.example.frontend.app-main-46:/layout/activity_tela_recuperar_senha.xml"
+    },
+    {
+        "merged": "com.example.frontend.app-mergeDebugResources-43:/layout/activity_main.xml",
+        "source": "com.example.frontend.app-main-46:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.example.frontend.app-mergeDebugResources-43:/layout/activity_tela_escolha_cadastro.xml",
+        "source": "com.example.frontend.app-main-46:/layout/activity_tela_escolha_cadastro.xml"
+    }
+]

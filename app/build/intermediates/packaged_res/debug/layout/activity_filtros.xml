@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Filtros">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/AppBarLayout_TelaFiltro"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="27dp"
+        android:alpha="0.8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Toolbar
+                android:id="@+id/Toolbar_TelaFiltro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/blue_educaliza"
+                android:titleTextColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/titulo_TelaFiltro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Educaliza"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+
+                app:layout_constraintBottom_toBottomOf="@id/Toolbar_TelaFiltro"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/Toolbar_TelaFiltro"
+                app:layout_constraintTop_toTopOf="@id/Toolbar_TelaFiltro" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="177dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="27dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="12dp"
+        android:text="Categorias:"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/AppBarLayout_TelaFiltro" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="343dp"
+        android:layout_height="92dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginEnd="33dp"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/divider2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5">
+
+        <!-- Primeiro RadioGroup -->
+        <RadioGroup
+            android:id="@+id/radioGroup_categories1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/radioButton_music"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Música" />
+
+            <RadioButton
+                android:id="@+id/radioButton_sports"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Esportes" />
+
+        </RadioGroup>
+
+        <!-- Segundo RadioGroup -->
+        <RadioGroup
+            android:id="@+id/radioGroup_categories2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/radioButton_computing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Informática" />
+
+            <RadioButton
+                android:id="@+id/radioButton_miscellaneous"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Diversos" />
+
+        </RadioGroup>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="352dp"
+        android:layout_height="139dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="27dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/button7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView10">
+
+        <!-- Primeiro RadioGroup -->
+        <RadioGroup
+            android:id="@+id/radioGroup_zones1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/radioButton_north"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Norte" />
+
+            <RadioButton
+                android:id="@+id/radioButton_south"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sul" />
+
+            <RadioButton
+                android:id="@+id/radioButton_east"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Leste" />
+        </RadioGroup>
+
+        <!-- Segundo RadioGroup -->
+        <RadioGroup
+            android:id="@+id/radioGroup_zones2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/radioButton_west"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Oeste" />
+
+            <RadioButton
+                android:id="@+id/radioButton_centro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Centro" />
+        </RadioGroup>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="15dp"
+        android:text="Zona:"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider3" />
+
+    <View
+        android:id="@+id/divider3"
+        android:layout_width="410dp"
+        android:layout_height="5dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="20dp"
+        android:background="#0057D8"
+        app:layout_constraintBottom_toTopOf="@+id/textView10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup_types" />
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="331dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginEnd="42dp"
+        android:layout_marginBottom="2dp"
+        android:backgroundTint="#4BA405"
+        android:onClick="onFilter"
+        android:text="Aplicar filtros"
+        android:textColor="#FDFDFD"
+        app:layout_constraintBottom_toTopOf="@+id/button6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="410dp"
+        android:layout_height="5dp"
+        android:layout_marginBottom="20dp"
+        android:background="#0057D8"
+        app:layout_constraintBottom_toTopOf="@+id/textView8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+    <Button
+        android:id="@+id/button6"
+        android:layout_width="332dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="41dp"
+        android:layout_marginEnd="41dp"
+        android:layout_marginBottom="55dp"
+        android:backgroundTint="#A70000"
+        android:onClick="clearFilters"
+        android:text="LIMPAR FILTROS"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button7" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup_types"
+        android:layout_width="333dp"
+        android:layout_height="39dp"
+        android:layout_marginBottom="14dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/divider3"
+        app:layout_constraintEnd_toEndOf="@+id/textView8"
+        app:layout_constraintStart_toEndOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/textView8">
+
+        <RadioButton
+            android:id="@+id/radioButton_inPerson"
+            android:layout_width="175dp"
+            android:layout_height="match_parent"
+            android:text="Presencial" />
+
+        <RadioButton
+            android:id="@+id/radioButton_online"
+            android:layout_width="171dp"
+            android:layout_height="match_parent"
+            android:text="Online" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="167dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="23dp"
+        android:layout_marginBottom="15dp"
+        android:text="Tipo de aula:"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/radioGroup_types"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider2" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
