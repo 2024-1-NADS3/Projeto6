@@ -123,7 +123,6 @@ public class FormLogin extends AppCompatActivity {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        Log.d("LoginResponse", response.toString());
                         String token = null;
                         try {
                             token = response.getString("token");
@@ -137,7 +136,6 @@ public class FormLogin extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                // Trata o erro
                 String errorMessage = "Desculpe, ocorreu um erro. Por favor, tente novamente mais tarde.";
 
                 if (error.networkResponse != null && error.networkResponse.statusCode != 0) {

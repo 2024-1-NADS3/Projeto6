@@ -64,6 +64,7 @@ public class FormCadastro extends AppCompatActivity implements VolleyCallback {
 
         if (!ValidacaoFormCadastro.isValidName(name)) {
             campo_nome.setError("Nome inválido");
+            return;
         }
         // Verificar se o email é válido
         if (!ValidacaoFormCadastro.isValidEmail(email)) {
@@ -97,7 +98,6 @@ public class FormCadastro extends AppCompatActivity implements VolleyCallback {
 
     @Override
     public void onSuccess(JSONObject response) {
-        // Ajustar depois para mostrar resposta do servidor
 
         Log.e("VolleySucess", "Resquisição recebida: " + response);
 
@@ -127,15 +127,15 @@ public class FormCadastro extends AppCompatActivity implements VolleyCallback {
 
     @Override
     public void onError(VolleyError error) {
-        // Ajustar depois para mostrar resposta do servidor
         String errorMessage = "Desculpe, ocorreu um erro. Por favor, tente novamente mais tarde.";
 
-
-        if (error.networkResponse != null && error.networkResponse.statusCode != 0) {
+        // Verifica se há uma resposta de rede e um código de status
+        if (error.networkResponse!= null && error.networkResponse.statusCode!= 0) {
             if (error.networkResponse.statusCode == 409) {
                 errorMessage = "Email já cadastrado. Por favor, use um email diferente.";
             }
-        } else if (error instanceof NetworkError) {
+        }
+        else if (error instanceof NetworkError) {
             errorMessage = "Sem conexão com a internet. Por favor, verifique sua conexão.";
         } else if (error instanceof ServerError) {
             errorMessage = "O servidor está enfrentando problemas. Por favor, tente novamente mais tarde.";
@@ -145,7 +145,7 @@ public class FormCadastro extends AppCompatActivity implements VolleyCallback {
             errorMessage = "A solicitação demorou muito para ser processada. Por favor, tente novamente mais tarde.";
         }
 
-        // Exibir a mensagem de erro em um AlertDialog ou Toast
+        // Exibe a mensagem de erro em um AlertDialog ou Toast
         new AlertDialog.Builder(this)
                 .setTitle("Erro")
                 .setMessage(errorMessage)
