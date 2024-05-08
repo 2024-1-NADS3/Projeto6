@@ -15,16 +15,26 @@ public class GerenciadorToken {
         sharedPreferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
     }
 
+    /**
+     * Método para salvar o token JWT nas preferências compartilhadas.
+     */
     public void saveToken(String token) {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(TOKEN_KEY, token);
         editor.apply();
     }
 
+    /**
+     * Método para recuperar o token JWT das preferências compartilhadas.
+     */
     public String getToken() {
         return sharedPreferences.getString(TOKEN_KEY, "");
     }
 
+    /**
+     * Método para limpar o token JWT das preferências compartilhadas.
+     * Isso é útil para deslogar o usuário ou limpar dados sensíveis.
+     */
     public void clearToken() {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.remove(TOKEN_KEY);

@@ -45,6 +45,10 @@ public class FormCadastro extends AppCompatActivity implements VolleyCallback {
         campo_confirmacao_senha = findViewById(R.id.campo_confirmacao_senha);
     }
 
+    /**
+     * Método para cadastrar um usuário.
+     * Realiza validações nos campos de entrada e tenta criar um usuário no servidor.
+     */
     public void cadastrarUsuario(View view){
         final String name = campo_nome.getText().toString().trim();
         final String email = campo_email.getText().toString().trim();
@@ -96,6 +100,7 @@ public class FormCadastro extends AppCompatActivity implements VolleyCallback {
         usuario.criarUsuarioNoServidor(usuario, this);
     }
 
+    /** Método que lida com a resposta bem-sucedida do servidor */
     @Override
     public void onSuccess(JSONObject response) {
 
@@ -125,6 +130,7 @@ public class FormCadastro extends AppCompatActivity implements VolleyCallback {
         alertDialog.show();
     }
 
+    /** Método que lida com o erro de requisição do servidor */
     @Override
     public void onError(VolleyError error) {
         String errorMessage = "Desculpe, ocorreu um erro. Por favor, tente novamente mais tarde.";
@@ -153,7 +159,7 @@ public class FormCadastro extends AppCompatActivity implements VolleyCallback {
                 .show();
     }
 
-    // Método que retorna para o formulário de login
+    /** Método que retorna para o formulário de login */
     private void voltarTelaEscolhaCadastro() {
         Intent voltarTelaLogin = new Intent(FormCadastro.this, TelaEscolhaCadastro.class);
         startActivity(voltarTelaLogin);

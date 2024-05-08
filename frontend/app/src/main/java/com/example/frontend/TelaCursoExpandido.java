@@ -88,6 +88,9 @@ public class TelaCursoExpandido extends AppCompatActivity {
         Log.d("id do curso", String.valueOf(curso.getCourseId()));
     }
 
+    /**
+     * Configura a barra de ação com um botão para voltar à tela principal.
+     */
     public void actionBar() {
         TextView botaoTitulo = findViewById(R.id.titulo_CursoExpandido);
         botaoTitulo.setOnClickListener(new View.OnClickListener() {
@@ -98,6 +101,10 @@ public class TelaCursoExpandido extends AppCompatActivity {
             }
         });
     }
+
+    /**
+     * Obtém o nome da instituição associada ao curso através de uma requisição GET.
+     */
     void pegarNomeDaInstituicao() {
         RequestQueue mRequestQueue;
         String courseId = String.valueOf(curso.getCourseId());
@@ -135,7 +142,11 @@ public class TelaCursoExpandido extends AppCompatActivity {
 
         mRequestQueue.add(stringRequest);
     }
-    @SuppressLint("SetTextI18n")
+
+
+    /**
+     * Preenche a tela com os dados do curso, incluindo imagem, título, descrição, etc.
+     */
     void preencherComDado(Curso curso) {
         instituitionNameExpanded = findViewById(R.id.instituitionNameExpanded);
         courseInitialDateExpanded = findViewById(R.id.courseInitialDateExpanded);
@@ -182,7 +193,7 @@ public class TelaCursoExpandido extends AppCompatActivity {
         Log.d("nome do curso", "Message: " + instituitionName);
     }
 
-    // Terminar dps
+    /** Método para fazer a inscrição do usuário no backend */
     public void inscricao (View view) {
         String urlFinalParaInscricao = Constants.BASE_URL + "/usuario/inscricao-curso" ;
         Log.d("Clicou", "Clicou");

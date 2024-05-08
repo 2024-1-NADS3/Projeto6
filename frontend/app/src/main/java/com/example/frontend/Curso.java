@@ -2,6 +2,11 @@ package com.example.frontend;
 
 import java.io.Serializable;
 
+
+/**
+ * Representa um curso com vários atributos, incluindo ID, título, tipo, categoria, imagem,
+ * descrição, endereço, zona, slots ocupados, capacidade máxima, data inicial e data final.
+ */
 public class Curso implements Serializable {
     private int courseId;
     private String title;
@@ -127,6 +132,8 @@ public class Curso implements Serializable {
     }
 
 
+
+    // Construtor com todos os atributos
     public Curso(int courseId, String title, String type, String category, String img, String description, String address, String zone, int occupiedSlots, int maxCapacity, String initialDate, String endDate) {
         this.courseId = courseId;
         this.title = title;
@@ -143,5 +150,6 @@ public class Curso implements Serializable {
     }
 
 
+    // Construtor padrão
     public Curso() {}
 }

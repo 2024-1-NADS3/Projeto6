@@ -9,9 +9,9 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+/** Activity dos filtros da MainActivity */
 public class Filtros extends AppCompatActivity {
 
-    // Inicializa variáveis
     RadioGroup radioGroup_categories1,
             radioGroup_categories2,
             radioGroup_types,
@@ -22,61 +22,22 @@ public class Filtros extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // Inicializa a Activity, define o layout e configura os componentes da UI.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_filtros);
-
         actionBar();
-        // Configura os RadioGroups para as categorias, tipos e zonas.
+
         radioGroup_types = findViewById(R.id.radioGroup_types);
         radioGroup_zones1 = findViewById(R.id.radioGroup_zones1);
         radioGroup_zones2 = findViewById(R.id.radioGroup_zones2);
         radioGroup_categories1 = findViewById(R.id.radioGroup_categories1);
         radioGroup_categories2 = findViewById(R.id.radioGroup_categories2);
 
-        // Configura os listeners para os RadioGroups de categorias e zonas para garantir que apenas um RadioButton possa ser selecionado em cada grupo.
-        radioGroup_categories1.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (!isProgrammaticCategoriesCheck && checkedId != radioGroup_categories2.getCheckedRadioButtonId()) {
-                    isProgrammaticCategoriesCheck = true;
-                    radioGroup_categories2.clearCheck();
-                    isProgrammaticCategoriesCheck = false;
-                }
-            }
-        });
-        radioGroup_categories2.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (!isProgrammaticCategoriesCheck && checkedId != radioGroup_categories1.getCheckedRadioButtonId()) {
-                    isProgrammaticCategoriesCheck = true;
-                    radioGroup_categories1.clearCheck();
-                    isProgrammaticCategoriesCheck = false;
-                }
-            }
-        });
-        radioGroup_zones1.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (!isProgrammaticZoneCheck && checkedId != radioGroup_zones2.getCheckedRadioButtonId()) {
-                    isProgrammaticZoneCheck = true;
-                    radioGroup_zones2.clearCheck();
-                    isProgrammaticZoneCheck = false;
-                }
-            }
-        });
-        radioGroup_zones2.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (!isProgrammaticZoneCheck && checkedId != radioGroup_zones1.getCheckedRadioButtonId()) {
-                    isProgrammaticZoneCheck = true;
-                    radioGroup_zones1.clearCheck();
-                    isProgrammaticZoneCheck = false;
-                }
-            }
-        });
+        configuraListenersRadioGroups();
     }
 
+    /**
+     * Método para configurar a barra de ações, permitindo ao usuário retornar à MainActivity.
+     */
     public void actionBar() {
         TextView botaoTitulo = findViewById(R.id.titulo_TelaFiltro);
         botaoTitulo.setOnClickListener(new View.OnClickListener() {
@@ -88,7 +49,57 @@ public class Filtros extends AppCompatActivity {
         });
     }
 
-    // Método para aplicar os filtros selecionados e iniciar a Activity de cursos com os filtros aplicados.
+    /**
+     * Método para configurar os listeners dos RadioGroups de categorias e zonas.
+     * Garante que apenas um RadioButton seja selecionado em cada grupo.
+     */
+    private void configuraListenersRadioGroups() {
+        radioGroup_categories1.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (!isProgrammaticCategoriesCheck && checkedId!= radioGroup_categories2.getCheckedRadioButtonId()) {
+                    isProgrammaticCategoriesCheck = true;
+                    radioGroup_categories2.clearCheck();
+                    isProgrammaticCategoriesCheck = false;
+                }
+            }
+        });
+        radioGroup_categories2.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (!isProgrammaticCategoriesCheck && checkedId!= radioGroup_categories1.getCheckedRadioButtonId()) {
+                    isProgrammaticCategoriesCheck = true;
+                    radioGroup_categories1.clearCheck();
+                    isProgrammaticCategoriesCheck = false;
+                }
+            }
+        });
+        radioGroup_zones1.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (!isProgrammaticZoneCheck && checkedId!= radioGroup_zones2.getCheckedRadioButtonId()) {
+                    isProgrammaticZoneCheck = true;
+                    radioGroup_zones2.clearCheck();
+                    isProgrammaticZoneCheck = false;
+                }
+            }
+        });
+        radioGroup_zones2.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (!isProgrammaticZoneCheck && checkedId!= radioGroup_zones1.getCheckedRadioButtonId()) {
+                    isProgrammaticZoneCheck = true;
+                    radioGroup_zones1.clearCheck();
+                    isProgrammaticZoneCheck = false;
+                }
+            }
+        });
+    }
+
+
+    /**
+     * Método para aplicar os filtros selecionados e iniciar a Activity de cursos com os filtros aplicados.
+     */
     public void onFilter(View view) {
         // Obtém os IDs dos RadioButtons selecionados para as categorias, tipos e zonas.
         int selectedRadioButtonCategoriesId1 = radioGroup_categories1.getCheckedRadioButtonId();
@@ -130,7 +141,10 @@ public class Filtros extends AppCompatActivity {
         startActivity(intent); // Inicia a Activity de cursos com os filtros aplicados.
     }
 
-    // Método para limpar todos os filtros selecionados.
+
+    /**
+     * Método para limpar todos os filtros selecionados.
+     */
     public void clearFilters(View view) {
         // Limpa a seleção de todos os RadioGroups.
         radioGroup_types.clearCheck();

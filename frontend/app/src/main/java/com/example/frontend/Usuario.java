@@ -13,6 +13,7 @@ import org.json.JSONObject;
 
 import java.io.Serializable;
 
+/** Classe que representa o usuário no sistema */
 public class Usuario {
     private static final String URL_CRIAR_USUARIO = Constants.BASE_URL + "/usuario/cadastrar";
     private Context mContext;
@@ -38,7 +39,6 @@ public class Usuario {
     public void setName(String name) {
         this.name = name;
     }
-
     public void setEmail(String email) {
         this.email = email;
     }
@@ -50,9 +50,17 @@ public class Usuario {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    /**
+     * Retorna os dados do usuário como uma string.
+     */
     public String obterDadosAsString() {
         return "Nome: " + name + ", Email: " + email + ", Número: " + cellnumber + ", Senha: " + password;
     }
+
+    /**
+     * Cria um novo usuário no servidor.
+     */
     public void criarUsuarioNoServidor(Usuario usuario, final VolleyCallback callback) {
 
         // Criar um objeto JSON com os dados do usuário
@@ -91,7 +99,17 @@ public class Usuario {
         Volley.newRequestQueue(mContext).add(request);
     }
 
-    public  Usuario(String name, String email, String cellnumber, String password, Context context) { // Adicionando Context ao construtor
+
+    public Usuario(String name, String email, String cellnumber) { // Adicionando Context ao construtor
+        this.name = name;
+        this.email = email;
+        this.cellnumber = cellnumber;
+    }
+
+    /**
+     * Construtor da classe Usuario.
+     */
+    public Usuario(String name, String email, String cellnumber, String password, Context context) { // Adicionando Context ao construtor
         this.name = name;
         this.email = email;
         this.cellnumber = cellnumber;

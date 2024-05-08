@@ -18,21 +18,29 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Adaptador personalizado para RecyclerView que exibe uma lista de cursos em um perfil.
+ *
+ */
 public class CursoAdapterPerfil extends RecyclerView.Adapter<CursoAdapterPerfil.ViewHolder> {
 
     private Context context;
     private List<Curso> courses;
-
     private List<Curso> allCursos;
 
-    // Inicializa o adaptador com o contexto e a lista de cursos, criando uma cópia para filtragem
+    /**
+     * Inicializa o adaptador com o contexto e a lista de cursos.
+     * Cria uma cópia da lista para filtragem.
+     */
     public CursoAdapterPerfil(Context context, List<Curso> courses) {
         this.context = context;
         this.courses = courses;
         this.allCursos = new ArrayList<>(courses);
     }
 
-    // Cria e retorna um novo ViewHolder para cada item da lista
+    /**
+     * Cria e retorna um novo ViewHolder para cada item da lista.
+     */
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -40,7 +48,9 @@ public class CursoAdapterPerfil extends RecyclerView.Adapter<CursoAdapterPerfil.
         return new ViewHolder(view);
     }
 
-    // Vincula os dados do curso ao ViewHolder, incluindo imagem, título, tipo, categoria, endereço e vagas
+    /**
+     * Vincula os dados do curso ao ViewHolder, incluindo imagem, título, tipo, categoria, endereço e vagas.
+     */
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
@@ -68,13 +78,17 @@ public class CursoAdapterPerfil extends RecyclerView.Adapter<CursoAdapterPerfil.
         });
     }
 
-    // Retorna o número total de itens na lista de cursos
+    /**
+     * Retorna o número total de itens na lista de cursos.
+     */
     @Override
     public int getItemCount() {
         return courses.size();
     }
 
-    // Classe interna ViewHolder para armazenar referências de views
+    /**
+     * Classe interna ViewHolder para armazenar referências de views.
+     */
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView courseImg;
         TextView courseTitle, courseType, courseCategory, courseAddress, slotsAndMax, textView6;
@@ -91,6 +105,9 @@ public class CursoAdapterPerfil extends RecyclerView.Adapter<CursoAdapterPerfil.
         }
     }
 
+    /**
+     * Implementa um filtro para a barra de pesquisa, filtrando cursos por título.
+     */
     public Filter getSearchBarFilter() {
         return new Filter() {
             @Override

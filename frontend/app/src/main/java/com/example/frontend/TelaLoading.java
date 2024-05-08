@@ -24,7 +24,9 @@ public class TelaLoading extends AppCompatActivity {
         }, 2000);
     }
 
-    // Função que chama a TelaInicio
+    /**
+     * Muda para a tela de início após um delay de 2 segundos.
+     */
     public void mudarTela()
     {
         Intent intent = new Intent(TelaLoading.this, TelaInicio.class);

@@ -41,9 +41,7 @@ public class PerfilPaceiro extends AppCompatActivity {
     RecyclerView recyclerViewPartner;
     RequestQueue filaRequest;
     ProgressBar progressBarPerfilParceiro;
-
     TextView errorPartnerTextView;
-
     List<Curso> registeredCourses = new ArrayList<>();
 
     @Override
@@ -51,7 +49,6 @@ public class PerfilPaceiro extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil_paceiro);
         actionBar();
-
 
         token = new GerenciadorToken(this);
         Log.d("O token está aqui?", token.getToken());
@@ -65,9 +62,6 @@ public class PerfilPaceiro extends AppCompatActivity {
         progressBarPerfilParceiro = findViewById(R.id.progressBarPerfilParceiro);
 
         fetchPartnerCoursesData();
-
-
-
 
         //Configura o SearchView para permitir a busca por título de curso.
         SearchView searchBarPerfilParceiro = findViewById(R.id.searchBarPerfilParceiro);
@@ -207,6 +201,12 @@ public class PerfilPaceiro extends AppCompatActivity {
                 @Override
                 public void onResponse(JSONArray response) {
                     progressBarPerfilParceiro.setVisibility(View.GONE);
+                    if (response.length() == 0) {
+                        progressBarPerfilParceiro.setVisibility(View.GONE);
+                        errorPartnerTextView.setVisibility(View.VISIBLE); // Exibe a mensagem de erro.
+                        errorPartnerTextView.setText("Não há cursos cadastrados!");
+                        return;
+                    }
                     processCoursesResponse(response); // Processa a resposta dos dados dos cursos.
                 }
             },

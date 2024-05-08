@@ -75,6 +75,10 @@ public class FormLogin extends AppCompatActivity {
         });
     }
 
+    /**
+     * Método para realizar o login do usuário.
+     * Valida os campos de email e senha antes de enviar a requisição.
+     */
     public void Login(View view) {
         final String email = campo_email.getText().toString().trim();
         final String password = campo_senha.getText().toString().trim();
@@ -98,6 +102,9 @@ public class FormLogin extends AppCompatActivity {
         requestLogin(email, password);
     }
 
+    /**
+     * Método para enviar a requisição de login ao servidor.
+     */
     public void requestLogin(String email, String password) {
         String urlFinalParaLogar = Constants.BASE_URL + "/login" ;
 
@@ -165,6 +172,10 @@ public class FormLogin extends AppCompatActivity {
         queue.add(jsonObjectRequest);
     }
 
+    /**
+     * Método para redirecionar o usuário após o login bem-sucedido.
+     * Determina o tipo de usuário e redireciona para a tela correspondente.
+     */
     public void RedirecionarUsuario(GerenciadorToken GToken) {
         String urlInfo = Constants.BASE_URL + "/user-type";
         String token = GToken.getToken(); // Obtenha o token JWT armazenado
@@ -203,14 +214,23 @@ public class FormLogin extends AppCompatActivity {
         requestQueueInfo.add(jsonObjectRequestInfo);
     }
 
+    /**
+     * Método para inicializar o TextView que leva ao cadastro.
+     */
     private void MudarTelaCadatros() {
         text_tela_cadastro = findViewById(R.id.text_tela_cadastro);
     }
 
+    /**
+     * Método para inicializar o TextView que leva à recuperação de senha.
+     */
     private void MudarTelaRecSenha() {
         esqueci_senha = findViewById(R.id.esqueci_senha);
     }
 
+    /**
+     * Método para inicializar o ImageView que leva ao início.
+     */
     private void Voltartela() {
         voltar_tela_inicio = findViewById(R.id.voltar_tela_inicio);
     }
