@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -42,9 +43,8 @@ public class MainActivity extends AppCompatActivity {
     CursoAdapter adapter;
     List<Curso> courses = new ArrayList<>();
     ProgressBar progressBar;
-
-    String urlBase = "http://192.168.0.10:4550";
-    String finalURL = urlBase + "/cursos/todos";
+    GerenciadorToken token;
+    String finalURL = Constants.BASE_URL + "/cursos/todos";
     TextView errorTextView;
 
     @Override
@@ -82,8 +82,11 @@ public class MainActivity extends AppCompatActivity {
         //Log.d("O token está aqui na main?", token.getToken());
     }
 
+    /**
+     * Configura a barra de ação com botões para filtrar e acessar a tela de perfil do usuário.
+     */
     public void actionBar() {
-        GerenciadorToken token = new GerenciadorToken(this);
+        token = new GerenciadorToken(this);
 
         Button botaoFiltro = findViewById(R.id.ic_filtro);
         botaoFiltro.setOnClickListener(new View.OnClickListener() {
@@ -121,9 +124,12 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Redireciona o usuário para a tela de perfil com base no tipo de usuário..
+     */
     public void redirecionarUsuario(GerenciadorToken GToken) {
-        String urlInfo = urlBase + "/user-type";
-        String token = GToken.getToken(); // Obtenha o token JWT armazenado
+        String urlInfo = Constants.BASE_URL + "/user-type";
+        String token = GToken.getToken();
 
         JsonObjectRequest jsonObjectRequestInfo = new JsonObjectRequest(Request.Method.GET, urlInfo, null,
                 new Response.Listener<JSONObject>() {
@@ -144,7 +150,11 @@ public class MainActivity extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.d("erro", ":" + error);
+                if (error.networkResponse.statusCode == 401) {
+                    GToken.clearToken();
+                    Intent intent = new Intent(MainActivity.this, FormLogin.class);
+                    startActivity(intent);
+                }
             }
         }) {
             @Override
@@ -159,7 +169,9 @@ public class MainActivity extends AppCompatActivity {
         requestQueueInfo.add(jsonObjectRequestInfo);
     }
 
-    // Método para buscar os dados dos cursos da API.
+    /**
+     * Busca os dados dos cursos da API e atualiza o RecyclerView.
+     */
     public void fetchCoursesData() {
         progressBar.setVisibility(View.VISIBLE); // Mostra o ProgressBar enquanto os dados são carregados.
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, finalURL, null,
@@ -182,7 +194,9 @@ public class MainActivity extends AppCompatActivity {
         filaRequest.add(request); // Adiciona a requisição à fila de requisições.
     }
 
-    // Processa a resposta dos dados dos cursos, criando objetos Curso e adicionando-os à lista.
+    /**
+     * Processa a resposta dos dados dos cursos, criando objetos Curso e adicionando-os à lista.
+     */
     private void processCoursesResponse(JSONArray response) {
         if (response.length() > 0) {
             for (int i = 0; i < response.length(); i++) {
@@ -213,14 +227,14 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    // Configura o RecyclerView com o adaptador e os dados dos cursos.
+    /** Configura o RecyclerView com o adaptador e os dados dos cursos. */
     private void setupRecyclerView() {
         recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
         adapter = new CursoAdapter(MainActivity.this, courses);
         recyclerView.setAdapter(adapter);
     }
 
-    // Aplica filtros se disponíveis, obtidos da Intent anterior.
+    /** Aplica filtros se disponíveis, obtidos da Intent anterior. */
     private void applyFiltersIfAvailable() {
         String categorySelected = getIntent().getStringExtra("categorySelectedOptionTxt");
         String typeSelected = getIntent().getStringExtra("typeSelectedOptionTxt");
@@ -231,7 +245,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    // Aplica os filtros selecionados aos cursos e atualiza o RecyclerView.
+    /** Aplica os filtros selecionados aos cursos e atualiza o RecyclerView.*/
     public void filterDataWithFiltersPage(String categorySelected, String typeSelected, String zoneSelected) {
         List<Curso> filteredCursos = courses.stream()
                 .filter(curso -> (categorySelected.isEmpty() || curso.getCategory().equals(categorySelected)) &&

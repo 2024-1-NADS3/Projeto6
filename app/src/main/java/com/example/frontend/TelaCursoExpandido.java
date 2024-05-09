@@ -48,7 +48,7 @@ public class TelaCursoExpandido extends AppCompatActivity {
     GerenciadorToken token;
     Button inscricaoButton;
 
-    String urlBase, instituitionName;
+    String instituitionName;
     Curso curso;
     TextView descriptionExpandend,
             courseTitleExpanded,
@@ -66,7 +66,6 @@ public class TelaCursoExpandido extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_curso_expandido);
         actionBar();
-        urlBase = "http://192.168.0.10:4550";
         curso = (Curso) getIntent().getSerializableExtra("curso");
         pegarNomeDaInstituicao();
 
@@ -89,6 +88,9 @@ public class TelaCursoExpandido extends AppCompatActivity {
         Log.d("id do curso", String.valueOf(curso.getCourseId()));
     }
 
+    /**
+     * Configura a barra de ação com um botão para voltar à tela principal.
+     */
     public void actionBar() {
         TextView botaoTitulo = findViewById(R.id.titulo_CursoExpandido);
         botaoTitulo.setOnClickListener(new View.OnClickListener() {
@@ -99,10 +101,14 @@ public class TelaCursoExpandido extends AppCompatActivity {
             }
         });
     }
+
+    /**
+     * Obtém o nome da instituição associada ao curso através de uma requisição GET.
+     */
     void pegarNomeDaInstituicao() {
         RequestQueue mRequestQueue;
         String courseId = String.valueOf(curso.getCourseId());
-        String finalURL = urlBase + "/parceiro/nome-instituicao?id=" + courseId;
+        String finalURL = Constants.BASE_URL + "/parceiro/nome-instituicao?id=" + courseId;
 
         mRequestQueue = Volley.newRequestQueue(this);
 
@@ -136,7 +142,11 @@ public class TelaCursoExpandido extends AppCompatActivity {
 
         mRequestQueue.add(stringRequest);
     }
-    @SuppressLint("SetTextI18n")
+
+
+    /**
+     * Preenche a tela com os dados do curso, incluindo imagem, título, descrição, etc.
+     */
     void preencherComDado(Curso curso) {
         instituitionNameExpanded = findViewById(R.id.instituitionNameExpanded);
         courseInitialDateExpanded = findViewById(R.id.courseInitialDateExpanded);
@@ -151,7 +161,7 @@ public class TelaCursoExpandido extends AppCompatActivity {
         descriptionExpandend = findViewById(R.id.descriptionExpandend);
 
         String imagePath = curso.getImg();
-        String imageUrl = urlBase + imagePath;
+        String imageUrl = Constants.BASE_URL + imagePath;
         Picasso.get().load(imageUrl).into(courseImgExpandend);
 
         courseTitleExpanded.setText(curso.getTitle());
@@ -183,9 +193,9 @@ public class TelaCursoExpandido extends AppCompatActivity {
         Log.d("nome do curso", "Message: " + instituitionName);
     }
 
-    // Terminar dps
+    /** Método para fazer a inscrição do usuário no backend */
     public void inscricao (View view) {
-        String urlFinalParaInscricao = urlBase + "/usuario/inscricao-curso" ;
+        String urlFinalParaInscricao = Constants.BASE_URL + "/usuario/inscricao-curso" ;
         Log.d("Clicou", "Clicou");
 
         // Criação do RequestQueue
@@ -232,7 +242,7 @@ public class TelaCursoExpandido extends AppCompatActivity {
                                 Intent intent = new Intent(TelaCursoExpandido.this, FormLogin.class);
                                 startActivity(intent);
                             }
-                        }, 2000);
+                        }, 1500);
 
                     }
                     if (error.networkResponse.statusCode == 403) {

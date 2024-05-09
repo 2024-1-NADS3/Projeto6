@@ -30,6 +30,9 @@
         android:theme="@style/Theme.Frontend"
         android:usesCleartextTraffic="true" >
         <activity
+            android:name="com.example.frontend.PerfilUsuarioCursoExpandido"
+            android:exported="false" />
+        <activity
             android:name="com.example.frontend.PefilParceiroCursoExpandido"
             android:exported="false" />
         <activity

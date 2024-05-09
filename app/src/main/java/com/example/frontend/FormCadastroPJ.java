@@ -50,6 +50,9 @@ public class FormCadastroPJ extends AppCompatActivity implements VolleyCallback 
         confirmar_senha_pj = findViewById(R.id.confirmar_senha_pj);
     }
 
+    /**
+     * Método para cadastrar um parceiro, validando os campos e enviando os dados para o servidor.
+     */
     public void cadastrarParceiro(View view) {
         final String cnpj = campo_cnpj.getText().toString().trim();
         final String instituitionName = campo_nome_pj.getText().toString().trim();
@@ -69,9 +72,10 @@ public class FormCadastroPJ extends AppCompatActivity implements VolleyCallback 
         }
 
 
-        if (!ValidacaoFormCadastro.isValidName(instituitionName)) {
-            campo_nome_pj.setError("Nome inválido");
-        }
+//        if (!ValidacaoFormCadastro.isValidName(instituitionName)) {
+//            campo_nome_pj.setError("Nome inválido");
+//        }
+
         // Verificar se o email é válido
         if (!ValidacaoFormCadastro.isValidEmail(email)) {
             campo_email_pj.setError("Email inválido");
@@ -95,27 +99,25 @@ public class FormCadastroPJ extends AppCompatActivity implements VolleyCallback 
             return;
         }
 
-        InstituicaoParceira parceiro = new InstituicaoParceira(instituitionName, cnpj, email, cellnumber, password, this);
+        InstituicaoParceira parceiro = new InstituicaoParceira(instituitionName.trim(), cnpj, email, cellnumber, password, this);
 
         Log.d("dados do parceiro", parceiro.obterDadosAsString());
 
         parceiro.criarParceiroNoServidor(parceiro, (VolleyCallback) this);
     }
 
+    /**
+     * Método chamado quando a requisição de cadastro é bem-sucedida.
+     * Exibe um AlertDialog informando o sucesso e redireciona o usuário para a tela de login.
+     */
     @Override
     public void onSuccess(JSONObject response) {
-        // Ajustar depois para mostrar resposta do servidor
-
-        Log.e("VolleySucess", "Resquisição recebida: " + response);
-
         // Criação do AlertDialog
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Registro bem-sucedido");
         builder.setMessage("Clique no botão abaixo para fazer o login.");
         builder.setPositiveButton("Ir para Login", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
-                // Ação ao clicar no botão "Ir para Login"
-                // Aqui você pode iniciar a atividade de login
                 Intent intent = new Intent(getApplicationContext(), FormLogin.class);
                 startActivity(intent);
             }
@@ -132,36 +134,37 @@ public class FormCadastroPJ extends AppCompatActivity implements VolleyCallback 
         alertDialog.show();
     }
 
+    /**
+     * Método chamado quando ocorre um erro na requisição de cadastro.
+     * Trata diferentes tipos de erros de rede e de servidor, exibindo um AlertDialog com a mensagem de erro.
+     */
     @Override
     public void onError(VolleyError error) {
         // Ajustar depois para mostrar resposta do servidor
         String errorMessage = "Desculpe, ocorreu um erro. Por favor, tente novamente mais tarde.";
 
-
-        if (error.networkResponse != null && error.networkResponse.statusCode != 0) {
+        // Verifica se há uma resposta de rede e um código de status
+        if (error.networkResponse!= null && error.networkResponse.statusCode!= 0) {
             if (error.networkResponse.statusCode == 409) {
                 errorMessage = "Email já cadastrado. Por favor, use um email diferente.";
             }
-        } else if (error instanceof NetworkError) {
+        }
+        else if (error instanceof NetworkError) {
             errorMessage = "Sem conexão com a internet. Por favor, verifique sua conexão.";
         } else if (error instanceof ServerError) {
             errorMessage = "O servidor está enfrentando problemas. Por favor, tente novamente mais tarde.";
-        } else if (error instanceof AuthFailureError) {
-            errorMessage = "Credenciais inválidas. Por favor, verifique suas credenciais.";
         } else if (error instanceof ParseError) {
             errorMessage = "Houve um problema ao processar a resposta do servidor.";
         } else if (error instanceof TimeoutError) {
             errorMessage = "A solicitação demorou muito para ser processada. Por favor, tente novamente mais tarde.";
         }
 
-        // Exibir a mensagem de erro em um AlertDialog ou Toast
+        // Exibe a mensagem de erro em um AlertDialog ou Toast
         new AlertDialog.Builder(this)
                 .setTitle("Erro")
                 .setMessage(errorMessage)
                 .setPositiveButton("OK", null)
                 .show();
-
-        Log.e("VolleyError", "Erro na requisição: " + error.getMessage());
     }
 
     private void voltarTelaEscolhaCadastro() {

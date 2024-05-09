@@ -45,6 +45,10 @@ public class FormCadastro extends AppCompatActivity implements VolleyCallback {
         campo_confirmacao_senha = findViewById(R.id.campo_confirmacao_senha);
     }
 
+    /**
+     * Método para cadastrar um usuário.
+     * Realiza validações nos campos de entrada e tenta criar um usuário no servidor.
+     */
     public void cadastrarUsuario(View view){
         final String name = campo_nome.getText().toString().trim();
         final String email = campo_email.getText().toString().trim();
@@ -64,6 +68,7 @@ public class FormCadastro extends AppCompatActivity implements VolleyCallback {
 
         if (!ValidacaoFormCadastro.isValidName(name)) {
             campo_nome.setError("Nome inválido");
+            return;
         }
         // Verificar se o email é válido
         if (!ValidacaoFormCadastro.isValidEmail(email)) {
@@ -95,9 +100,9 @@ public class FormCadastro extends AppCompatActivity implements VolleyCallback {
         usuario.criarUsuarioNoServidor(usuario, this);
     }
 
+    /** Método que lida com a resposta bem-sucedida do servidor */
     @Override
     public void onSuccess(JSONObject response) {
-        // Ajustar depois para mostrar resposta do servidor
 
         Log.e("VolleySucess", "Resquisição recebida: " + response);
 
@@ -125,17 +130,18 @@ public class FormCadastro extends AppCompatActivity implements VolleyCallback {
         alertDialog.show();
     }
 
+    /** Método que lida com o erro de requisição do servidor */
     @Override
     public void onError(VolleyError error) {
-        // Ajustar depois para mostrar resposta do servidor
         String errorMessage = "Desculpe, ocorreu um erro. Por favor, tente novamente mais tarde.";
 
-
-        if (error.networkResponse != null && error.networkResponse.statusCode != 0) {
+        // Verifica se há uma resposta de rede e um código de status
+        if (error.networkResponse!= null && error.networkResponse.statusCode!= 0) {
             if (error.networkResponse.statusCode == 409) {
                 errorMessage = "Email já cadastrado. Por favor, use um email diferente.";
             }
-        } else if (error instanceof NetworkError) {
+        }
+        else if (error instanceof NetworkError) {
             errorMessage = "Sem conexão com a internet. Por favor, verifique sua conexão.";
         } else if (error instanceof ServerError) {
             errorMessage = "O servidor está enfrentando problemas. Por favor, tente novamente mais tarde.";
@@ -145,7 +151,7 @@ public class FormCadastro extends AppCompatActivity implements VolleyCallback {
             errorMessage = "A solicitação demorou muito para ser processada. Por favor, tente novamente mais tarde.";
         }
 
-        // Exibir a mensagem de erro em um AlertDialog ou Toast
+        // Exibe a mensagem de erro em um AlertDialog ou Toast
         new AlertDialog.Builder(this)
                 .setTitle("Erro")
                 .setMessage(errorMessage)
@@ -153,7 +159,7 @@ public class FormCadastro extends AppCompatActivity implements VolleyCallback {
                 .show();
     }
 
-    // Método que retorna para o formulário de login
+    /** Método que retorna para o formulário de login */
     private void voltarTelaEscolhaCadastro() {
         Intent voltarTelaLogin = new Intent(FormCadastro.this, TelaEscolhaCadastro.class);
         startActivity(voltarTelaLogin);

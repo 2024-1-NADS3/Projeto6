@@ -3034,6 +3034,7 @@ int drawable btn_radio_on_mtrl 0x7f070080
 int drawable btn_radio_on_to_off_mtrl_animation 0x7f070081
 int drawable button 0x7f070082
 int drawable button_inicio 0x7f070083
+int drawable closebutton 0x7f0700ea
 int drawable container_components 0x7f070084
 int drawable design_fab_background 0x7f070085
 int drawable design_ic_visibility 0x7f070086
@@ -3133,6 +3134,7 @@ int drawable notification_template_icon_low_bg 0x7f0700e3
 int drawable notification_tile_bg 0x7f0700e4
 int drawable notify_panel_notification_icon_bg 0x7f0700e5
 int drawable search_view_bg 0x7f0700e6
+int drawable search_view_perfis 0x7f0700eb
 int drawable test_level_drawable 0x7f0700e7
 int drawable tooltip_frame_dark 0x7f0700e8
 int drawable tooltip_frame_light 0x7f0700e9
@@ -3256,10 +3258,13 @@ int id bounceStart 0x7f080074
 int id bt_entrar 0x7f080075
 int id button 0x7f080076
 int id button2 0x7f080077
+int id button3 0x7f08026d
+int id button4 0x7f08026e
 int id button5 0x7f080078
 int id button6 0x7f080079
 int id button7 0x7f08007a
 int id button8 0x7f08007b
+int id button9 0x7f08026f
 int id buttonPanel 0x7f08007c
 int id cache_measures 0x7f08007d
 int id callMeasure 0x7f08007e
@@ -3291,6 +3296,7 @@ int id clear_text 0x7f080097
 int id clip_horizontal 0x7f080098
 int id clip_vertical 0x7f080099
 int id clockwise 0x7f08009a
+int id closeButton 0x7f080270
 int id closest 0x7f08009b
 int id collapseActionView 0x7f08009c
 int id compress 0x7f08009d
@@ -3372,6 +3378,7 @@ int id endToStart 0x7f0800e8
 int id enterAlways 0x7f0800e9
 int id enterAlwaysCollapsed 0x7f0800ea
 int id enviar_email 0x7f0800eb
+int id errorPartnerTextView 0x7f080271
 int id errorTextView 0x7f0800ec
 int id esqueci_senha 0x7f0800ed
 int id exitUntilCollapsed 0x7f0800ee
@@ -3560,6 +3567,7 @@ int id position 0x7f0801a4
 int id postLayout 0x7f0801a5
 int id pressed 0x7f0801a6
 int id progressBar 0x7f0801a7
+int id progressBarPerfilParceiro 0x7f080272
 int id progress_circular 0x7f0801a8
 int id progress_horizontal 0x7f0801a9
 int id progressbar 0x7f0801aa
@@ -3583,6 +3591,8 @@ int id radioGroup_zones2 0x7f0801bb
 int id ratio 0x7f0801bc
 int id rectangles 0x7f0801bd
 int id recyclerView 0x7f0801be
+int id recyclerViewPartner 0x7f080273
+int id recyclerViewUsuariosCadastrados 0x7f080274
 int id report_drawn 0x7f0801bf
 int id reverseSawtooth 0x7f0801c0
 int id right 0x7f0801c1
@@ -3603,6 +3613,7 @@ int id scrollIndicatorUp 0x7f0801cf
 int id scrollView 0x7f0801d0
 int id scrollable 0x7f0801d1
 int id searchBar 0x7f0801d2
+int id searchBarPerfilParceiro 0x7f080275
 int id search_badge 0x7f0801d3
 int id search_bar 0x7f0801d4
 int id search_button 0x7f0801d5
@@ -3694,6 +3705,7 @@ int id textView5 0x7f08022a
 int id textView6 0x7f08022b
 int id textView7 0x7f08022c
 int id textView8 0x7f08022d
+int id textView9 0x7f080276
 int id text_input_end_icon 0x7f08022e
 int id text_input_error_icon 0x7f08022f
 int id text_input_start_icon 0x7f080230
@@ -3736,6 +3748,9 @@ int id uniform 0x7f080254
 int id unlabeled 0x7f080255
 int id up 0x7f080256
 int id useLogo 0x7f080257
+int id userCellphone 0x7f080277
+int id userEmail 0x7f080278
+int id userName 0x7f080279
 int id vertical_only 0x7f080258
 int id view_offset_helper 0x7f080259
 int id view_transition 0x7f08025a
@@ -3880,12 +3895,14 @@ int layout activity_main 0x7f0b0020
 int layout activity_pefil_parceiro_curso_expandido 0x7f0b0021
 int layout activity_perfil_paceiro 0x7f0b0022
 int layout activity_perfil_usuario 0x7f0b0023
+int layout activity_perfil_usuario_curso_expandido 0x7f0b0077
 int layout activity_tela_curso_expandido 0x7f0b0024
 int layout activity_tela_escolha_cadastro 0x7f0b0025
 int layout activity_tela_inicio 0x7f0b0026
 int layout activity_tela_loading 0x7f0b0027
 int layout activity_tela_recuperar_senha 0x7f0b0028
 int layout card_curso 0x7f0b0029
+int layout card_usuario_inscrito 0x7f0b0078
 int layout custom_dialog 0x7f0b002a
 int layout design_bottom_navigation_item 0x7f0b002b
 int layout design_bottom_sheet_dialog 0x7f0b002c
@@ -3963,6 +3980,9 @@ int layout select_dialog_item_material 0x7f0b0073
 int layout select_dialog_multichoice_material 0x7f0b0074
 int layout select_dialog_singlechoice_material 0x7f0b0075
 int layout support_simple_spinner_dropdown_item 0x7f0b0076
+int mipmap closebutton 0x7f0d0005
+int mipmap closebutton_foreground 0x7f0d0006
+int mipmap closebutton_round 0x7f0d0007
 int mipmap ic_launcher 0x7f0d0000
 int mipmap ic_launcher_round 0x7f0d0001
 int mipmap ic_voltar 0x7f0d0002

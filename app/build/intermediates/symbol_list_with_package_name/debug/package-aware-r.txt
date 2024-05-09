@@ -3035,6 +3035,7 @@ drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
 drawable button
 drawable button_inicio
+drawable closebutton
 drawable container_components
 drawable design_fab_background
 drawable design_ic_visibility
@@ -3134,6 +3135,7 @@ drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable search_view_bg
+drawable search_view_perfis
 drawable test_level_drawable
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
@@ -3257,10 +3259,13 @@ id bounceStart
 id bt_entrar
 id button
 id button2
+id button3
+id button4
 id button5
 id button6
 id button7
 id button8
+id button9
 id buttonPanel
 id cache_measures
 id callMeasure
@@ -3292,6 +3297,7 @@ id clear_text
 id clip_horizontal
 id clip_vertical
 id clockwise
+id closeButton
 id closest
 id collapseActionView
 id compress
@@ -3373,6 +3379,7 @@ id endToStart
 id enterAlways
 id enterAlwaysCollapsed
 id enviar_email
+id errorPartnerTextView
 id errorTextView
 id esqueci_senha
 id exitUntilCollapsed
@@ -3561,6 +3568,7 @@ id position
 id postLayout
 id pressed
 id progressBar
+id progressBarPerfilParceiro
 id progress_circular
 id progress_horizontal
 id progressbar
@@ -3584,6 +3592,8 @@ id radioGroup_zones2
 id ratio
 id rectangles
 id recyclerView
+id recyclerViewPartner
+id recyclerViewUsuariosCadastrados
 id report_drawn
 id reverseSawtooth
 id right
@@ -3604,6 +3614,7 @@ id scrollIndicatorUp
 id scrollView
 id scrollable
 id searchBar
+id searchBarPerfilParceiro
 id search_badge
 id search_bar
 id search_button
@@ -3695,6 +3706,7 @@ id textView5
 id textView6
 id textView7
 id textView8
+id textView9
 id text_input_end_icon
 id text_input_error_icon
 id text_input_start_icon
@@ -3737,6 +3749,9 @@ id uniform
 id unlabeled
 id up
 id useLogo
+id userCellphone
+id userEmail
+id userName
 id vertical_only
 id view_offset_helper
 id view_transition
@@ -3881,12 +3896,14 @@ layout activity_main
 layout activity_pefil_parceiro_curso_expandido
 layout activity_perfil_paceiro
 layout activity_perfil_usuario
+layout activity_perfil_usuario_curso_expandido
 layout activity_tela_curso_expandido
 layout activity_tela_escolha_cadastro
 layout activity_tela_inicio
 layout activity_tela_loading
 layout activity_tela_recuperar_senha
 layout card_curso
+layout card_usuario_inscrito
 layout custom_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
@@ -3964,6 +3981,9 @@ layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
 layout support_simple_spinner_dropdown_item
+mipmap closebutton
+mipmap closebutton_foreground
+mipmap closebutton_round
 mipmap ic_launcher
 mipmap ic_launcher_round
 mipmap ic_voltar

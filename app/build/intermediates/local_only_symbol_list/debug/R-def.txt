@@ -15,6 +15,7 @@ color teal_700
 color white
 drawable button
 drawable button_inicio
+drawable closebutton
 drawable container_components
 drawable edit_text
 drawable educalizalogo
@@ -26,6 +27,7 @@ drawable ic_launcher_foreground
 drawable ic_usuario
 drawable ic_voltar_background
 drawable search_view_bg
+drawable search_view_perfis
 id AppBarLayout
 id AppBarLayout_ParceiroCursoExpandido
 id AppBarLayout_TelaCursoExpandido
@@ -47,10 +49,13 @@ id botao_cadastro_parceiro
 id bt_entrar
 id button
 id button2
+id button3
+id button4
 id button5
 id button6
 id button7
 id button8
+id button9
 id campo_cnpj
 id campo_confirmacao_senha
 id campo_email
@@ -61,6 +66,7 @@ id campo_numero
 id campo_numero_pj
 id campo_senha
 id card_view
+id closeButton
 id confirmar_senha_pj
 id containerComponents
 id courseAddress
@@ -83,6 +89,7 @@ id divider2
 id divider3
 id email
 id enviar_email
+id errorPartnerTextView
 id errorTextView
 id esqueci_senha
 id form_usuario
@@ -94,6 +101,7 @@ id linearLayout
 id linearLayout2
 id logo
 id progressBar
+id progressBarPerfilParceiro
 id progressbar
 id radioButton_centro
 id radioButton_computing
@@ -112,7 +120,10 @@ id radioGroup_types
 id radioGroup_zones1
 id radioGroup_zones2
 id recyclerView
+id recyclerViewPartner
+id recyclerViewUsuariosCadastrados
 id searchBar
+id searchBarPerfilParceiro
 id senha
 id senha_pj
 id slotsAndMax
@@ -130,6 +141,7 @@ id textView5
 id textView6
 id textView7
 id textView8
+id textView9
 id text_pj
 id text_tela_cadastro
 id text_tipo_cadastro
@@ -142,6 +154,9 @@ id titulo_cadastroPF
 id titulo_cadastropj
 id titulo_login
 id titulo_recuperar_senha
+id userCellphone
+id userEmail
+id userName
 id voltar_login
 id voltar_tela_inicio
 id voltar_tela_login
@@ -153,12 +168,17 @@ layout activity_main
 layout activity_pefil_parceiro_curso_expandido
 layout activity_perfil_paceiro
 layout activity_perfil_usuario
+layout activity_perfil_usuario_curso_expandido
 layout activity_tela_curso_expandido
 layout activity_tela_escolha_cadastro
 layout activity_tela_inicio
 layout activity_tela_loading
 layout activity_tela_recuperar_senha
 layout card_curso
+layout card_usuario_inscrito
+mipmap closebutton
+mipmap closebutton_foreground
+mipmap closebutton_round
 mipmap ic_launcher
 mipmap ic_launcher_round
 mipmap ic_voltar

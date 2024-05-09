@@ -13,8 +13,9 @@ import org.json.JSONObject;
 
 import java.io.Serializable;
 
+/** Classe que representa a instituição parceira no frontend */
 public class InstituicaoParceira implements Serializable {
-    private static final String URL_CRIAR_PARCEIRO = "http://192.168.0.10:4550/parceiro/cadastrar";
+    private static final String URL_CRIAR_PARCEIRO = Constants.BASE_URL + "/parceiro/cadastrar";
     private Context mContext;
     protected String instituitionName;
     protected String cnpj;
@@ -62,9 +63,12 @@ public class InstituicaoParceira implements Serializable {
         this.password = password;
     }
 
+    /** Método para obter os dados da instituição como uma string */
     public String obterDadosAsString() {
         return "Nome da instituição: " + instituitionName + ", CNPJ: " + cnpj + ", Email: " + email + ", Número: " + cellnumber + ", Senha: " + password;
     }
+
+    /** Método para criar um novo parceiro no servidor */
     public void criarParceiroNoServidor(InstituicaoParceira parceiro, final VolleyCallback callback) {
 
         // Criar um objeto JSON com os dados do usuário
@@ -103,6 +107,7 @@ public class InstituicaoParceira implements Serializable {
         Volley.newRequestQueue(mContext).add(request);
     }
 
+    /** Construtor para criar uma nova InstituicaoParceira */
     public InstituicaoParceira(String nome_instituicao, String cnpj, String email, String numero, String senha, Context context) {
         this.instituitionName = nome_instituicao;
         this.cnpj = cnpj;

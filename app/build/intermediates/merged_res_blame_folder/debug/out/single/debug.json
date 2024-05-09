@@ -1,238 +1,338 @@
 [
     {
-        "merged": "com.example.frontend.app-merged_res-44:/drawable_educalizalogo.png.flat",
-        "source": "com.example.frontend.app-main-46:/drawable/educalizalogo.png"
+        "merged": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-merged_res-44:\\drawable_container_components.xml.flat",
+        "source": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-main-46:\\drawable\\container_components.xml"
     },
     {
-        "merged": "com.example.frontend.app-merged_res-44:/drawable_button_inicio.xml.flat",
-        "source": "com.example.frontend.app-main-46:/drawable/button_inicio.xml"
+        "merged": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-merged_res-44:\\drawable_search_view_bg.xml.flat",
+        "source": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-main-46:\\drawable\\search_view_bg.xml"
     },
     {
-        "merged": "com.example.frontend.app-merged_res-44:/mipmap-xxxhdpi_ic_voltar_foreground.png.flat",
-        "source": "com.example.frontend.app-main-46:/mipmap-xxxhdpi/ic_voltar_foreground.png"
+        "merged": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-merged_res-44:\\drawable_ic_email.xml.flat",
+        "source": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-main-46:\\drawable\\ic_email.xml"
     },
     {
-        "merged": "com.example.frontend.app-merged_res-44:/mipmap-hdpi_ic_voltar.png.flat",
-        "source": "com.example.frontend.app-main-46:/mipmap-hdpi/ic_voltar.png"
+        "merged": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-merged_res-44:\\drawable_ic_filtro.xml.flat",
+        "source": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-main-46:\\drawable\\ic_filtro.xml"
     },
     {
-        "merged": "com.example.frontend.app-merged_res-44:/mipmap-xhdpi_ic_launcher.webp.flat",
-        "source": "com.example.frontend.app-main-46:/mipmap-xhdpi/ic_launcher.webp"
+        "merged": "com.example.frontend.app-merged_res-44:/drawable_closebutton.png.flat",
+        "source": "com.example.frontend.app-main-46:/drawable/closebutton.png"
     },
     {
-        "merged": "com.example.frontend.app-merged_res-44:/mipmap-xxhdpi_ic_voltar.png.flat",
-        "source": "com.example.frontend.app-main-46:/mipmap-xxhdpi/ic_voltar.png"
+        "merged": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-merged_res-44:\\mipmap-xhdpi_ic_voltar.png.flat",
+        "source": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-main-46:\\mipmap-xhdpi\\ic_voltar.png"
     },
     {
-        "merged": "com.example.frontend.app-merged_res-44:/mipmap-hdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.frontend.app-main-46:/mipmap-hdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-merged_res-44:\\layout_activity_form_cadastro_pj.xml.flat",
+        "source": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-main-46:\\layout\\activity_form_cadastro_pj.xml"
     },
     {
-        "merged": "com.example.frontend.app-merged_res-44:/mipmap-xhdpi_ic_voltar_foreground.png.flat",
-        "source": "com.example.frontend.app-main-46:/mipmap-xhdpi/ic_voltar_foreground.png"
+        "merged": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-merged_res-44:\\drawable_educalizalogo.png.flat",
+        "source": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-main-46:\\drawable\\educalizalogo.png"
     },
     {
-        "merged": "com.example.frontend.app-merged_res-44:/xml_backup_rules.xml.flat",
-        "source": "com.example.frontend.app-main-46:/xml/backup_rules.xml"
+        "merged": "com.example.frontend.app-merged_res-44:/mipmap-xhdpi_closebutton.png.flat",
+        "source": "com.example.frontend.app-main-46:/mipmap-xhdpi/closebutton.png"
     },
     {
-        "merged": "com.example.frontend.app-merged_res-44:/mipmap-hdpi_ic_voltar_round.png.flat",
-        "source": "com.example.frontend.app-main-46:/mipmap-hdpi/ic_voltar_round.png"
+        "merged": "com.example.frontend.app-merged_res-44:/layout_card_usuario_inscrito.xml.flat",
+        "source": "com.example.frontend.app-main-46:/layout/card_usuario_inscrito.xml"
     },
     {
-        "merged": "com.example.frontend.app-merged_res-44:/mipmap-xhdpi_ic_voltar.png.flat",
-        "source": "com.example.frontend.app-main-46:/mipmap-xhdpi/ic_voltar.png"
+        "merged": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-merged_res-44:\\drawable_button_inicio.xml.flat",
+        "source": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-main-46:\\drawable\\button_inicio.xml"
     },
     {
-        "merged": "com.example.frontend.app-merged_res-44:/drawable_button.xml.flat",
-        "source": "com.example.frontend.app-main-46:/drawable/button.xml"
+        "merged": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-merged_res-44:\\mipmap-xxxhdpi_ic_voltar_foreground.png.flat",
+        "source": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-main-46:\\mipmap-xxxhdpi\\ic_voltar_foreground.png"
     },
     {
-        "merged": "com.example.frontend.app-merged_res-44:/mipmap-mdpi_ic_launcher.webp.flat",
-        "source": "com.example.frontend.app-main-46:/mipmap-mdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-merged_res-44:\\mipmap-xxxhdpi_ic_voltar_round.png.flat",
+        "source": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-main-46:\\mipmap-xxxhdpi\\ic_voltar_round.png"
     },
     {
-        "merged": "com.example.frontend.app-merged_res-44:/mipmap-anydpi-v33_ic_launcher.xml.flat",
-        "source": "com.example.frontend.app-main-46:/mipmap-anydpi-v33/ic_launcher.xml"
+        "merged": "com.example.frontend.app-merged_res-44:/mipmap-mdpi_closebutton_foreground.png.flat",
+        "source": "com.example.frontend.app-main-46:/mipmap-mdpi/closebutton_foreground.png"
     },
     {
-        "merged": "com.example.frontend.app-merged_res-44:/mipmap-mdpi_ic_voltar_foreground.png.flat",
-        "source": "com.example.frontend.app-main-46:/mipmap-mdpi/ic_voltar_foreground.png"
+        "merged": "com.example.frontend.app-merged_res-44:/mipmap-xxhdpi_closebutton_round.png.flat",
+        "source": "com.example.frontend.app-main-46:/mipmap-xxhdpi/closebutton_round.png"
     },
     {
-        "merged": "com.example.frontend.app-merged_res-44:/mipmap-hdpi_ic_voltar_foreground.png.flat",
-        "source": "com.example.frontend.app-main-46:/mipmap-hdpi/ic_voltar_foreground.png"
+        "merged": "com.example.frontend.app-merged_res-44:/mipmap-xhdpi_closebutton_round.png.flat",
+        "source": "com.example.frontend.app-main-46:/mipmap-xhdpi/closebutton_round.png"
     },
     {
-        "merged": "com.example.frontend.app-merged_res-44:/layout_activity_tela_escolha_cadastro.xml.flat",
-        "source": "com.example.frontend.app-main-46:/layout/activity_tela_escolha_cadastro.xml"
+        "merged": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-merged_res-44:\\mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-main-46:\\mipmap-mdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.example.frontend.app-merged_res-44:/layout_activity_tela_loading.xml.flat",
-        "source": "com.example.frontend.app-main-46:/layout/activity_tela_loading.xml"
+        "merged": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-merged_res-44:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-main-46:\\mipmap-anydpi-v26\\ic_launcher.xml"
     },
     {
-        "merged": "com.example.frontend.app-merged_res-44:/drawable_ic_email.xml.flat",
-        "source": "com.example.frontend.app-main-46:/drawable/ic_email.xml"
+        "merged": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-merged_res-44:\\xml_data_extraction_rules.xml.flat",
+        "source": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-main-46:\\xml\\data_extraction_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-merged_res-44:\\mipmap-xxhdpi_ic_voltar_foreground.png.flat",
+        "source": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-main-46:\\mipmap-xxhdpi\\ic_voltar_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-merged_res-44:\\xml_backup_rules.xml.flat",
+        "source": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-main-46:\\xml\\backup_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-merged_res-44:\\mipmap-anydpi-v26_ic_voltar.xml.flat",
+        "source": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-main-46:\\mipmap-anydpi-v26\\ic_voltar.xml"
+    },
+    {
+        "merged": "com.example.frontend.app-merged_res-44:/mipmap-hdpi_closebutton_round.png.flat",
+        "source": "com.example.frontend.app-main-46:/mipmap-hdpi/closebutton_round.png"
+    },
+    {
+        "merged": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-merged_res-44:\\layout_activity_pefil_parceiro_curso_expandido.xml.flat",
+        "source": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-main-46:\\layout\\activity_pefil_parceiro_curso_expandido.xml"
     },
     {
         "merged": "com.example.frontend.app-merged_res-44:/layout_activity_tela_curso_expandido.xml.flat",
         "source": "com.example.frontend.app-main-46:/layout/activity_tela_curso_expandido.xml"
     },
     {
-        "merged": "com.example.frontend.app-merged_res-44:/mipmap-xxxhdpi_ic_launcher.webp.flat",
-        "source": "com.example.frontend.app-main-46:/mipmap-xxxhdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-merged_res-44:\\mipmap-hdpi_ic_voltar_round.png.flat",
+        "source": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-main-46:\\mipmap-hdpi\\ic_voltar_round.png"
     },
     {
-        "merged": "com.example.frontend.app-merged_res-44:/drawable_ic_launcher_background.xml.flat",
-        "source": "com.example.frontend.app-main-46:/drawable/ic_launcher_background.xml"
+        "merged": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-merged_res-44:\\drawable_edit_text.xml.flat",
+        "source": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-main-46:\\drawable\\edit_text.xml"
     },
     {
-        "merged": "com.example.frontend.app-merged_res-44:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.frontend.app-main-46:/mipmap-xxxhdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-merged_res-44:\\mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-main-46:\\mipmap-xhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.example.frontend.app-merged_res-44:/mipmap-xxhdpi_ic_launcher.webp.flat",
-        "source": "com.example.frontend.app-main-46:/mipmap-xxhdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-merged_res-44:\\mipmap-mdpi_ic_voltar_round.png.flat",
+        "source": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-main-46:\\mipmap-mdpi\\ic_voltar_round.png"
     },
     {
-        "merged": "com.example.frontend.app-merged_res-44:/layout_activity_form_cadastro.xml.flat",
-        "source": "com.example.frontend.app-main-46:/layout/activity_form_cadastro.xml"
+        "merged": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-merged_res-44:\\mipmap-xxhdpi_ic_voltar_round.png.flat",
+        "source": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-main-46:\\mipmap-xxhdpi\\ic_voltar_round.png"
     },
     {
-        "merged": "com.example.frontend.app-merged_res-44:/mipmap-anydpi-v26_ic_voltar.xml.flat",
-        "source": "com.example.frontend.app-main-46:/mipmap-anydpi-v26/ic_voltar.xml"
+        "merged": "com.example.frontend.app-merged_res-44:/mipmap-xxxhdpi_closebutton_foreground.png.flat",
+        "source": "com.example.frontend.app-main-46:/mipmap-xxxhdpi/closebutton_foreground.png"
     },
     {
-        "merged": "com.example.frontend.app-merged_res-44:/mipmap-xhdpi_ic_voltar_round.png.flat",
-        "source": "com.example.frontend.app-main-46:/mipmap-xhdpi/ic_voltar_round.png"
+        "merged": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-merged_res-44:\\mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-main-46:\\mipmap-xxhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.example.frontend.app-merged_res-44:/mipmap-xxhdpi_ic_voltar_round.png.flat",
-        "source": "com.example.frontend.app-main-46:/mipmap-xxhdpi/ic_voltar_round.png"
+        "merged": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-merged_res-44:\\drawable_ic_voltar_background.xml.flat",
+        "source": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-main-46:\\drawable\\ic_voltar_background.xml"
     },
     {
-        "merged": "com.example.frontend.app-merged_res-44:/mipmap-xhdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.frontend.app-main-46:/mipmap-xhdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-merged_res-44:\\layout_activity_tela_escolha_cadastro.xml.flat",
+        "source": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-main-46:\\layout\\activity_tela_escolha_cadastro.xml"
     },
     {
-        "merged": "com.example.frontend.app-merged_res-44:/layout_card_curso.xml.flat",
-        "source": "com.example.frontend.app-main-46:/layout/card_curso.xml"
+        "merged": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-merged_res-44:\\mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-main-46:\\mipmap-hdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.frontend.app-merged_res-44:/mipmap-xxxhdpi_ic_voltar_round.png.flat",
-        "source": "com.example.frontend.app-main-46:/mipmap-xxxhdpi/ic_voltar_round.png"
+        "merged": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-merged_res-44:\\mipmap-xhdpi_ic_voltar_foreground.png.flat",
+        "source": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-main-46:\\mipmap-xhdpi\\ic_voltar_foreground.png"
     },
     {
-        "merged": "com.example.frontend.app-merged_res-44:/drawable_ic_voltar_background.xml.flat",
-        "source": "com.example.frontend.app-main-46:/drawable/ic_voltar_background.xml"
+        "merged": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-merged_res-44:\\mipmap-hdpi_ic_voltar_foreground.png.flat",
+        "source": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-main-46:\\mipmap-hdpi\\ic_voltar_foreground.png"
     },
     {
-        "merged": "com.example.frontend.app-merged_res-44:/layout_activity_form_login.xml.flat",
-        "source": "com.example.frontend.app-main-46:/layout/activity_form_login.xml"
+        "merged": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-merged_res-44:\\mipmap-xxhdpi_ic_voltar.png.flat",
+        "source": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-main-46:\\mipmap-xxhdpi\\ic_voltar.png"
     },
     {
-        "merged": "com.example.frontend.app-merged_res-44:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.frontend.app-main-46:/mipmap-xxhdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-merged_res-44:\\mipmap-mdpi_ic_voltar_foreground.png.flat",
+        "source": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-main-46:\\mipmap-mdpi\\ic_voltar_foreground.png"
     },
     {
-        "merged": "com.example.frontend.app-merged_res-44:/layout_activity_main.xml.flat",
-        "source": "com.example.frontend.app-main-46:/layout/activity_main.xml"
+        "merged": "com.example.frontend.app-merged_res-44:/mipmap-xxhdpi_closebutton.png.flat",
+        "source": "com.example.frontend.app-main-46:/mipmap-xxhdpi/closebutton.png"
     },
     {
-        "merged": "com.example.frontend.app-merged_res-44:/layout_activity_filtros.xml.flat",
-        "source": "com.example.frontend.app-main-46:/layout/activity_filtros.xml"
+        "merged": "com.example.frontend.app-merged_res-44:/mipmap-xhdpi_closebutton_foreground.png.flat",
+        "source": "com.example.frontend.app-main-46:/mipmap-xhdpi/closebutton_foreground.png"
     },
     {
-        "merged": "com.example.frontend.app-merged_res-44:/drawable_ic_usuario.xml.flat",
-        "source": "com.example.frontend.app-main-46:/drawable/ic_usuario.xml"
+        "merged": "com.example.frontend.app-merged_res-44:/mipmap-anydpi-v26_closebutton.xml.flat",
+        "source": "com.example.frontend.app-main-46:/mipmap-anydpi-v26/closebutton.xml"
     },
     {
-        "merged": "com.example.frontend.app-merged_res-44:/layout_activity_tela_inicio.xml.flat",
-        "source": "com.example.frontend.app-main-46:/layout/activity_tela_inicio.xml"
+        "merged": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-merged_res-44:\\layout_activity_form_login.xml.flat",
+        "source": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-main-46:\\layout\\activity_form_login.xml"
     },
     {
-        "merged": "com.example.frontend.app-merged_res-44:/drawable-v24_ic_launcher_foreground.xml.flat",
-        "source": "com.example.frontend.app-main-46:/drawable-v24/ic_launcher_foreground.xml"
+        "merged": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-merged_res-44:\\layout_activity_tela_inicio.xml.flat",
+        "source": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-main-46:\\layout\\activity_tela_inicio.xml"
     },
     {
-        "merged": "com.example.frontend.app-merged_res-44:/drawable_ic_filtro.xml.flat",
-        "source": "com.example.frontend.app-main-46:/drawable/ic_filtro.xml"
+        "merged": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-merged_res-44:\\layout_activity_perfil_paceiro.xml.flat",
+        "source": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-main-46:\\layout\\activity_perfil_paceiro.xml"
     },
     {
-        "merged": "com.example.frontend.app-merged_res-44:/mipmap-hdpi_ic_launcher.webp.flat",
-        "source": "com.example.frontend.app-main-46:/mipmap-hdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-merged_res-44:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-main-46:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.frontend.app-merged_res-44:/mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "com.example.frontend.app-main-46:/mipmap-anydpi-v26/ic_launcher.xml"
+        "merged": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-merged_res-44:\\mipmap-hdpi_ic_voltar.png.flat",
+        "source": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-main-46:\\mipmap-hdpi\\ic_voltar.png"
     },
     {
-        "merged": "com.example.frontend.app-merged_res-44:/mipmap-mdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.frontend.app-main-46:/mipmap-mdpi/ic_launcher_round.webp"
+        "merged": "com.example.frontend.app-merged_res-44:/mipmap-mdpi_closebutton.png.flat",
+        "source": "com.example.frontend.app-main-46:/mipmap-mdpi/closebutton.png"
     },
     {
-        "merged": "com.example.frontend.app-merged_res-44:/mipmap-anydpi-v26_ic_voltar_round.xml.flat",
-        "source": "com.example.frontend.app-main-46:/mipmap-anydpi-v26/ic_voltar_round.xml"
+        "merged": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-merged_res-44:\\mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-main-46:\\mipmap-hdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.example.frontend.app-merged_res-44:/drawable_container_components.xml.flat",
-        "source": "com.example.frontend.app-main-46:/drawable/container_components.xml"
+        "merged": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-merged_res-44:\\drawable_ic_eye.xml.flat",
+        "source": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-main-46:\\drawable\\ic_eye.xml"
+    },
+    {
+        "merged": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-merged_res-44:\\drawable-v24_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-main-46:\\drawable-v24\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.example.frontend.app-merged_res-44:/mipmap-hdpi_closebutton_foreground.png.flat",
+        "source": "com.example.frontend.app-main-46:/mipmap-hdpi/closebutton_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-merged_res-44:\\layout_card_curso.xml.flat",
+        "source": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-main-46:\\layout\\card_curso.xml"
+    },
+    {
+        "merged": "com.example.frontend.app-merged_res-44:/mipmap-xxxhdpi_closebutton_round.png.flat",
+        "source": "com.example.frontend.app-main-46:/mipmap-xxxhdpi/closebutton_round.png"
+    },
+    {
+        "merged": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-merged_res-44:\\drawable_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-main-46:\\drawable\\ic_launcher_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-merged_res-44:\\layout_activity_filtros.xml.flat",
+        "source": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-main-46:\\layout\\activity_filtros.xml"
+    },
+    {
+        "merged": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-merged_res-44:\\layout_activity_perfil_usuario.xml.flat",
+        "source": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-main-46:\\layout\\activity_perfil_usuario.xml"
+    },
+    {
+        "merged": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-merged_res-44:\\layout_activity_form_cadastro.xml.flat",
+        "source": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-main-46:\\layout\\activity_form_cadastro.xml"
+    },
+    {
+        "merged": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-merged_res-44:\\layout_activity_tela_recuperar_senha.xml.flat",
+        "source": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-main-46:\\layout\\activity_tela_recuperar_senha.xml"
     },
     {
         "merged": "com.example.frontend.app-merged_res-44:/layout_activity_perfil_paceiro.xml.flat",
         "source": "com.example.frontend.app-main-46:/layout/activity_perfil_paceiro.xml"
     },
     {
-        "merged": "com.example.frontend.app-merged_res-44:/drawable_edit_text.xml.flat",
-        "source": "com.example.frontend.app-main-46:/drawable/edit_text.xml"
+        "merged": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-merged_res-44:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-main-46:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
     },
     {
-        "merged": "com.example.frontend.app-merged_res-44:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "com.example.frontend.app-main-46:/mipmap-anydpi-v26/ic_launcher_round.xml"
+        "merged": "com.example.frontend.app-merged_res-44:/mipmap-mdpi_closebutton_round.png.flat",
+        "source": "com.example.frontend.app-main-46:/mipmap-mdpi/closebutton_round.png"
+    },
+    {
+        "merged": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-merged_res-44:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-main-46:\\mipmap-xxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.frontend.app-merged_res-44:/drawable_search_view_perfis.xml.flat",
+        "source": "com.example.frontend.app-main-46:/drawable/search_view_perfis.xml"
     },
     {
         "merged": "com.example.frontend.app-merged_res-44:/layout_activity_form_cadastro_pj.xml.flat",
         "source": "com.example.frontend.app-main-46:/layout/activity_form_cadastro_pj.xml"
     },
     {
-        "merged": "com.example.frontend.app-merged_res-44:/xml_data_extraction_rules.xml.flat",
-        "source": "com.example.frontend.app-main-46:/xml/data_extraction_rules.xml"
+        "merged": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-merged_res-44:\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-main-46:\\layout\\activity_main.xml"
     },
     {
-        "merged": "com.example.frontend.app-merged_res-44:/drawable_ic_eye.xml.flat",
-        "source": "com.example.frontend.app-main-46:/drawable/ic_eye.xml"
+        "merged": "com.example.frontend.app-merged_res-44:/mipmap-hdpi_closebutton.png.flat",
+        "source": "com.example.frontend.app-main-46:/mipmap-hdpi/closebutton.png"
     },
     {
-        "merged": "com.example.frontend.app-merged_res-44:/mipmap-xxxhdpi_ic_voltar.png.flat",
-        "source": "com.example.frontend.app-main-46:/mipmap-xxxhdpi/ic_voltar.png"
+        "merged": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-merged_res-44:\\mipmap-anydpi-v26_ic_voltar_round.xml.flat",
+        "source": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-main-46:\\mipmap-anydpi-v26\\ic_voltar_round.xml"
     },
     {
-        "merged": "com.example.frontend.app-merged_res-44:/drawable_search_view_bg.xml.flat",
-        "source": "com.example.frontend.app-main-46:/drawable/search_view_bg.xml"
+        "merged": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-merged_res-44:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-main-46:\\mipmap-xhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.frontend.app-merged_res-44:/mipmap-mdpi_ic_voltar_round.png.flat",
-        "source": "com.example.frontend.app-main-46:/mipmap-mdpi/ic_voltar_round.png"
+        "merged": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-merged_res-44:\\mipmap-xxxhdpi_ic_voltar.png.flat",
+        "source": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-main-46:\\mipmap-xxxhdpi\\ic_voltar.png"
     },
     {
-        "merged": "com.example.frontend.app-merged_res-44:/mipmap-mdpi_ic_voltar.png.flat",
-        "source": "com.example.frontend.app-main-46:/mipmap-mdpi/ic_voltar.png"
+        "merged": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-merged_res-44:\\mipmap-mdpi_ic_voltar.png.flat",
+        "source": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-main-46:\\mipmap-mdpi\\ic_voltar.png"
     },
     {
-        "merged": "com.example.frontend.app-merged_res-44:/layout_activity_perfil_usuario.xml.flat",
-        "source": "com.example.frontend.app-main-46:/layout/activity_perfil_usuario.xml"
+        "merged": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-merged_res-44:\\mipmap-anydpi-v33_ic_launcher.xml.flat",
+        "source": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-main-46:\\mipmap-anydpi-v33\\ic_launcher.xml"
     },
     {
-        "merged": "com.example.frontend.app-merged_res-44:/mipmap-xxhdpi_ic_voltar_foreground.png.flat",
-        "source": "com.example.frontend.app-main-46:/mipmap-xxhdpi/ic_voltar_foreground.png"
+        "merged": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-merged_res-44:\\drawable_button.xml.flat",
+        "source": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-main-46:\\drawable\\button.xml"
     },
     {
-        "merged": "com.example.frontend.app-merged_res-44:/layout_activity_tela_recuperar_senha.xml.flat",
-        "source": "com.example.frontend.app-main-46:/layout/activity_tela_recuperar_senha.xml"
+        "merged": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-merged_res-44:\\layout_activity_tela_loading.xml.flat",
+        "source": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-main-46:\\layout\\activity_tela_loading.xml"
+    },
+    {
+        "merged": "com.example.frontend.app-merged_res-44:/layout_activity_perfil_usuario_curso_expandido.xml.flat",
+        "source": "com.example.frontend.app-main-46:/layout/activity_perfil_usuario_curso_expandido.xml"
+    },
+    {
+        "merged": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-merged_res-44:\\drawable_ic_usuario.xml.flat",
+        "source": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-main-46:\\drawable\\ic_usuario.xml"
+    },
+    {
+        "merged": "com.example.frontend.app-merged_res-44:/mipmap-xxxhdpi_closebutton.png.flat",
+        "source": "com.example.frontend.app-main-46:/mipmap-xxxhdpi/closebutton.png"
+    },
+    {
+        "merged": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-merged_res-44:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-main-46:\\mipmap-xxxhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-merged_res-44:\\mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-main-46:\\mipmap-mdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.frontend.app-merged_res-44:/mipmap-anydpi-v26_closebutton_round.xml.flat",
+        "source": "com.example.frontend.app-main-46:/mipmap-anydpi-v26/closebutton_round.xml"
+    },
+    {
+        "merged": "com.example.frontend.app-merged_res-44:/mipmap-xxhdpi_closebutton_foreground.png.flat",
+        "source": "com.example.frontend.app-main-46:/mipmap-xxhdpi/closebutton_foreground.png"
     },
     {
         "merged": "com.example.frontend.app-merged_res-44:/layout_activity_pefil_parceiro_curso_expandido.xml.flat",
         "source": "com.example.frontend.app-main-46:/layout/activity_pefil_parceiro_curso_expandido.xml"
+    },
+    {
+        "merged": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-merged_res-44:\\mipmap-xhdpi_ic_voltar_round.png.flat",
+        "source": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-main-46:\\mipmap-xhdpi\\ic_voltar_round.png"
+    },
+    {
+        "merged": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-merged_res-44:\\layout_activity_tela_curso_expandido.xml.flat",
+        "source": "C:\\Users\\Adriana\\.gradle\\daemon\\7.5\\com.example.frontend.app-main-46:\\layout\\activity_tela_curso_expandido.xml"
     }
 ]

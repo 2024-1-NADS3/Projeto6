@@ -26,14 +26,26 @@ public class TelaEscolhaCadastro extends AppCompatActivity {
             }
         });
     }
+
+    /**
+     * Navega de volta para a tela de login.
+     */
     private void voltarLogin() {
         Intent voltarTelaLogin = new Intent(TelaEscolhaCadastro.this, FormLogin.class);
         startActivity(voltarTelaLogin);
     }
+
+    /**
+     * Navega para a tela de cadastro de usuário.
+     */
     public void formUsuario(View view) {
         Intent mudarTelaCdastro = new Intent(TelaEscolhaCadastro.this, FormCadastro.class);
         startActivity(mudarTelaCdastro);
     }
+
+    /**
+     * Navega para a tela de cadastro de parceiro.
+     */
     public void formParceiro(View view) {
         Intent mudarTelaCadastroPJ= new Intent(TelaEscolhaCadastro.this, FormCadastroPJ.class);
         startActivity(mudarTelaCadastroPJ);

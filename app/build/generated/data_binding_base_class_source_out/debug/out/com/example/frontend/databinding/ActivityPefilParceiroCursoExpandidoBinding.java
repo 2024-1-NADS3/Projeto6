@@ -4,11 +4,13 @@ package com.example.frontend.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toolbar;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.frontend.R;
@@ -28,14 +30,37 @@ public final class ActivityPefilParceiroCursoExpandidoBinding implements ViewBin
   public final Toolbar ToolbarParceiroCursoExpandido;
 
   @NonNull
+  public final Button button4;
+
+  @NonNull
+  public final Button button9;
+
+  @NonNull
+  public final View containerComponents;
+
+  @NonNull
+  public final RecyclerView recyclerViewUsuariosCadastrados;
+
+  @NonNull
+  public final TextView textView;
+
+  @NonNull
   public final TextView tituloTelaFiltro;
 
   private ActivityPefilParceiroCursoExpandidoBinding(@NonNull ConstraintLayout rootView,
       @NonNull AppBarLayout AppBarLayoutParceiroCursoExpandido,
-      @NonNull Toolbar ToolbarParceiroCursoExpandido, @NonNull TextView tituloTelaFiltro) {
+      @NonNull Toolbar ToolbarParceiroCursoExpandido, @NonNull Button button4,
+      @NonNull Button button9, @NonNull View containerComponents,
+      @NonNull RecyclerView recyclerViewUsuariosCadastrados, @NonNull TextView textView,
+      @NonNull TextView tituloTelaFiltro) {
     this.rootView = rootView;
     this.AppBarLayoutParceiroCursoExpandido = AppBarLayoutParceiroCursoExpandido;
     this.ToolbarParceiroCursoExpandido = ToolbarParceiroCursoExpandido;
+    this.button4 = button4;
+    this.button9 = button9;
+    this.containerComponents = containerComponents;
+    this.recyclerViewUsuariosCadastrados = recyclerViewUsuariosCadastrados;
+    this.textView = textView;
     this.tituloTelaFiltro = tituloTelaFiltro;
   }
 
@@ -79,6 +104,36 @@ public final class ActivityPefilParceiroCursoExpandidoBinding implements ViewBin
         break missingId;
       }
 
+      id = R.id.button4;
+      Button button4 = ViewBindings.findChildViewById(rootView, id);
+      if (button4 == null) {
+        break missingId;
+      }
+
+      id = R.id.button9;
+      Button button9 = ViewBindings.findChildViewById(rootView, id);
+      if (button9 == null) {
+        break missingId;
+      }
+
+      id = R.id.containerComponents;
+      View containerComponents = ViewBindings.findChildViewById(rootView, id);
+      if (containerComponents == null) {
+        break missingId;
+      }
+
+      id = R.id.recyclerViewUsuariosCadastrados;
+      RecyclerView recyclerViewUsuariosCadastrados = ViewBindings.findChildViewById(rootView, id);
+      if (recyclerViewUsuariosCadastrados == null) {
+        break missingId;
+      }
+
+      id = R.id.textView;
+      TextView textView = ViewBindings.findChildViewById(rootView, id);
+      if (textView == null) {
+        break missingId;
+      }
+
       id = R.id.titulo_TelaFiltro;
       TextView tituloTelaFiltro = ViewBindings.findChildViewById(rootView, id);
       if (tituloTelaFiltro == null) {
@@ -86,7 +141,8 @@ public final class ActivityPefilParceiroCursoExpandidoBinding implements ViewBin
       }
 
       return new ActivityPefilParceiroCursoExpandidoBinding((ConstraintLayout) rootView,
-          AppBarLayoutParceiroCursoExpandido, ToolbarParceiroCursoExpandido, tituloTelaFiltro);
+          AppBarLayoutParceiroCursoExpandido, ToolbarParceiroCursoExpandido, button4, button9,
+          containerComponents, recyclerViewUsuariosCadastrados, textView, tituloTelaFiltro);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

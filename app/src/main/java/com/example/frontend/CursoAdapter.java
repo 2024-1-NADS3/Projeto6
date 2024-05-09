@@ -18,20 +18,23 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Adaptador personalizado para RecyclerView que exibe uma lista de cursos.
+ * Utiliza o padrão ViewHolder para otimizar o desempenho.
+ */
 public class CursoAdapter extends RecyclerView.Adapter<CursoAdapter.ViewHolder> {
 
     private Context context;
     private List<Curso> courses;
-
     private List<Curso> allCursos;
-
     private List<Curso> filteredByRadioGroups;
-
     private boolean isRadioGroupFilterActive = false;
-
     private List<Curso> filteredByRadioButton;
 
-    // Inicializa o adaptador com o contexto e a lista de cursos, criando uma cópia para filtragem
+    /**
+     * Inicializa o adaptador com o contexto e a lista de cursos.
+     * Cria cópias das listas para filtragem.
+     */
     public CursoAdapter(Context context, List<Curso> courses) {
         this.context = context;
         this.courses = courses;
@@ -39,7 +42,9 @@ public class CursoAdapter extends RecyclerView.Adapter<CursoAdapter.ViewHolder> 
         this.filteredByRadioGroups = new ArrayList<>(courses);
     }
 
-    // Cria e retorna um novo ViewHolder para cada item da lista
+    /**
+     * Cria e retorna um novo ViewHolder para cada item da lista.
+     */
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -47,14 +52,15 @@ public class CursoAdapter extends RecyclerView.Adapter<CursoAdapter.ViewHolder> 
         return new ViewHolder(view);
     }
 
-    // Vincula os dados do curso ao ViewHolder, incluindo imagem, título, tipo, categoria, endereço e vagas
+    /**
+     * Vincula os dados do curso ao ViewHolder, incluindo imagem, título, tipo, categoria, endereço e vagas.
+     */
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Curso curso = courses.get(position);
-        String baseUrl = "http://192.168.0.10:4550";
         String imagePath = curso.getImg();
-        String imageUrl = baseUrl + imagePath;
+        String imageUrl =  Constants.BASE_URL + imagePath;
 
         // Carrega a imagem do curso e preenche os campos de texto
         Picasso.get().load(imageUrl).into(holder.courseImg);
@@ -75,13 +81,17 @@ public class CursoAdapter extends RecyclerView.Adapter<CursoAdapter.ViewHolder> 
         });
     }
 
-    // Retorna o número total de itens na lista de cursos
+    /**
+     * Retorna o número total de itens na lista de cursos.
+     */
     @Override
     public int getItemCount() {
         return courses.size();
     }
 
-    // Classe interna ViewHolder para armazenar referências de views
+    /**
+     * Classe interna ViewHolder para armazenar referências de views.
+     */
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView courseImg;
         TextView courseTitle, courseType, courseCategory, courseAddress, slotsAndMax;
@@ -97,22 +107,26 @@ public class CursoAdapter extends RecyclerView.Adapter<CursoAdapter.ViewHolder> 
         }
     }
 
-    // Atualiza a lista de cursos com base nos filtros checkbox aplicados
+    /**
+     * Atualiza a lista de cursos com base nos filtros checkbox aplicados.
+     */
     public void updateDataByFiltersPage(List<Curso> filtredCursosByFiltersPage) {
         this.filteredByRadioGroups = filtredCursosByFiltersPage;
         this.courses = new ArrayList<>(filtredCursosByFiltersPage);
-        this.isRadioGroupFilterActive = !filtredCursosByFiltersPage.isEmpty();
+        this.isRadioGroupFilterActive =!filtredCursosByFiltersPage.isEmpty();
         notifyDataSetChanged();
     }
 
-    // Implementa um filtro para a barra de pesquisa, filtrando cursos por título
+    /**
+     * Implementa um filtro para a barra de pesquisa, filtrando cursos por título.
+     */
     public Filter getSearchBarFilter() {
         return new Filter() {
             @Override
             protected FilterResults performFiltering(CharSequence constraint) {
                 FilterResults results = new FilterResults();
                 List<Curso> filteredList = new ArrayList<>();
-                List<Curso> sourceList = isRadioGroupFilterActive ? filteredByRadioGroups : allCursos;
+                List<Curso> sourceList = isRadioGroupFilterActive? filteredByRadioGroups : allCursos;
 
                 if (constraint == null || constraint.length() == 0) {
                     results.values = sourceList;

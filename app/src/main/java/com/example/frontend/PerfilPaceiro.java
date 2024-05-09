@@ -2,6 +2,8 @@ package com.example.frontend;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -9,6 +11,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,19 +21,28 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class PerfilPaceiro extends AppCompatActivity {
 
     GerenciadorToken token;
-
-    String urlBase;
+    CursoAdapterPerfil adapterPartner;
+    RecyclerView recyclerViewPartner;
+    RequestQueue filaRequest;
+    ProgressBar progressBarPerfilParceiro;
+    TextView errorPartnerTextView;
+    List<Curso> registeredCourses = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,10 +50,36 @@ public class PerfilPaceiro extends AppCompatActivity {
         setContentView(R.layout.activity_perfil_paceiro);
         actionBar();
 
-        urlBase = "http://192.168.0.10:4550";
-
         token = new GerenciadorToken(this);
         Log.d("O token está aqui?", token.getToken());
+
+
+        recyclerViewPartner = findViewById(R.id.recyclerViewPartner);
+
+        filaRequest = Volley.newRequestQueue(this);
+
+        errorPartnerTextView = findViewById(R.id.errorPartnerTextView);
+        progressBarPerfilParceiro = findViewById(R.id.progressBarPerfilParceiro);
+
+        fetchPartnerCoursesData();
+
+        //Configura o SearchView para permitir a busca por título de curso.
+        SearchView searchBarPerfilParceiro = findViewById(R.id.searchBarPerfilParceiro);
+        searchBarPerfilParceiro.setIconifiedByDefault(false);
+        searchBarPerfilParceiro.clearFocus();
+        searchBarPerfilParceiro.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapterPartner.getSearchBarFilter().filter(newText); // Filtra os cursos com base no texto de busca.
+                return false;
+            }
+        });
+
     }
 
 
@@ -113,7 +152,7 @@ public class PerfilPaceiro extends AppCompatActivity {
     }
 
     public void deletarContaReq() {
-        String deleteUrl = urlBase + "/parceiro/deletar-parceiro";
+        String deleteUrl = Constants.BASE_URL + "/parceiro/deletar-parceiro";
 
         RequestQueue queue = Volley.newRequestQueue(this);
 
@@ -153,5 +192,82 @@ public class PerfilPaceiro extends AppCompatActivity {
         queue.add(jsonObjectRequest);
     }
 
+    public void fetchPartnerCoursesData() {
+        String finalURL = Constants.BASE_URL + "/parceiro/cursos-cadastrados";
+        progressBarPerfilParceiro.setVisibility(View.VISIBLE); // Mostra o ProgressBar enquanto os dados são carregados.
+
+        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, finalURL, null,
+            new Response.Listener<JSONArray>() {
+                @Override
+                public void onResponse(JSONArray response) {
+                    progressBarPerfilParceiro.setVisibility(View.GONE);
+                    if (response.length() == 0) {
+                        progressBarPerfilParceiro.setVisibility(View.GONE);
+                        errorPartnerTextView.setVisibility(View.VISIBLE); // Exibe a mensagem de erro.
+                        errorPartnerTextView.setText("Não há cursos cadastrados!");
+                        return;
+                    }
+                    processCoursesResponse(response); // Processa a resposta dos dados dos cursos.
+                }
+            },
+            new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    progressBarPerfilParceiro.setVisibility(View.GONE);
+                    errorPartnerTextView.setVisibility(View.VISIBLE); // Exibe a mensagem de erro.
+                    errorPartnerTextView.setText("Não foi possível carregar os cursos");
+                    Log.e("Volley", error.toString()); // Registra o erro.
+                }
+            })  {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> headers = new HashMap<>();
+                headers.put("Authorization", "Bearer " + token.getToken()); // Substitua "Bearer " + token pelo seu token JWT
+                return headers;
+            }
+        };
+
+
+
+        filaRequest.add(request); // Adiciona a requisição à fila de requisições.
+    }
+
+
+
+    private void processCoursesResponse(JSONArray response) {
+        if (response.length() > 0) {
+            for (int i = 0; i < response.length(); i++) {
+                try {
+                    JSONObject cursoJson = response.getJSONObject(i);
+                    Curso curso = new Curso();
+                    curso.setCourseId(cursoJson.getInt("courseId"));
+                    curso.setTitle(cursoJson.getString("title"));
+                    curso.setType(cursoJson.getString("type"));
+                    curso.setCategory(cursoJson.getString("category"));
+                    curso.setImg(cursoJson.getString("img"));
+                    curso.setDescription(cursoJson.getString("description"));
+                    curso.setAddress(cursoJson.getString("address"));
+                    curso.setZone(cursoJson.getString("zone"));
+                    curso.setOccupiedSlots(cursoJson.getInt("occupiedSlots"));
+                    curso.setMaxCapacity(cursoJson.getInt("maxCapacity"));
+                    curso.setInitialDate(cursoJson.getString("initialDate"));
+                    curso.setEndDate(cursoJson.getString("endDate"));
+                    registeredCourses.add(curso);
+                } catch (JSONException e) {
+                    Log.e("Volley", "Erro no JSON", e); // Registra um erro no JSON.
+                }
+            }
+            setupRecyclerView(); // Configura o RecyclerView com os dados dos cursos.
+        } else {
+            Log.d("Data", "Sem Dados");
+        }
+    }
+
+
+    private void setupRecyclerView() {
+        recyclerViewPartner.setLayoutManager(new LinearLayoutManager(PerfilPaceiro.this));
+        adapterPartner = new CursoAdapterPerfil(PerfilPaceiro.this, registeredCourses);
+        recyclerViewPartner.setAdapter(adapterPartner);
+    }
 
 }

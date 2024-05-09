@@ -5,11 +5,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toolbar;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.frontend.R;
@@ -29,32 +32,59 @@ public final class ActivityPerfilPaceiroBinding implements ViewBinding {
   public final Toolbar ToolbarTelaPerfilParceiro;
 
   @NonNull
+  public final Button button3;
+
+  @NonNull
   public final Button button5;
 
   @NonNull
   public final Button button8;
 
   @NonNull
+  public final View containerComponents;
+
+  @NonNull
+  public final TextView errorPartnerTextView;
+
+  @NonNull
   public final Button icUsuario;
 
   @NonNull
-  public final TextView textView;
+  public final ProgressBar progressBarPerfilParceiro;
+
+  @NonNull
+  public final RecyclerView recyclerViewPartner;
+
+  @NonNull
+  public final SearchView searchBarPerfilParceiro;
+
+  @NonNull
+  public final TextView textView9;
 
   @NonNull
   public final TextView tituloPerfilParceiro;
 
   private ActivityPerfilPaceiroBinding(@NonNull ConstraintLayout rootView,
       @NonNull AppBarLayout AppBarLayoutTelaPerfilParceiro,
-      @NonNull Toolbar ToolbarTelaPerfilParceiro, @NonNull Button button5, @NonNull Button button8,
-      @NonNull Button icUsuario, @NonNull TextView textView,
+      @NonNull Toolbar ToolbarTelaPerfilParceiro, @NonNull Button button3, @NonNull Button button5,
+      @NonNull Button button8, @NonNull View containerComponents,
+      @NonNull TextView errorPartnerTextView, @NonNull Button icUsuario,
+      @NonNull ProgressBar progressBarPerfilParceiro, @NonNull RecyclerView recyclerViewPartner,
+      @NonNull SearchView searchBarPerfilParceiro, @NonNull TextView textView9,
       @NonNull TextView tituloPerfilParceiro) {
     this.rootView = rootView;
     this.AppBarLayoutTelaPerfilParceiro = AppBarLayoutTelaPerfilParceiro;
     this.ToolbarTelaPerfilParceiro = ToolbarTelaPerfilParceiro;
+    this.button3 = button3;
     this.button5 = button5;
     this.button8 = button8;
+    this.containerComponents = containerComponents;
+    this.errorPartnerTextView = errorPartnerTextView;
     this.icUsuario = icUsuario;
-    this.textView = textView;
+    this.progressBarPerfilParceiro = progressBarPerfilParceiro;
+    this.recyclerViewPartner = recyclerViewPartner;
+    this.searchBarPerfilParceiro = searchBarPerfilParceiro;
+    this.textView9 = textView9;
     this.tituloPerfilParceiro = tituloPerfilParceiro;
   }
 
@@ -97,6 +127,12 @@ public final class ActivityPerfilPaceiroBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.button3;
+      Button button3 = ViewBindings.findChildViewById(rootView, id);
+      if (button3 == null) {
+        break missingId;
+      }
+
       id = R.id.button5;
       Button button5 = ViewBindings.findChildViewById(rootView, id);
       if (button5 == null) {
@@ -109,15 +145,45 @@ public final class ActivityPerfilPaceiroBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.containerComponents;
+      View containerComponents = ViewBindings.findChildViewById(rootView, id);
+      if (containerComponents == null) {
+        break missingId;
+      }
+
+      id = R.id.errorPartnerTextView;
+      TextView errorPartnerTextView = ViewBindings.findChildViewById(rootView, id);
+      if (errorPartnerTextView == null) {
+        break missingId;
+      }
+
       id = R.id.ic_usuario;
       Button icUsuario = ViewBindings.findChildViewById(rootView, id);
       if (icUsuario == null) {
         break missingId;
       }
 
-      id = R.id.textView;
-      TextView textView = ViewBindings.findChildViewById(rootView, id);
-      if (textView == null) {
+      id = R.id.progressBarPerfilParceiro;
+      ProgressBar progressBarPerfilParceiro = ViewBindings.findChildViewById(rootView, id);
+      if (progressBarPerfilParceiro == null) {
+        break missingId;
+      }
+
+      id = R.id.recyclerViewPartner;
+      RecyclerView recyclerViewPartner = ViewBindings.findChildViewById(rootView, id);
+      if (recyclerViewPartner == null) {
+        break missingId;
+      }
+
+      id = R.id.searchBarPerfilParceiro;
+      SearchView searchBarPerfilParceiro = ViewBindings.findChildViewById(rootView, id);
+      if (searchBarPerfilParceiro == null) {
+        break missingId;
+      }
+
+      id = R.id.textView9;
+      TextView textView9 = ViewBindings.findChildViewById(rootView, id);
+      if (textView9 == null) {
         break missingId;
       }
 
@@ -128,8 +194,9 @@ public final class ActivityPerfilPaceiroBinding implements ViewBinding {
       }
 
       return new ActivityPerfilPaceiroBinding((ConstraintLayout) rootView,
-          AppBarLayoutTelaPerfilParceiro, ToolbarTelaPerfilParceiro, button5, button8, icUsuario,
-          textView, tituloPerfilParceiro);
+          AppBarLayoutTelaPerfilParceiro, ToolbarTelaPerfilParceiro, button3, button5, button8,
+          containerComponents, errorPartnerTextView, icUsuario, progressBarPerfilParceiro,
+          recyclerViewPartner, searchBarPerfilParceiro, textView9, tituloPerfilParceiro);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

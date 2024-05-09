@@ -1,15 +1,21 @@
 package com.example.frontend;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.service.autofill.OnClickAction;
+import android.text.SpannableString;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkError;
@@ -35,8 +41,6 @@ public class FormLogin extends AppCompatActivity {
     private TextView esqueci_senha;
     private TextView text_tela_cadastro;
     private ImageView voltar_tela_inicio;
-
-    String urlBase;
     private EditText campo_email, campo_senha;
 
     @Override
@@ -51,17 +55,29 @@ public class FormLogin extends AppCompatActivity {
 
         campo_email = findViewById(R.id.email);
         campo_senha = findViewById(R.id.senha);
-        // URL do endpoint de login
-        urlBase = "http://192.168.0.10:4550";
 
-        text_tela_cadastro.setOnClickListener(new View.OnClickListener() {
+        //Separando a string e tornando uma parte dela clicável
+        String textoCompleto = "Ainda não está na Educaliza? Crie sua conta";
+
+        SpannableString  spannableString = new SpannableString(textoCompleto);
+
+        int startIndex = textoCompleto.indexOf("Crie sua conta");
+        int endIndex = startIndex + "Crie sua conta".length();
+
+        ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
-            public void onClick(View v) {
-
-                Intent mudarTelaCadastro = new Intent(FormLogin.this,TelaEscolhaCadastro.class);
-                startActivity(mudarTelaCadastro);
+            public void onClick(View widget) {
+                Intent MudarTelaCadatros= new Intent(FormLogin.this,TelaEscolhaCadastro.class);
+                startActivity(MudarTelaCadatros);
             }
-        });
+        };
+        spannableString.setSpan(clickableSpan, startIndex, endIndex, 0);
+
+        // Defina a SpannableString no TextView
+        text_tela_cadastro.setText(spannableString);
+        // Permita que o link seja clicável
+        text_tela_cadastro.setMovementMethod(LinkMovementMethod.getInstance());
+
         esqueci_senha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,8 +94,14 @@ public class FormLogin extends AppCompatActivity {
                 startActivity(voltarTelaInicio);
             }
         });
+
     }
 
+
+    /**
+     * Método para realizar o login do usuário.
+     * Valida os campos de email e senha antes de enviar a requisição.
+     */
     public void Login(View view) {
         final String email = campo_email.getText().toString().trim();
         final String password = campo_senha.getText().toString().trim();
@@ -103,8 +125,11 @@ public class FormLogin extends AppCompatActivity {
         requestLogin(email, password);
     }
 
+    /**
+     * Método para enviar a requisição de login ao servidor.
+     */
     public void requestLogin(String email, String password) {
-        String urlFinalParaLogar = urlBase + "/login" ;
+        String urlFinalParaLogar = Constants.BASE_URL + "/login" ;
 
         // Criação do RequestQueue
         RequestQueue queue = Volley.newRequestQueue(this);
@@ -123,7 +148,6 @@ public class FormLogin extends AppCompatActivity {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        Log.d("LoginResponse", response.toString());
                         String token = null;
                         try {
                             token = response.getString("token");
@@ -137,7 +161,6 @@ public class FormLogin extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                // Trata o erro
                 String errorMessage = "Desculpe, ocorreu um erro. Por favor, tente novamente mais tarde.";
 
                 if (error.networkResponse != null && error.networkResponse.statusCode != 0) {
@@ -172,8 +195,12 @@ public class FormLogin extends AppCompatActivity {
         queue.add(jsonObjectRequest);
     }
 
+    /**
+     * Método para redirecionar o usuário após o login bem-sucedido.
+     * Determina o tipo de usuário e redireciona para a tela correspondente.
+     */
     public void RedirecionarUsuario(GerenciadorToken GToken) {
-        String urlInfo = urlBase + "/user-type";
+        String urlInfo = Constants.BASE_URL + "/user-type";
         String token = GToken.getToken(); // Obtenha o token JWT armazenado
 
         JsonObjectRequest jsonObjectRequestInfo = new JsonObjectRequest(Request.Method.GET, urlInfo, null,
@@ -210,14 +237,23 @@ public class FormLogin extends AppCompatActivity {
         requestQueueInfo.add(jsonObjectRequestInfo);
     }
 
+    /**
+     * Método para inicializar o TextView que leva ao cadastro.
+     */
     private void MudarTelaCadatros() {
         text_tela_cadastro = findViewById(R.id.text_tela_cadastro);
     }
 
+    /**
+     * Método para inicializar o TextView que leva à recuperação de senha.
+     */
     private void MudarTelaRecSenha() {
         esqueci_senha = findViewById(R.id.esqueci_senha);
     }
 
+    /**
+     * Método para inicializar o ImageView que leva ao início.
+     */
     private void Voltartela() {
         voltar_tela_inicio = findViewById(R.id.voltar_tela_inicio);
     }

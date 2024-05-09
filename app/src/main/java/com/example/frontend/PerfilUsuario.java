@@ -29,14 +29,11 @@ import java.util.Map;
 public class PerfilUsuario extends AppCompatActivity {
 
     GerenciadorToken token;
-    String urlBase;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil_usuario);
         actionBar();
-        urlBase = "http://192.168.0.10:4550";
 
         token = new GerenciadorToken(this);
         Log.d("O token está aqui?", token.getToken());
@@ -108,7 +105,7 @@ public class PerfilUsuario extends AppCompatActivity {
     }
 
     public void deletarContaReq() {
-        String deleteUrl = urlBase + "/usuario/deletar-usuario";
+        String deleteUrl = Constants.BASE_URL + "/usuario/deletar-usuario";
 
         RequestQueue queue = Volley.newRequestQueue(this);
 
@@ -119,7 +116,7 @@ public class PerfilUsuario extends AppCompatActivity {
                         // Trate a resposta JSON aqui
                         System.out.println(response.toString());
                         Toast.makeText(PerfilUsuario.this, "Conta deletada com sucesso.", Toast.LENGTH_SHORT).show();
-
+                        token.clearToken();
                         // Redireciona para a tela inicial após 3 segundos
                         new Handler().postDelayed(new Runnable() {
                             @Override
