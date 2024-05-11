@@ -17,9 +17,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkError;
+import com.android.volley.ParseError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.ServerError;
+import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -178,6 +182,28 @@ public class PerfilPaceiro extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 // Trate o erro aqui
+                String errorMessage = "error";
+
+                if (error.networkResponse!= null && error.networkResponse.statusCode == 401) {
+                    token.clearToken();
+                    Intent intent = new Intent(PerfilPaceiro.this, FormLogin.class);
+                    startActivity(intent);
+                } else if (error instanceof NetworkError) {
+                    errorMessage = "Sem conexão com a internet. Por favor, verifique sua conexão.";
+                } else if (error instanceof ServerError) {
+                    errorMessage = "O servidor está enfrentando problemas. Por favor, tente novamente mais tarde.";
+                } else if (error instanceof ParseError) {
+                    errorMessage = "Houve um problema ao processar a resposta do servidor.";
+                } else if (error instanceof TimeoutError) {
+                    errorMessage = "A solicitação demorou muito para ser processada. Por favor, tente novamente mais tarde.";
+                }
+
+
+                new AlertDialog.Builder(PerfilPaceiro.this)
+                        .setTitle("Erro")
+                        .setMessage(errorMessage)
+                        .setPositiveButton("OK", null)
+                        .show();
                 System.out.println(error.getMessage());
             }
         }) {
@@ -232,8 +258,6 @@ public class PerfilPaceiro extends AppCompatActivity {
         filaRequest.add(request); // Adiciona a requisição à fila de requisições.
     }
 
-
-
     private void processCoursesResponse(JSONArray response) {
         if (response.length() > 0) {
             for (int i = 0; i < response.length(); i++) {
@@ -262,7 +286,6 @@ public class PerfilPaceiro extends AppCompatActivity {
             Log.d("Data", "Sem Dados");
         }
     }
-
 
     private void setupRecyclerView() {
         recyclerViewPartner.setLayoutManager(new LinearLayoutManager(PerfilPaceiro.this));

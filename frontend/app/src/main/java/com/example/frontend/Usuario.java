@@ -17,11 +17,11 @@ import java.io.Serializable;
 public class Usuario {
     private static final String URL_CRIAR_USUARIO = Constants.BASE_URL + "/usuario/cadastrar";
     private Context mContext;
-
-    protected String name;
-    protected String email;
-    protected String cellnumber;
-    protected String password;
+    private Integer userId;
+    private String name;
+    private String email;
+    private String cellnumber;
+    private String password;
 
     public String getName() {
         return name;
@@ -34,6 +34,10 @@ public class Usuario {
     }
     public String getPassword() {
         return password;
+    }
+
+    public Integer getUserId() {
+        return userId;
     }
 
     public void setName(String name) {
@@ -100,7 +104,8 @@ public class Usuario {
     }
 
 
-    public Usuario(String name, String email, String cellnumber) { // Adicionando Context ao construtor
+    public Usuario(Integer userId, String name, String email, String cellnumber) { // Adicionando Context ao construtor
+        this.userId = userId;
         this.name = name;
         this.email = email;
         this.cellnumber = cellnumber;

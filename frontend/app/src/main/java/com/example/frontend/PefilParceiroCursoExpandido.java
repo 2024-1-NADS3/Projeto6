@@ -12,12 +12,18 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkError;
+import com.android.volley.ParseError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.ServerError;
+import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -35,18 +41,32 @@ import java.util.Map;
 
 public class PefilParceiroCursoExpandido extends AppCompatActivity {
 
-
     AdapterInscricoesUsuario adapterUsuariosCadastrados;
     RecyclerView recyclerViewUsuariosCadastrados;
     Curso curso;
     RequestQueue filaRequest;
     GerenciadorToken token;
+    ProgressBar progressBarPerfilParceiroExpandido;
+    TextView errorPartnerExpandidoTextView;
     List<Usuario> userInformationList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pefil_parceiro_curso_expandido);
+
+        TextView botaoTitulo = findViewById(R.id.titulo_TelaParceiroCursoExpandido);
+        botaoTitulo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent (PefilParceiroCursoExpandido.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        errorPartnerExpandidoTextView = findViewById(R.id.errorPartnerExpandidoTextView);
+        progressBarPerfilParceiroExpandido = findViewById(R.id.progressBarPerfilParceiroExpandido);
+
 
         token = new GerenciadorToken(this);
         Log.d("O token está aqui no perfil parceiro curso expandido?", token.getToken());
@@ -58,6 +78,7 @@ public class PefilParceiroCursoExpandido extends AppCompatActivity {
 
         fetchPartnerCoursesData();
     }
+
 
     public void deletarCurso(View view) {
         AlertDialog.Builder builder = new AlertDialog.Builder(PefilParceiroCursoExpandido.this);
@@ -105,18 +126,42 @@ public class PefilParceiroCursoExpandido extends AppCompatActivity {
                     }
                 }, new Response.ErrorListener() {
             @Override
+
+            // ESSE AQUI É O ERRO QUE DEU BOM PARA PEGAR 401
             public void onErrorResponse(VolleyError error) {
                 // Trate o erro aqui
-                if (error.networkResponse.statusCode == 401) {
+                String errorMessage = "error";
+
+                if (error.networkResponse!= null && error.networkResponse.statusCode == 401) {
                     token.clearToken();
-
-
-                    Toast.makeText(PefilParceiroCursoExpandido.this, "Sessão expirada, faça o login novamente!", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(PefilParceiroCursoExpandido.this, FormLogin.class);
-                    startActivity(intent);
+                    errorMessage = "Sessão expirou. Por favor, faça login novamente.";
+                    new AlertDialog.Builder(PefilParceiroCursoExpandido.this)
+                            .setTitle("Erro")
+                            .setMessage(errorMessage)
+                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    Intent intent = new Intent(PefilParceiroCursoExpandido.this, FormLogin.class);
+                                    startActivity(intent);
+                                }
+                            })
+                            .show();
+                } else {
+                    if (error instanceof NetworkError) {
+                        errorMessage = "Sem conexão com a internet. Por favor, verifique sua conexão.";
+                    } else if (error instanceof ServerError) {
+                        errorMessage = "O servidor está enfrentando problemas. Por favor, tente novamente mais tarde.";
+                    } else if (error instanceof ParseError) {
+                        errorMessage = "Houve um problema ao processar a resposta do servidor.";
+                    } else if (error instanceof TimeoutError) {
+                        errorMessage = "A solicitação demorou muito para ser processada. Por favor, tente novamente mais tarde.";
+                    }
+                    new AlertDialog.Builder(PefilParceiroCursoExpandido.this)
+                            .setTitle("Erro")
+                            .setMessage(errorMessage)
+                            .setPositiveButton("OK", null)
+                            .show();
                 }
-                Toast.makeText(PefilParceiroCursoExpandido.this, "Não foi possível deletar o curso, tente novamente mais tarde.", Toast.LENGTH_SHORT).show();
-                Log.d("message", ":", error);
             }
         }) {
             @Override
@@ -134,30 +179,45 @@ public class PefilParceiroCursoExpandido extends AppCompatActivity {
 
     public void fetchPartnerCoursesData() {
         String finalURL = Constants.BASE_URL + "/parceiro/usuarios-cadastrados-no-curso/" + curso.getCourseId();
-        //progressBarPerfilParceiro.setVisibility(View.VISIBLE); // Mostra o ProgressBar enquanto os dados são carregados.
+        progressBarPerfilParceiroExpandido.setVisibility(View.VISIBLE); // Mostra o ProgressBar enquanto os dados são carregados.
 
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, finalURL, null,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
-                        //progressBarPerfilParceiro.setVisibility(View.GONE);
                         if (response.length() == 0) {
-                            //progressBarPerfilParceiro.setVisibility(View.GONE);
-                            //errorPartnerTextView.setVisibility(View.VISIBLE); // Exibe a mensagem de erro.
-                            //errorPartnerTextView.setText("Não há cursos cadastrados!");
+                            progressBarPerfilParceiroExpandido.setVisibility(View.GONE);
+                            errorPartnerExpandidoTextView.setVisibility(View.VISIBLE); // Exibe a mensagem de erro.
+                            errorPartnerExpandidoTextView.setText("Não há usuários cadastrados!");
                             return;
                         }
-                        Log.d("Response", ": " + response);
+                        progressBarPerfilParceiroExpandido.setVisibility(View.GONE);
                         processCoursesResponse(response); // Processa a resposta dos dados dos cursos.
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        //progressBarPerfilParceiro.setVisibility(View.GONE);
-                        //errorPartnerTextView.setVisibility(View.VISIBLE); // Exibe a mensagem de erro.
-                        //errorPartnerTextView.setText("Não foi possível carregar os cursos");
-                        Log.e("Volley", error.toString()); // Registra o erro.
+                        if (error.networkResponse!= null && error.networkResponse.statusCode == 401) {
+                            token.clearToken();
+                            new AlertDialog.Builder(PefilParceiroCursoExpandido.this)
+                                    .setTitle("Erro")
+                                    .setMessage("Sessão expirou. Por favor, faça login novamente.")
+                                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterface, int i) {
+                                            Intent intent = new Intent(PefilParceiroCursoExpandido.this, FormLogin.class);
+                                            startActivity(intent);
+                                        }
+                                    })
+                                    .show();
+                        } else {
+
+                            progressBarPerfilParceiroExpandido.setVisibility(View.GONE);
+                            errorPartnerExpandidoTextView.setVisibility(View.VISIBLE); // Exibe a mensagem de erro.
+                            errorPartnerExpandidoTextView.setText("Não foi possível carregar os usuários.");
+                            Log.e("Volley", error.toString()); // Registra o erro.
+                        }
                     }
                 })  {
             @Override
@@ -176,7 +236,7 @@ public class PefilParceiroCursoExpandido extends AppCompatActivity {
             for (int i = 0; i < response.length(); i++) {
                 try {
                     JSONObject userJson = response.getJSONObject(i);
-                    Usuario user = new Usuario(userJson.getString("name"), userJson.getString("email"), userJson.getString("cellnumber"));
+                    Usuario user = new Usuario(userJson.getInt("userId") ,userJson.getString("name"), userJson.getString("email"), userJson.getString("cellnumber"));
                     userInformationList.add(user);
                 } catch (JSONException e) {
                     Log.e("Volley", "Erro no JSON", e); // Registra um erro no JSON.
@@ -192,7 +252,7 @@ public class PefilParceiroCursoExpandido extends AppCompatActivity {
     private void setupRecyclerView() {
         recyclerViewUsuariosCadastrados = findViewById(R.id.recyclerViewUsuariosCadastrados);
         recyclerViewUsuariosCadastrados.setLayoutManager(new LinearLayoutManager(PefilParceiroCursoExpandido.this));
-        adapterUsuariosCadastrados = new AdapterInscricoesUsuario(PefilParceiroCursoExpandido.this, userInformationList);
+        adapterUsuariosCadastrados = new AdapterInscricoesUsuario(PefilParceiroCursoExpandido.this, userInformationList, curso.getCourseId(), token);
         recyclerViewUsuariosCadastrados.setAdapter(adapterUsuariosCadastrados);
     }
 

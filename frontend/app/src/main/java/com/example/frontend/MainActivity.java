@@ -1,5 +1,6 @@
 package com.example.frontend;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,7 +18,11 @@ import android.widget.TextView;
 import android.widget.Toolbar;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkError;
+import com.android.volley.ParseError;
 import com.android.volley.RequestQueue;
+import com.android.volley.ServerError;
+import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.Response;
 import com.android.volley.Request;
@@ -43,9 +48,9 @@ public class MainActivity extends AppCompatActivity {
     CursoAdapter adapter;
     List<Curso> courses = new ArrayList<>();
     ProgressBar progressBar;
+    TextView errorTextView;
     GerenciadorToken token;
     String finalURL = Constants.BASE_URL + "/cursos/todos";
-    TextView errorTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -150,11 +155,29 @@ public class MainActivity extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                if (error.networkResponse.statusCode == 401) {
+                String errorMessage = "error";
+
+                if (error.networkResponse!= null && error.networkResponse.statusCode == 401) {
                     GToken.clearToken();
                     Intent intent = new Intent(MainActivity.this, FormLogin.class);
                     startActivity(intent);
+                } else if (error instanceof NetworkError) {
+                    errorMessage = "Sem conexão com a internet. Por favor, verifique sua conexão.";
+                } else if (error instanceof ServerError) {
+                    errorMessage = "O servidor está enfrentando problemas. Por favor, tente novamente mais tarde.";
+                } else if (error instanceof ParseError) {
+                    errorMessage = "Houve um problema ao processar a resposta do servidor.";
+                } else if (error instanceof TimeoutError) {
+                    errorMessage = "A solicitação demorou muito para ser processada. Por favor, tente novamente mais tarde.";
                 }
+
+
+                new AlertDialog.Builder(MainActivity.this)
+                        .setTitle("Erro")
+                        .setMessage(errorMessage)
+                        .setPositiveButton("OK", null)
+                        .show();
+
             }
         }) {
             @Override
