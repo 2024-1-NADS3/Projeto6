@@ -75,12 +75,11 @@
     <View
         android:id="@+id/testandoWarning"
         android:layout_width="312dp"
-        android:layout_height="32dp"
+        android:layout_height="30dp"
         android:layout_marginTop="7dp"
-        android:layout_marginBottom="24dp"
-        android:background="#fff"
+        android:layout_marginBottom="26dp"
+        android:background="@drawable/spinner_background"
         app:layout_constraintBottom_toTopOf="@+id/recyclerViewCursosUsuarios"
-
         app:layout_constraintEnd_toEndOf="@+id/containerComponentsPerfilUsuario"
         app:layout_constraintStart_toStartOf="@+id/containerComponentsPerfilUsuario"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
@@ -135,19 +134,21 @@
     <LinearLayout
         android:id="@+id/linearLayout4"
         android:layout_width="312dp"
-        android:layout_height="32dp"
+        android:layout_height="30dp"
         android:layout_marginTop="7dp"
-        android:background="#fff"
+        android:background="@drawable/spinner_background"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="@+id/containerComponentsPerfilUsuario"
         app:layout_constraintStart_toStartOf="@+id/containerComponentsPerfilUsuario"
         app:layout_constraintTop_toBottomOf="@+id/searchViewUser">
 
         <Spinner
+            android:radius="8dp"
             android:id="@+id/spinner_filtros"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textSize="10sp" />
+            android:textSize="10sp"
+            />
 
     </LinearLayout>
 
@@ -211,16 +212,28 @@
         android:id="@+id/warnings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
+        android:layout_marginTop="5dp"
         android:text="0"
         android:textColor="#FF3434"
         android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="@+id/testandoWarning"
         app:layout_constraintEnd_toEndOf="@+id/testandoWarning"
-        app:layout_constraintHorizontal_bias="0.019"
+        app:layout_constraintHorizontal_bias="0.033"
         app:layout_constraintStart_toEndOf="@+id/textAdvertencias"
         app:layout_constraintTop_toTopOf="@+id/testandoWarning"
         app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/warningIcon"
+        android:layout_width="30dp"
+        android:layout_height="21dp"
+        app:layout_constraintBottom_toBottomOf="@+id/testandoWarning"
+        app:layout_constraintEnd_toEndOf="@+id/testandoWarning"
+        app:layout_constraintHorizontal_bias="0.952"
+        app:layout_constraintStart_toEndOf="@+id/warnings"
+        app:layout_constraintTop_toTopOf="@+id/testandoWarning"
+        app:layout_constraintVertical_bias="0.444"
+        app:srcCompat="@drawable/exclamation" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

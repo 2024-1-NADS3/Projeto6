@@ -10,10 +10,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.SearchView;
 import android.widget.Spinner;
@@ -54,6 +56,25 @@ public class PerfilUsuario extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil_usuario);
+        ImageView warningIcon = findViewById(R.id.warningIcon);
+        warningIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(PerfilUsuario.this);
+                        builder.setTitle("Aviso")
+                                .setMessage("Este campo mostra quantas advertências você tem. " +
+                                        "Elas são dadas por não comparecer a compromissos presenciais ou online. " +
+                                        "Lembre-se: 5 advertências significam não poder se inscrever mais em cursos pela plataforma. ")
+
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                // Código para executar quando o usuário clicar em OK
+                            }
+                        });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
 
         token = new GerenciadorToken(this);
 

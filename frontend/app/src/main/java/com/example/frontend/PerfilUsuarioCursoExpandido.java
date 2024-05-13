@@ -199,17 +199,20 @@ public class PerfilUsuarioCursoExpandido extends AppCompatActivity {
 
         RequestQueue queue = Volley.newRequestQueue(this);
 
-        StringRequest stringRequest = new StringRequest(Request.Method.DELETE, deleteUrl, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                Intent retornarTelaUsuario = new Intent(PerfilUsuarioCursoExpandido.this, PerfilUsuario.class);
-                startActivity(retornarTelaUsuario);
-            }
-        }, new Response.ErrorListener() {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.DELETE, deleteUrl, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        // Trate a resposta JSON aqui
+                        Log.d("Na resposta do desinscrição", response.toString());
+                        Intent voltarTelaUsuario = new Intent(PerfilUsuarioCursoExpandido.this, PerfilUsuario.class);
+                        startActivity(voltarTelaUsuario);
+                    }
+                }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 // Trate o erro aqui
-                Log.d("Erro", "onErrorResponse: " + error);
+                Log.d("Na resposta do desinscrição", error.toString());
             }
         }) {
             @Override
@@ -220,7 +223,7 @@ public class PerfilUsuarioCursoExpandido extends AppCompatActivity {
             }
         };
 
-        queue.add(stringRequest);
+        queue.add(jsonObjectRequest);
     }
 
 }

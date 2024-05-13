@@ -85,13 +85,13 @@
 
     <TextView
         android:id="@+id/courseAdressExpanded"
-        android:layout_width="wrap_content"
+        android:layout_width="285dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginTop="8dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.007"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/textView4"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
@@ -187,7 +187,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.01"
         app:layout_constraintStart_toEndOf="@+id/textView5"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/courseAdressExpanded" />
 
     <TextView
         android:id="@+id/textView1"
@@ -229,8 +229,6 @@
         android:layout_height="92dp"
         android:layout_marginTop="8dp"
         android:text="TextView"
-
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
@@ -288,12 +286,12 @@
     <TextView
         android:id="@+id/textView5"
         style="@style/TextView"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="8dp"
         android:text="Zona:"
         android:textColor="#D8000000"
-        android:layout_marginTop="8dp"
-        android:layout_marginLeft="25dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/courseAdressExpanded" />
 
     <View
         android:id="@+id/divider"
