@@ -2,6 +2,8 @@ package com.example.frontend;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -9,7 +11,12 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.SearchView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,27 +25,75 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class PerfilUsuario extends AppCompatActivity {
 
     GerenciadorToken token;
+    RecyclerView recyclerViewCursosUsuarios;
+    CursoAdapterPerfilUsuario adapterUser;
+    List<Curso> userCourses = new ArrayList<>();
+    RequestQueue filaRequest;
+    ProgressBar progressBarUser;
+    TextView errorUserTextView, warnings;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil_usuario);
-        actionBar();
 
         token = new GerenciadorToken(this);
-        Log.d("O token está aqui?", token.getToken());
-    }
 
+        actionBar();
+
+        //Configura o SearchView para permitir a busca por título de curso.
+        SearchView searchBarPerfilUser = findViewById(R.id.searchViewUser);
+        searchBarPerfilUser.setIconifiedByDefault(false);
+        searchBarPerfilUser.clearFocus();
+        searchBarPerfilUser.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapterUser.getSearchBarFilter().filter(newText); // Filtra os cursos com base no texto de busca.
+                return false;
+            }
+        });
+
+        warnings = findViewById(R.id.warnings);
+
+        getUserWarnings();
+
+        recyclerViewCursosUsuarios = findViewById(R.id.recyclerViewCursosUsuarios);
+
+        filaRequest = Volley.newRequestQueue(this);
+
+        errorUserTextView = findViewById(R.id.errorUserTextView);
+        progressBarUser = findViewById(R.id.progressBarUser);
+
+
+        fetchUserCoursesData();
+
+
+        Log.d("O token está aqui no USER?", token.getToken());
+        filtroSpinner();
+    }
     @Override
     protected void onResume() {
         super.onResume();
@@ -64,12 +119,85 @@ public class PerfilUsuario extends AppCompatActivity {
             }
         });
     }
+
+    public void filtroSpinner() {
+        Spinner spinnerFiltros = findViewById(R.id.spinner_filtros);
+
+        // Definindo o array de opções diretamente no código
+        String[] filtrosArray = {"Cursos: Todos", "Cursos: Não iniciados", "Cursos: Em andamento", "Cursos: Finalizados"};
+
+        // Criando um ArrayAdapter com o array de opções
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, filtrosArray);
+
+        // Especificando o layout a ser usado quando a lista de opções aparecer
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // Apliquando o adaptador ao spinner
+        spinnerFiltros.setAdapter(adapter);
+
+        // Manipulando a seleção do spinner
+        spinnerFiltros.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String filtroSelecionado = parent.getItemAtPosition(position).toString();
+                // Faça algo com o filtro selecionado
+                if (adapterUser!= null) {
+                    adapterUser.filtrarCursos(filtroSelecionado);
+                } else {
+                    Log.d("Erro", "adapterUser é null");
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // O usuário não selecionou nada
+            }
+        });
+    }
+
+    public void getUserWarnings() {
+        RequestQueue mRequestQueue;
+
+        String finalURL = Constants.BASE_URL + "/usuario/pegar-advertencias";
+
+        mRequestQueue = Volley.newRequestQueue(this);
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, finalURL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonResponse = new JSONObject(response);
+                            String warningsResult = jsonResponse.getString("warnings");
+                            Log.d("Resposta", "onResponse: " + warningsResult);
+                            warnings.setText(warningsResult);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                // Logando o erro
+                Log.d("Erro", "onErrorResponse: " + error.getMessage());
+            }
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> headers = new HashMap<>();
+                headers.put("Authorization", "Bearer " + token.getToken()); // Substitua "Bearer " + token pelo seu token JWT
+                return headers;
+            }
+        };;
+
+        mRequestQueue.add(stringRequest);
+    }
+
     public void sair(View view) {
         token.clearToken();
         Intent mudarTelaParaMainAcitivity = new Intent(PerfilUsuario.this, MainActivity.class);
         startActivity(mudarTelaParaMainAcitivity);
     }
-
     public void verificarSeEstaLogado() {
         Log.d("erro na activity Perfil Usuario", "aaaaa");
         if (token != null) {
@@ -144,6 +272,78 @@ public class PerfilUsuario extends AppCompatActivity {
 
         queue.add(jsonObjectRequest);
     }
+    public void fetchUserCoursesData() {
+        String finalURL = Constants.BASE_URL + "/usuario/cursos-inscritos";
+        progressBarUser.setVisibility(View.VISIBLE); // Mostra o ProgressBar enquanto os dados são carregados.
+
+        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, finalURL, null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        progressBarUser.setVisibility(View.GONE);
+                        if (response.length() == 0) {
+                            progressBarUser.setVisibility(View.GONE);
+                            errorUserTextView.setVisibility(View.VISIBLE); // Exibe a mensagem de erro.
+                            errorUserTextView.setText("Você não está inscrito em nenhum curso");
+                            Log.d("Erro", "Array vazia, sem cursos");
+                            return;
+                        }
+                        processCoursesResponse(response); // Processa a resposta dos dados dos cursos.
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        progressBarUser.setVisibility(View.GONE);
+                        errorUserTextView.setVisibility(View.VISIBLE); // Exibe a mensagem de erro.
+                        errorUserTextView.setText("Não foi possível carregar os cursos");
+                        Log.e("Volley", error.toString()); // Registra o erro.
+                    }
+                })  {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> headers = new HashMap<>();
+                headers.put("Authorization", "Bearer " + token.getToken()); // Substitua "Bearer " + token pelo seu token JWT
+                return headers;
+            }
+        };
+
+        filaRequest.add(request); // Adiciona a requisição à fila de requisições.
+    }
+    private void processCoursesResponse(JSONArray response) {
+        if (response.length() > 0) {
+            for (int i = 0; i < response.length(); i++) {
+                try {
+                    JSONObject cursoJson = response.getJSONObject(i);
+                    Curso curso = new Curso();
+                    curso.setCourseId(cursoJson.getInt("courseId"));
+                    curso.setTitle(cursoJson.getString("title"));
+                    curso.setType(cursoJson.getString("type"));
+                    curso.setCategory(cursoJson.getString("category"));
+                    curso.setImg(cursoJson.getString("img"));
+                    curso.setDescription(cursoJson.getString("description"));
+                    curso.setAddress(cursoJson.getString("address"));
+                    curso.setZone(cursoJson.getString("zone"));
+                    curso.setOccupiedSlots(cursoJson.getInt("occupiedSlots"));
+                    curso.setMaxCapacity(cursoJson.getInt("maxCapacity"));
+                    curso.setInitialDate(cursoJson.getString("initialDate"));
+                    curso.setEndDate(cursoJson.getString("endDate"));
+                    userCourses.add(curso);
+                } catch (JSONException e) {
+                    Log.e("Volley", "Erro no JSON", e); // Registra um erro no JSON.
+                }
+            }
+            setupRecyclerView(); // Configura o RecyclerView com os dados dos cursos.
+        } else {
+            Log.d("Data", "Sem Dados");
+        }
+    }
+    private void setupRecyclerView() {
+        recyclerViewCursosUsuarios.setLayoutManager(new LinearLayoutManager(PerfilUsuario.this));
+        adapterUser = new CursoAdapterPerfilUsuario(PerfilUsuario.this, userCourses);
+        recyclerViewCursosUsuarios.setAdapter(adapterUser);
+    }
+
 }
 
 

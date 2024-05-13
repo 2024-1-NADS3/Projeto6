@@ -4,6 +4,309 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#80778CF9"
     tools:context=".PerfilUsuarioCursoExpandido">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/AppBarLayout_TelaCursoExpandidoUsuario"
+        android:layout_width="411dp"
+        android:layout_height="wrap_content"
+        android:alpha="0.8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Toolbar
+                android:id="@+id/Toolbar_TelaCursoExpandidoUsuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/blue_educaliza"
+                android:titleTextColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/titulo_CursoExpandidoUsuario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Educaliza"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/Toolbar_TelaCursoExpandidoUsuario"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/Toolbar_TelaCursoExpandidoUsuario"
+                app:layout_constraintTop_toTopOf="@id/Toolbar_TelaCursoExpandidoUsuario"
+                app:layout_constraintVertical_bias="0.517" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <TextView
+        android:id="@+id/textView14User"
+        style="@style/TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Nome da Instituição:"
+        android:textColor="#D8000000"
+        android:layout_marginLeft="25dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/courseTitleExpandedUser" />
+
+    <TextView
+        android:id="@+id/textView4User"
+        style="@style/TextView"
+        android:text="Endereço:"
+        android:textColor="#D8000000"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="25dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3User" />
+
+    <TextView
+        android:id="@+id/instituitionNameExpandedUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="20dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textView14User"
+        app:layout_constraintTop_toBottomOf="@+id/dividerUser" />
+
+    <TextView
+        android:id="@+id/courseAdressExpandedUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.007"
+        app:layout_constraintStart_toEndOf="@+id/textView4User"
+        app:layout_constraintTop_toBottomOf="@+id/textView3User" />
+
+    <TextView
+        android:id="@+id/courseSlotsAndCapacityExpandedUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textView2User"
+        app:layout_constraintTop_toBottomOf="@+id/textView1User" />
+
+    <TextView
+        android:id="@+id/textView6User"
+        style="@style/TextView"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="8dp"
+        android:text="Descrição:"
+        android:textColor="#D8000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.005"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5User" />
+
+    <TextView
+        android:id="@+id/textView3User"
+        style="@style/TextView"
+        android:text="Categoria:"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="25dp"
+        android:textColor="#D8000000"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2User" />
+
+    <ImageView
+        android:id="@+id/courseImgExpandedUser"
+        android:layout_width="174dp"
+        android:layout_height="146dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/AppBarLayout_TelaCursoExpandidoUsuario"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/textView15User"
+        style="@style/TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="25dp"
+        android:text="Inicio:"
+        android:textColor="#D8000000"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView14User" />
+
+    <Button
+        android:id="@+id/desinscricaoButton"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#A70000"
+        android:onClick="cancelarInscricao"
+        android:text="desinscrever-se"
+        android:textColor="#fff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/descriptionExpandendUser"
+        app:layout_constraintVertical_bias="0.26" />
+
+    <TextView
+        android:id="@+id/textView2User"
+        style="@style/TextView"
+        android:text="Vagas ocupadas:"
+        android:textColor="#D8000000"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="25dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView1User" />
+
+    <TextView
+        android:id="@+id/courseZoneExpandedUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.01"
+        app:layout_constraintStart_toEndOf="@+id/textView5User"
+        app:layout_constraintTop_toBottomOf="@+id/textView4User" />
+
+    <TextView
+        android:id="@+id/textView1User"
+        style="@style/TextView"
+        android:text="Tipo de aula:"
+        android:textColor="#D8000000"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="25dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView16User" />
+
+    <TextView
+        android:id="@+id/textView16User"
+        style="@style/TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="25dp"
+        android:text="Fim:"
+        android:textColor="#D8000000"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView15User" />
+
+    <TextView
+        android:id="@+id/courseTypeExpandedUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.004"
+        app:layout_constraintStart_toEndOf="@+id/textView1User"
+        app:layout_constraintTop_toBottomOf="@+id/textView16User" />
+
+    <TextView
+        android:id="@+id/descriptionExpandendUser"
+        android:layout_width="316dp"
+        android:layout_height="92dp"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6User" />
+
+    <TextView
+        android:id="@+id/courseTitleExpandedUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Course Title"
+        android:textColor="#D8000000"
+        android:textSize="32sp"
+        app:layout_constraintBottom_toTopOf="@+id/dividerUser"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/courseImgExpandedUser"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/courseEndDateExpandedUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textView16User"
+        app:layout_constraintTop_toBottomOf="@+id/textView15User" />
+
+    <TextView
+        android:id="@+id/courseInitialDateExpandedUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textView15User"
+        app:layout_constraintTop_toBottomOf="@+id/textView14User" />
+
+    <TextView
+        android:id="@+id/courseCategoryExpandendUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textView3User"
+        app:layout_constraintTop_toBottomOf="@+id/textView2User" />
+
+    <TextView
+        android:id="@+id/textView5User"
+        style="@style/TextView"
+        android:text="Zona:"
+        android:textColor="#D8000000"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="25dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4User" />
+
+    <View
+        android:id="@+id/dividerUser"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:layout_marginTop="52dp"
+        android:background="#0057D8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/courseImgExpandedUser" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

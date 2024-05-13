@@ -1,6 +1,7 @@
 package com.example.frontend;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -44,10 +45,8 @@ import java.util.Map;
 public class TelaCursoExpandido extends AppCompatActivity {
 
     ImageView courseImgExpandend;
-
     GerenciadorToken token;
     Button inscricaoButton;
-
     String instituitionName;
     Curso curso;
     TextView descriptionExpandend,
@@ -70,18 +69,7 @@ public class TelaCursoExpandido extends AppCompatActivity {
         pegarNomeDaInstituicao();
 
         token = new GerenciadorToken(this);
-        String tokenString = token.getToken();
         inscricaoButton = findViewById(R.id.inscricaoButton);
-
-        if (!tokenString.equals("")) {
-            // Se houver um token, habilita o botão e define a cor de fundo para verde
-            inscricaoButton.setEnabled(true);
-            inscricaoButton.setBackgroundColor(Color.parseColor("#759E54"));
-        } else {
-            // Se não houver token, desabilita o botão e define a cor de fundo para cinza
-            inscricaoButton.setEnabled(false);
-            inscricaoButton.setBackgroundColor(Color.GRAY);
-        }
 
         preencherComDado(curso);
 
@@ -167,8 +155,8 @@ public class TelaCursoExpandido extends AppCompatActivity {
         courseTitleExpanded.setText(curso.getTitle());
         instituitionNameExpanded.setText(instituitionName);
         try {
-            SimpleDateFormat inputFormat = new SimpleDateFormat("dd-MM-yy"); // Formato da data original
-            SimpleDateFormat outputFormat = new SimpleDateFormat("dd/MM/yy"); // Formato desejado
+            SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd"); // Formato da data original
+            SimpleDateFormat outputFormat = new SimpleDateFormat("dd/MM/yyyy"); // Formato desejado
 
             // Formatação da data inicial
             Date initialDate = inputFormat.parse(curso.getInitialDate()); // Converte a string de data para um objeto Date
@@ -195,6 +183,32 @@ public class TelaCursoExpandido extends AppCompatActivity {
 
     /** Método para fazer a inscrição do usuário no backend */
     public void inscricao (View view) {
+        String tokenString = token.getToken();
+        Log.d("Token", tokenString);
+        if (tokenString.equals("")) {
+            Log.d("Cai dentro do if para verificar o login", "token: " + tokenString);
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Aviso");
+            builder.setMessage("É necessário estar logado para fazer inscrições na plataforma");
+            builder.setPositiveButton("Ir para Login", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    Intent intent = new Intent(TelaCursoExpandido.this, FormLogin.class);
+                    startActivity(intent);
+                }
+            });
+            builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    // Ação ao clicar no botão "Cancelar"
+                    dialog.cancel();
+                }
+            });
+
+            // Exibição do AlertDialog
+            AlertDialog alertDialog = builder.create();
+            alertDialog.show();
+            return;
+        }
+
         String urlFinalParaInscricao = Constants.BASE_URL + "/usuario/inscricao-curso" ;
         Log.d("Clicou", "Clicou");
 
@@ -214,7 +228,11 @@ public class TelaCursoExpandido extends AppCompatActivity {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        Toast.makeText(TelaCursoExpandido.this, "Inscrição feita com sucesso!", Toast.LENGTH_SHORT).show();
+                        new AlertDialog.Builder(TelaCursoExpandido.this)
+                                .setTitle("Sucesso!")
+                                .setMessage("Inscrição efetuada com sucesso! A instituição provedora do cuso entrara em contato para mais detalhes!")
+                                .setPositiveButton("OK", null)
+                                .show();
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -278,7 +296,7 @@ public class TelaCursoExpandido extends AppCompatActivity {
                 headers.put("Authorization", "Bearer " + token.getToken()); // Substitua "Bearer " + token pelo seu token JWT
                 return headers;
             }
-        };;
+        };
 
 
         // Adiciona a requisição à fila

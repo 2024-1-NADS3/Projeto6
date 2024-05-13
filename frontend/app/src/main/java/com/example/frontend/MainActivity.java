@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //Log.d("O token está aqui na main?", token.getToken());
+        Log.d("O token está aqui na main?", token.getToken());
     }
 
     /**
@@ -161,22 +161,23 @@ public class MainActivity extends AppCompatActivity {
                     GToken.clearToken();
                     Intent intent = new Intent(MainActivity.this, FormLogin.class);
                     startActivity(intent);
-                } else if (error instanceof NetworkError) {
-                    errorMessage = "Sem conexão com a internet. Por favor, verifique sua conexão.";
-                } else if (error instanceof ServerError) {
-                    errorMessage = "O servidor está enfrentando problemas. Por favor, tente novamente mais tarde.";
-                } else if (error instanceof ParseError) {
-                    errorMessage = "Houve um problema ao processar a resposta do servidor.";
-                } else if (error instanceof TimeoutError) {
-                    errorMessage = "A solicitação demorou muito para ser processada. Por favor, tente novamente mais tarde.";
+                } else {
+                    if (error instanceof NetworkError) {
+                        errorMessage = "Sem conexão com a internet. Por favor, verifique sua conexão.";
+                    } else if (error instanceof ServerError) {
+                        errorMessage = "O servidor está enfrentando problemas. Por favor, tente novamente mais tarde.";
+                    } else if (error instanceof ParseError) {
+                        errorMessage = "Houve um problema ao processar a resposta do servidor.";
+                    } else if (error instanceof TimeoutError) {
+                        errorMessage = "A solicitação demorou muito para ser processada. Por favor, tente novamente mais tarde.";
+                    }
+
+                    new AlertDialog.Builder(MainActivity.this)
+                            .setTitle("Erro")
+                            .setMessage(errorMessage)
+                            .setPositiveButton("OK", null)
+                            .show();
                 }
-
-
-                new AlertDialog.Builder(MainActivity.this)
-                        .setTitle("Erro")
-                        .setMessage(errorMessage)
-                        .setPositiveButton("OK", null)
-                        .show();
 
             }
         }) {
