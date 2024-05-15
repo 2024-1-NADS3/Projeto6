@@ -188,9 +188,13 @@ public class FormLogin extends AppCompatActivity {
                         String userType = response.optString("userType");
 
                         if (userType.equals("partner")) {
+                            pegarNomeDoUsuarioOuParceiro("partner", token);
+
                             Intent mudarTelaPerfilParceiro = new Intent(FormLogin.this,PerfilPaceiro.class);
                             startActivity(mudarTelaPerfilParceiro);
+
                         } else {
+                            pegarNomeDoUsuarioOuParceiro("user", token);
                             Intent mudarTelaPerfilUsuario = new Intent(FormLogin.this,PerfilUsuario.class);
                             startActivity(mudarTelaPerfilUsuario);
                         }
@@ -212,6 +216,49 @@ public class FormLogin extends AppCompatActivity {
 
         RequestQueue requestQueueInfo = Volley.newRequestQueue(getApplicationContext());
         requestQueueInfo.add(jsonObjectRequestInfo);
+    }
+
+    public void pegarNomeDoUsuarioOuParceiro(String userType, String token) {
+        String urlInfo;
+
+        if (userType.equals("partner")) {
+            urlInfo = Constants.BASE_URL + "/parceiro/pegar-nome-instituicao";
+        } else {
+            urlInfo = Constants.BASE_URL + "/usuario/pegar-nome-do-usuario";
+        }
+
+
+        JsonObjectRequest jsonObjectRequestInfo = new JsonObjectRequest(Request.Method.GET, urlInfo, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        // Aqui você recebe o tipo de usuário na resposta
+                        if (userType.equals("partner")) {
+                            String instituitionName = response.optString("instituitionName");
+                            Log.d("nome instituicao", instituitionName);
+                            Constants.userName = instituitionName;
+                        } else {
+                            Constants.userName = response.optString("name");
+                            Log.d("nome usuário", response.optString("name"));
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("erro na requisição do nome", "onErrorResponse: " + error);
+            }
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> headers = new HashMap<>();
+                headers.put("Authorization", "Bearer " + token);
+                return headers;
+            }
+        };
+
+        RequestQueue requestQueueInfo = Volley.newRequestQueue(getApplicationContext());
+        requestQueueInfo.add(jsonObjectRequestInfo);
+
     }
 
     /**

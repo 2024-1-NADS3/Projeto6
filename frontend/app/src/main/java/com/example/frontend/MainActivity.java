@@ -2,6 +2,9 @@ package com.example.frontend;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -52,6 +55,9 @@ public class MainActivity extends AppCompatActivity {
     GerenciadorToken token;
     String finalURL = Constants.BASE_URL + "/cursos/todos";
 
+    private boolean drawerAberto = false;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // Inicializa a Activity, define o layout e configura os componentes da UI.
@@ -59,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         actionBar();
+
+
 
         errorTextView = findViewById(R.id.errorTextView);
         recyclerView = findViewById(R.id.recyclerView);
@@ -111,7 +119,9 @@ public class MainActivity extends AppCompatActivity {
                     Intent mudarTelaParaLogin = new Intent(MainActivity.this, FormLogin.class);
                     startActivity(mudarTelaParaLogin);
                 } else {
-                    redirecionarUsuario(token);
+                    abrirDrawer();
+
+                    //redirecionarUsuario(token);
                 }
 
 //                Intent intent = new Intent (MainActivity.this, TelaUsuario.class);
@@ -127,6 +137,38 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+
+    public void abrirDrawer() {
+
+        //Obtendo o FragmentManager
+        FragmentManager fragmentManager = getSupportFragmentManager();
+
+        //Verifica se o Navigation Drawer está aberto
+        if (drawerAberto) {
+            //Se estiver aberto, remover o fragment
+            Fragment fragment = fragmentManager.findFragmentById(R.id.containerLayout);
+            if (fragment instanceof NavigationDrawer){
+                FragmentTransaction transaction = fragmentManager.beginTransaction();
+                transaction.setCustomAnimations(R.anim.slide_in, R.anim.slide_out);
+                transaction.remove(fragment).commit();
+                drawerAberto = false;
+            }
+
+
+        }else {
+            //Se não estiver aberto, adiciona o fragment
+            NavigationDrawer drawerFragment = new NavigationDrawer();
+            FragmentTransaction transaction = fragmentManager.beginTransaction();
+            transaction.setCustomAnimations(R.anim.slide_in, R.anim.slide_out);
+            transaction.replace(R.id.containerLayout, drawerFragment);
+            transaction.addToBackStack(null); // Adiciona o fragment à pilha de BackStack
+            transaction.commit();
+            drawerAberto = true; //Atualiza a flag
+        }
+
+
     }
 
     /**

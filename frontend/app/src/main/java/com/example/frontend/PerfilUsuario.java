@@ -2,6 +2,9 @@ package com.example.frontend;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -50,7 +53,7 @@ public class PerfilUsuario extends AppCompatActivity {
     RequestQueue filaRequest;
     ProgressBar progressBarUser;
     TextView errorUserTextView, warnings;
-
+    private boolean drawerAberto = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,14 +125,13 @@ public class PerfilUsuario extends AppCompatActivity {
     }
 
     public void actionBar() {
-        //Button botaoUsuario = findViewById(R.id.ic_usuario);
-//        botaoUsuario.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent (MainActivity.this, TelaUsuario.class);
-//                startActivity(intent);
-//            }
-//        });
+        Button botaoUsuario = findViewById(R.id.ic_usuarioPerfil);
+        botaoUsuario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                abrirDrawer();
+            }
+        });
 
         TextView botaoTitulo = findViewById(R.id.titulo_PerfilUsuario);
         botaoTitulo.setOnClickListener(new View.OnClickListener() {
@@ -139,6 +141,37 @@ public class PerfilUsuario extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    public void abrirDrawer() {
+
+        //Obtendo o FragmentManager
+        FragmentManager fragmentManager = getSupportFragmentManager();
+
+        //Verifica se o Navigation Drawer está aberto
+        if (drawerAberto) {
+            //Se estiver aberto, remover o fragment
+            Fragment fragment = fragmentManager.findFragmentById(R.id.containerLayout_PerfilUsuario);
+            if (fragment instanceof NavigationDrawer){
+                FragmentTransaction transaction = fragmentManager.beginTransaction();
+                transaction.setCustomAnimations(R.anim.slide_in, R.anim.slide_out);
+                transaction.remove(fragment).commit();
+                drawerAberto = false;
+            }
+
+
+        } else {
+            //Se não estiver aberto, adiciona o fragment
+            NavigationDrawer drawerFragment = new NavigationDrawer();
+            FragmentTransaction transaction = fragmentManager.beginTransaction();
+            transaction.setCustomAnimations(R.anim.slide_in, R.anim.slide_out);
+            transaction.replace(R.id.containerLayout_PerfilUsuario, drawerFragment);
+            transaction.addToBackStack(null); // Adiciona o fragment à pilha de BackStack
+            transaction.commit();
+            drawerAberto = true; //Atualiza a flag
+        }
+
+
     }
 
     public void filtroSpinner() {
