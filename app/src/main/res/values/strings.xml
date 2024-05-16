@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">frontend</string>
+
+
+    // Botão de acessar da tela de login
+    <string name="entrar">Acessar</string>
+    // Texto clicável na tela de login que direciona o usuário para a tela de cadastro
+    <string name="text_cadastro">Ainda não está na Educaliza? Crie sua conta</string>
+    //Título da Tela de login
+    <string name="titulo_login">Entrar</string>
+    // Texto clicável que irá direcionar o usuário para realizar a troca de senha caso esqueça
+    <string name="esqueci_senha">Esqueci minha senha</string>
+
+    // Título da tela de cadastro
+    <string name="titulo_cadastro">Criar Conta</string>
+
+    //TEla
+    <string name="tela_cadastro_login">Escolha como deseja se cadastrar!</string>
+    <string name="title_activity_perfil_usuario">PerfilUsuario</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <string-array name="categoria">
+        <item>Música</item>
+        <item>Esportes</item>
+        <item>Diversos</item>
+        <item>Informática</item>
+    </string-array>
+
+</resources>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Frontend"
+        android:usesCleartextTraffic="true"
+        tools:targetApi="31">
+        <activity
+            android:name=".NovoCursoOnline"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".NovoCursoPresencial"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".NovoCursoPresencialEndereco"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".EditarCursoOnline"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".EditarCursoPresencial"
+            android:exported="false" />
+        <activity
+            android:name=".EditarCursoPresencialEndereco"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".TelaInfoApp"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".PerfilUsuarioCursoExpandido"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".PefilParceiroCursoExpandido"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".PerfilPaceiro"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".PerfilUsuario"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".FormCadastroPJ"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".FormCadastro"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".TelaRecuperarSenha"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".FormLogin"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".TelaInicio"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".TelaLoading"
+            android:exported="true"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".TelaCursoExpandido"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".Filtros"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"/>
+    </application>
+
+</manifest>

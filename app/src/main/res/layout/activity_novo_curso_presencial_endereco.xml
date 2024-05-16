@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".NovoCursoOnline">
+
+    <View
+        android:id="@+id/containerComponents"
+        style="@style/ContainerComponents"
+        android:layout_marginTop="180dp"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/titulo_novo_curso"
+        style="@style/TextView"
+        android:layout_marginTop="16dp"
+        android:inputType="text"
+        android:text="Endereço"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="@id/containerComponents"
+        app:layout_constraintStart_toStartOf="@id/containerComponents"
+        app:layout_constraintTop_toTopOf="@id/containerComponents"
+        tools:ignore="TextViewEdits"
+        />
+
+    <ImageView
+        android:id="@+id/voltar_novo_curso_presencial"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/back_button"
+        app:layout_constraintStart_toStartOf="@id/containerComponents"
+        app:layout_constraintTop_toTopOf="@id/containerComponents"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        />
+    <View
+        android:id="@+id/containerComponentsDois"
+        style="@style/ContainerComponents"
+        android:layout_height="300dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/containerComponents"
+        />
+
+    <EditText
+        android:id="@+id/campo_rua"
+        style="@style/Edit_Text"
+        android:layout_marginTop="40dp"
+        android:hint="Rua:"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="@id/containerComponents"
+        app:layout_constraintStart_toStartOf="@id/containerComponents"
+        app:layout_constraintTop_toBottomOf="@+id/containerComponents"
+        />
+
+    <EditText
+        android:id="@+id/campo_numero"
+        style="@style/Edit_Text"
+        android:layout_marginTop="8dp"
+        android:hint="Número:"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="@id/containerComponents"
+        app:layout_constraintStart_toStartOf="@id/containerComponents"
+        app:layout_constraintTop_toBottomOf="@+id/campo_rua"
+        />
+
+    <EditText
+        android:id="@+id/campo_cep"
+        style="@style/Edit_Text"
+        android:layout_marginTop="8dp"
+        android:hint="CEP:"
+        android:inputType="date"
+        app:layout_constraintEnd_toEndOf="@id/containerComponents"
+        app:layout_constraintStart_toStartOf="@id/containerComponents"
+        app:layout_constraintTop_toBottomOf="@+id/campo_numero"
+        />
+
+    <EditText
+        android:id="@+id/campo_zona"
+        style="@style/Edit_Text"
+        android:layout_marginTop="8dp"
+        android:hint="Zona:"
+        android:inputType="date"
+        app:layout_constraintEnd_toEndOf="@id/containerComponents"
+        app:layout_constraintStart_toStartOf="@id/containerComponents"
+        app:layout_constraintTop_toBottomOf="@+id/campo_cep"
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/criar"
+        style="@style/ButtonGreen"
+        android:layout_width="200dp"
+        android:layout_marginTop="22dp"
+        android:onClick="CriarNovoCursoPresencial"
+        android:text="Criar curso"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/campo_zona"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/azulCartao"
+    tools:context=".TelaInicio">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="160dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/educalizalogo"
+        />
+
+    <TextView
+        android:id="@+id/educaliza"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Educaliza"
+        android:textSize="50dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logo"
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/botNavegar"
+        style="@style/ButtonInicio"
+        android:onClick="Navegar"
+        android:text="Navegar"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/educaliza"
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/botAcessar"
+        style="@style/ButtonInicio"
+        android:onClick="Acessar"
+        android:text="Acessar"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/botNavegar"
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/botCadastrar"
+        style="@style/ButtonInicio"
+        android:onClick="Cadastrar"
+        android:text="Cadastrar"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/botAcessar"
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/botCadastrarParceiro"
+        style="@style/ButtonBlue"
+        android:layout_width="250dp"
+        android:layout_marginTop="10dp"
+        android:onClick="VirarParceiro"
+        android:text="Virar parceiro"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/botCadastrar"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
