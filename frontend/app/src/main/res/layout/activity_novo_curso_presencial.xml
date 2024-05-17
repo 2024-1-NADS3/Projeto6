@@ -122,7 +122,6 @@
             android:id="@+id/cancelar"
             style="@style/ButtonRed"
             android:layout_width="145dp"
-            android:layout_marginTop="10dp"
             android:onClick="Cancelar"
             android:text="Cancelar"
             />
@@ -136,10 +135,8 @@
             android:id="@+id/proxima_pagina"
             style="@style/ButtonGreen"
             android:layout_width="145dp"
-            android:layout_marginTop="10dp"
-            android:onClick="ProximaPagina"
-            android:text="Prosseguir"
-            />
+            android:onClick="Prosseguir"
+            android:text="Prosseguir" />
 
     </LinearLayout>
 

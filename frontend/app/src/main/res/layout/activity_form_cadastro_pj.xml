@@ -143,7 +143,7 @@
         style="@style/ButtonBlue"
         android:layout_width="250dp"
         android:layout_marginTop="10dp"
-        android:onClick="IrLogin"
+        android:onClick="PJIrLogin"
         android:text="Já tenho cadastro"
         app:layout_constraintEnd_toEndOf="@id/containerComponents"
         app:layout_constraintStart_toStartOf="@id/containerComponents"

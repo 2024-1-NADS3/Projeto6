@@ -166,4 +166,10 @@ public class FormCadastroPJ extends AppCompatActivity implements VolleyCallback 
         Intent voltarTelaLogin = new Intent(FormCadastroPJ.this, TelaInicio.class);
         startActivity(voltarTelaLogin);
     }
+
+    public void PJIrLogin(View view)
+    {
+        Intent irTelaLogin = new Intent(FormCadastroPJ.this, FormLogin.class);
+        startActivity(irTelaLogin);
+    }
 }

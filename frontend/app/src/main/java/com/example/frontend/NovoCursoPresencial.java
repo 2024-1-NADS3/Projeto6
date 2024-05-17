@@ -47,7 +47,7 @@ public class NovoCursoPresencial extends AppCompatActivity {
         campoCategoria.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, categorias));
     }
 
-    public void ProximaPagina(View view) {
+    public void Prosseguir(View view) {
         // Obtendo os valores dos campos
         String nomeCurso = campo_nome_curso.getText().toString();
         String vagas = campo_vagas.getText().toString();
@@ -72,4 +72,5 @@ public class NovoCursoPresencial extends AppCompatActivity {
         Intent Cancelar = new Intent(NovoCursoPresencial.this, PerfilPaceiro.class);
         startActivity(Cancelar);
     }
+
 }

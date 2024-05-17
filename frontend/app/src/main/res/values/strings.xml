@@ -27,6 +27,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <string name="texto_recuperar_senha">Insira seu endereço de e-mail e lhe enviaremos instruções para redefinir sua senha."</string>
+
     <string-array name="categoria">
         <item>Música</item>
         <item>Esportes</item>
