@@ -23,7 +23,7 @@
                 android:id="@+id/Toolbar_TelaPerfilParceiro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/blue_educaliza"
+                android:background="@color/blue"
                 android:titleTextColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -62,15 +62,15 @@
     <View
         android:id="@+id/containerComponents"
         style="@style/ContainerComponents"
-        android:layout_width="341dp"
-        android:layout_height="139dp"
-        android:layout_marginTop="15dp"
+        android:layout_width="340dp"
+        android:layout_height="180dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/AppBarLayout_TelaPerfilParceiro" />
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/curso_cadastrados"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -78,78 +78,86 @@
         android:textColor="#fff"
         android:textSize="22dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/searchBar"
         app:layout_constraintEnd_toEndOf="@+id/containerComponents"
         app:layout_constraintStart_toStartOf="@+id/containerComponents"
         app:layout_constraintTop_toTopOf="@+id/containerComponents"
-        app:layout_constraintVertical_bias="0.571" />
+        />
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="315dp"
-        android:layout_height="40dp"
-        android:layout_marginBottom="20dp"
-        android:backgroundTint="@color/greenButton"
-        android:text="+ Adicionar novo curso"
-        android:textColor="#fff"
-        android:textSize="12dp"
-        app:cornerRadius="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/containerComponents"
-        app:layout_constraintEnd_toEndOf="@+id/containerComponents"
-        app:layout_constraintStart_toStartOf="@+id/containerComponents" />
-
-    <SearchView
+    <androidx.appcompat.widget.SearchView
         android:id="@+id/searchBarPerfilParceiro"
         android:layout_width="315dp"
-        android:layout_height="28dp"
-        android:layout_marginBottom="4dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/search_view_perfis"
         android:queryHint="Nome do curso"
-        app:layout_constraintBottom_toTopOf="@+id/button3"
+        app:layout_constraintTop_toBottomOf="@id/curso_cadastrados"
         app:layout_constraintEnd_toEndOf="@+id/containerComponents"
-        app:layout_constraintStart_toStartOf="@+id/containerComponents" />
+        app:layout_constraintStart_toStartOf="@+id/containerComponents"
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/add_curso_presencial"
+        style="@style/ButtonGreen"
+        android:layout_width="315dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="12dp"
+        android:onClick="irParaNovoCursoPresencial"
+        android:text="+ Adicionar novo curso presencial"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/containerComponents"
+        app:layout_constraintStart_toStartOf="@+id/containerComponents"
+        app:layout_constraintTop_toBottomOf="@id/searchBarPerfilParceiro"
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/add_curso_online"
+        style="@style/ButtonGreen"
+        android:layout_width="315dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="8dp"
+        android:onClick="irParaNovoCursoOnline"
+        android:text="+ Adicionar novo curso online"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/containerComponents"
+        app:layout_constraintStart_toStartOf="@+id/containerComponents"
+        app:layout_constraintTop_toBottomOf="@+id/add_curso_presencial"
+        />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewPartner"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="1dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/containerComponents"
-        app:layout_constraintVertical_bias="0.0"
-        tools:ignore="MissingConstraints" />
+         />
 
     <ProgressBar
         android:id="@+id/progressBarPerfilParceiro"
         style="?android:attr/progressBarStyle"
-        android:layout_width="46dp"
-        android:layout_height="39dp"
+        android:layout_width="45dp"
+        android:layout_height="40dp"
         android:layout_marginTop="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerViewPartner"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/containerComponents"
-        app:layout_constraintVertical_bias="0.0" />
+        />
 
     <TextView
         android:id="@+id/errorPartnerTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="Não foi possível carregar os cursos"
         android:textColor="@android:color/darker_gray"
         android:textSize="18sp"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@+id/recyclerViewPartner"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/containerComponents"
-        app:layout_constraintVertical_bias="0.059" />
+        app:layout_constraintTop_toTopOf="@+id/recyclerViewPartner"
+        app:layout_constraintBottom_toBottomOf="@id/recyclerViewPartner"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

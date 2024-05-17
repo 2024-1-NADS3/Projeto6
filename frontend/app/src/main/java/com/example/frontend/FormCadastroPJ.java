@@ -35,12 +35,7 @@ public class FormCadastroPJ extends AppCompatActivity implements VolleyCallback 
 
         voltarLogin = findViewById(R.id.voltar_login);
 
-        voltarLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                voltarTelaEscolhaCadastro();
-            }
-        });
+        voltarLogin.setOnClickListener(v -> voltarTelaInicio());
 
         campo_cnpj = findViewById(R.id.campo_cnpj);
         campo_nome_pj = findViewById(R.id.campo_nome_pj);
@@ -167,8 +162,8 @@ public class FormCadastroPJ extends AppCompatActivity implements VolleyCallback 
                 .show();
     }
 
-    private void voltarTelaEscolhaCadastro() {
-        Intent voltarTelaLogin = new Intent(FormCadastroPJ.this, TelaEscolhaCadastro.class);
+    private void voltarTelaInicio() {
+        Intent voltarTelaLogin = new Intent(FormCadastroPJ.this, TelaInicio.class);
         startActivity(voltarTelaLogin);
     }
 }

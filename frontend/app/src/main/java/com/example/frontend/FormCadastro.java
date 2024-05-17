@@ -36,7 +36,7 @@ public class FormCadastro extends AppCompatActivity implements VolleyCallback {
 
         voltarLogin = findViewById(R.id.voltar_login);
 
-        voltarLogin.setOnClickListener(v -> voltarTelaEscolhaCadastro());
+        voltarLogin.setOnClickListener(v -> voltarTelaInico());
 
         campo_nome = findViewById(R.id.campo_nome);
         campo_email = findViewById(R.id.campo_email);
@@ -160,8 +160,8 @@ public class FormCadastro extends AppCompatActivity implements VolleyCallback {
     }
 
     /** Método que retorna para o formulário de login */
-    private void voltarTelaEscolhaCadastro() {
-        Intent voltarTelaLogin = new Intent(FormCadastro.this, TelaEscolhaCadastro.class);
+    private void voltarTelaInico() {
+        Intent voltarTelaLogin = new Intent(FormCadastro.this, TelaInicio.class);
         startActivity(voltarTelaLogin);
     }
 }

@@ -38,7 +38,7 @@ import java.util.Map;
  * Adaptador personalizado para RecyclerView que exibe uma lista de cursos em um perfil.
  *
  */
-public class AdapterInscricoesUsuario extends RecyclerView.Adapter<AdapterInscricoesUsuario.ViewHolder> {
+public class    AdapterInscricoesUsuario extends RecyclerView.Adapter<AdapterInscricoesUsuario.ViewHolder> {
     private Context context;
     private int courseId;
     private List<Usuario> users;

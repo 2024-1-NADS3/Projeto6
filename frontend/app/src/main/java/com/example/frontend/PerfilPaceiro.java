@@ -16,7 +16,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
-import android.widget.SearchView;
+import androidx.appcompat.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -325,6 +325,18 @@ public class PerfilPaceiro extends AppCompatActivity {
         recyclerViewPartner.setLayoutManager(new LinearLayoutManager(PerfilPaceiro.this));
         adapterPartner = new CursoAdapterPerfil(PerfilPaceiro.this, registeredCourses);
         recyclerViewPartner.setAdapter(adapterPartner);
+    }
+
+    public void irParaNovoCursoOnline(View view)
+    {
+        Intent irNovoCursoOnline = new Intent(PerfilPaceiro.this, NovoCursoOnline.class);
+        startActivity(irNovoCursoOnline);
+    }
+
+    public void irParaNovoCursoPresencial(View view)
+    {
+        Intent irNovoCursoPresencial = new Intent(PerfilPaceiro.this, NovoCursoPresencial.class);
+        startActivity(irNovoCursoPresencial);
     }
 
 }

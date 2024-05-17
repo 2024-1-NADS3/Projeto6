@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -49,21 +52,40 @@ public class FormLogin extends AppCompatActivity {
 
         campo_email = findViewById(R.id.email);
         campo_senha = findViewById(R.id.senha);
+
+        //Separando a string e tornando uma parte dela clicável
+        String textoCompleto = "Ainda não está na Educaliza? Crie sua conta";
+
+        SpannableString spannableString = new SpannableString(textoCompleto);
+
+        int startIndex = textoCompleto.indexOf("Crie sua conta");
+        int endIndex = startIndex + "Crie sua conta".length();
+
+        ClickableSpan clickableSpan = new ClickableSpan() {
+            @Override
+            public void onClick(View widget) {
+                Intent MudarTelaCadatros= new Intent(FormLogin.this,TelaInicio.class);
+                startActivity(MudarTelaCadatros);
+            }
+        };
+        spannableString.setSpan(clickableSpan, startIndex, endIndex, 0);
+
+        // Defina a SpannableString no TextView
+        text_tela_cadastro.setText(spannableString);
+        // Permita que o link seja clicável
+        text_tela_cadastro.setMovementMethod(LinkMovementMethod.getInstance());
         text_tela_cadastro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent mudarTelaCadastro = new Intent(FormLogin.this,TelaEscolhaCadastro.class);
+                Intent mudarTelaCadastro = new Intent(FormLogin.this,TelaInicio.class);
                 startActivity(mudarTelaCadastro);
             }
         });
-        esqueci_senha.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        esqueci_senha.setOnClickListener(v -> {
 
-                Intent mudarTelaRecSenha= new Intent(FormLogin.this,TelaRecuperarSenha.class);
-                startActivity(mudarTelaRecSenha);
-            }
+            Intent mudarTelaRecSenha= new Intent(FormLogin.this,TelaRecuperarSenha.class);
+            startActivity(mudarTelaRecSenha);
         });
         voltar_tela_inicio.setOnClickListener(new View.OnClickListener() {
             @Override

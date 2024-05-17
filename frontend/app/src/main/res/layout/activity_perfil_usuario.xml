@@ -23,7 +23,7 @@
                 android:id="@+id/Toolbar_TelaPerfilUsuario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/blue_educaliza"
+                android:background="@color/blue"
                 android:titleTextColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -55,8 +55,11 @@
                 android:drawableTop="@drawable/ic_usuario"
                 app:layout_constraintBottom_toBottomOf="@id/Toolbar_TelaPerfilUsuario"
                 app:layout_constraintEnd_toEndOf="@id/Toolbar_TelaPerfilUsuario"
-                app:layout_constraintTop_toTopOf="@id/Toolbar_TelaPerfilUsuario" />
+                app:layout_constraintTop_toTopOf="@id/Toolbar_TelaPerfilUsuario"
+                />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </com.google.android.material.appbar.AppBarLayout>
 
     <View
@@ -70,7 +73,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/AppBarLayout_TelaPerfilUsuario" />
-
 
     <View
         android:id="@+id/testandoWarning"
@@ -125,7 +127,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:radius="8dp"
-            android:textSize="10sp" />
+            android:textSize="10sp"
+            />
 
     </LinearLayout>
 

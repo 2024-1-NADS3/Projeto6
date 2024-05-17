@@ -15,45 +15,59 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".NovoCursoPresencialEndereco"
+            android:exported="false" />
+        <activity
+            android:name=".NovoCursoPresencial"
+            android:exported="false" />
+        <activity
+            android:name=".NovoCursoOnline"
+            android:exported="false" />
+        <activity
+            android:name=".EditarCursoPresencialEndereco"
+            android:exported="false" />
+        <activity
+            android:name=".EditarCursoPresencial"
+            android:exported="false" />
+        <activity
+            android:name=".EditarCursoOnline"
+            android:exported="false" />
+        <activity
             android:name=".PerfilUsuarioCursoExpandido"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".PefilParceiroCursoExpandido"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".PerfilPaceiro"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".PerfilUsuario"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".FormCadastroPJ"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".FormCadastro"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".TelaRecuperarSenha"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".FormLogin"
             android:exported="false"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name=".TelaEscolhaCadastro"
-            android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".TelaInicio"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".TelaLoading"
             android:exported="true">
@@ -66,15 +80,15 @@
         <activity
             android:name=".TelaCursoExpandido"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Filtros"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

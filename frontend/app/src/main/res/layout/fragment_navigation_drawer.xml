@@ -11,7 +11,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="180dp"
         android:layout_height="match_parent"
-        android:background="@color/blue_educaliza">
+        android:background="@color/blue">
 
 
         <View

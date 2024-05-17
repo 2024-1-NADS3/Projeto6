@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">frontend</string>
 
-
     // Botão de acessar da tela de login
     <string name="entrar">Acessar</string>
     // Texto clicável na tela de login que direciona o usuário para a tela de cadastro
@@ -14,7 +13,7 @@
     // Título da tela de cadastro
     <string name="titulo_cadastro">Criar Conta</string>
 
-    //TEla
+    //Tela
     <string name="tela_cadastro_login">Escolha como deseja se cadastrar!</string>
     <string name="title_activity_perfil_usuario">PerfilUsuario</string>
     <!-- Strings used for fragments for navigation -->
@@ -27,4 +26,12 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="categoria">
+        <item>Música</item>
+        <item>Esportes</item>
+        <item>Diversos</item>
+        <item>Informática</item>
+    </string-array>
+
 </resources>

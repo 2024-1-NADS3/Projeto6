@@ -63,10 +63,7 @@ public class MainActivity extends AppCompatActivity {
         // Inicializa a Activity, define o layout e configura os componentes da UI.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         actionBar();
-
-
 
         errorTextView = findViewById(R.id.errorTextView);
         recyclerView = findViewById(R.id.recyclerView);

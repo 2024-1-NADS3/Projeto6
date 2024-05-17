@@ -23,7 +23,7 @@
                 android:id="@+id/Toolbar_ParceiroCursoExpandido"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/blue_educaliza"
+                android:background="@color/blue"
                 android:titleTextColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -37,7 +37,6 @@
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold"
-
                 app:layout_constraintBottom_toBottomOf="@id/Toolbar_ParceiroCursoExpandido"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/Toolbar_ParceiroCursoExpandido"
@@ -49,7 +48,6 @@
     <View
         android:id="@+id/containerComponents"
         style="@style/ContainerComponents"
-
         android:layout_height="480dp"
         android:layout_marginTop="28dp"
         app:layout_constraintEnd_toEndOf="parent"

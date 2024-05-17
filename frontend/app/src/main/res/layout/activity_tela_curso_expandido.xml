@@ -23,7 +23,7 @@
                 android:id="@+id/Toolbar_TelaCursoExpandido"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/blue_educaliza"
+                android:background="@color/blue"
                 android:titleTextColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
