@@ -11,7 +11,6 @@
         android:id="@+id/AppBarLayout_TelaCursoExpandidoUsuario"
         android:layout_width="411dp"
         android:layout_height="wrap_content"
-        android:alpha="0.8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -189,7 +188,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.01"
         app:layout_constraintStart_toEndOf="@+id/textView5User"
-        app:layout_constraintTop_toBottomOf="@+id/textView4User" />
+        app:layout_constraintTop_toBottomOf="@+id/courseAdressExpandedUser" />
 
     <TextView
         android:id="@+id/textView1User"
@@ -295,7 +294,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginLeft="25dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4User" />
+        app:layout_constraintTop_toBottomOf="@+id/courseAdressExpandedUser" />
 
     <View
         android:id="@+id/dividerUser"

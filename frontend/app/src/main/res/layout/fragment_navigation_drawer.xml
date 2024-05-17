@@ -9,69 +9,105 @@
     android:layoutDirection="rtl">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
+        android:layout_width="180dp"
         android:layout_height="match_parent"
         android:background="@color/blue_educaliza">
 
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginBottom="4dp"
+            android:background="#fff"
+            app:layout_constraintBottom_toTopOf="@+id/buttonIrPerfil"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/nomeUsuarioDrawer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="72dp"
-            android:padding="10dp"
-            android:text="Nome Usuário"
+            android:scrollHorizontally="false"
+            android:ellipsize="none"
+            android:gravity="center"
+            android:text="Nome do Usuário"
             android:textColor="@color/white"
-            android:textSize="20dp"
+            android:textSize="22dp"
             android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/view2"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.555"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.831" />
+
+        <View
+            android:id="@+id/dividerDrawer"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginBottom="16dp"
+            android:background="#fff"
+            app:layout_constraintBottom_toTopOf="@+id/botao_sair"
+            tools:layout_editor_absoluteX="0dp" />
 
         <Button
             android:id="@+id/buttonIrPerfil"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="368dp"
+            android:layout_width="97dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="344dp"
+            android:background="#00000000"
             android:text="Perfil"
             android:textColor="#fff"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/view"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.491"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/nomeUsuarioDrawer" />
+            app:layout_constraintHorizontal_bias="0.506"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/botao_deletar_conta"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
+            android:layout_marginBottom="16dp"
+            android:background="#00000000"
             android:padding="5dp"
             android:text="Deletar conta"
             android:textAllCaps="false"
-
             android:textColor="@color/white"
-            android:textSize="16dp"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/dividerDrawer"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buttonIrPerfil" />
+            app:layout_constraintHorizontal_bias="0.507"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginBottom="16dp"
+            android:background="#fff"
+            app:layout_constraintBottom_toTopOf="@+id/botao_deletar_conta"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/botao_sair"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
+            android:layout_marginBottom="16dp"
+            android:background="#00000000"
             android:padding="5dp"
             android:text="Sair"
             android:textAllCaps="false"
             android:textColor="#fff"
-            android:textSize="16dp"
+            android:textSize="15dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.491"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/botao_deletar_conta" />
+            app:layout_constraintStart_toStartOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
