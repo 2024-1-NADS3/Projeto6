@@ -8,7 +8,6 @@ public class GerenciadorToken {
     // é uma constante que define o nome do arquivo de preferências compartilhadas usado para armazenar o token JWT.
     private static final String PREF_NAME = "PrefsDoApp";
     private static final String TOKEN_KEY = "access_token";
-
     private SharedPreferences sharedPreferences;
 
     public GerenciadorToken(Context context) {

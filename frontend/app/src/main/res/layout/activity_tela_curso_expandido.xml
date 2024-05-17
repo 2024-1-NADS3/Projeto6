@@ -11,7 +11,6 @@
         android:id="@+id/AppBarLayout_TelaCursoExpandido"
         android:layout_width="411dp"
         android:layout_height="wrap_content"
-        android:alpha="0.8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
