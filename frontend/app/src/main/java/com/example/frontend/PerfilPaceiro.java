@@ -2,6 +2,7 @@ package com.example.frontend;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -17,6 +18,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import androidx.appcompat.widget.SearchView;
+
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -150,9 +153,15 @@ public class PerfilPaceiro extends AppCompatActivity {
                 transaction.setCustomAnimations(R.anim.slide_in, R.anim.slide_out);
                 transaction.remove(fragment).commit();
                 drawerAberto = false;
+
+                // Ajusta a elevação dos botões para que fiquem atrás do fragmento
+                Button button = findViewById(R.id.add_curso_presencial);
+                button.setEnabled(true);
+                button.setElevation(0); // Define a elevação para o valor padrão (zero)
+                Button buttonOnline = findViewById(R.id.add_curso_online);
+                buttonOnline.setEnabled(true);
+                buttonOnline.setElevation(0); // Define a elevação para o valor padrão (zero)
             }
-
-
         } else {
             //Se não estiver aberto, adiciona o fragment
             NavigationDrawer drawerFragment = new NavigationDrawer();
@@ -162,9 +171,15 @@ public class PerfilPaceiro extends AppCompatActivity {
             transaction.addToBackStack(null); // Adiciona o fragment à pilha de BackStack
             transaction.commit();
             drawerAberto = true; //Atualiza a flag
+
+            // Ajusta a elevação dos botões para que fiquem atrás do fragmento
+            Button button = findViewById(R.id.add_curso_presencial);
+            button.setEnabled(false);
+            button.setElevation(-1); // Define uma elevação menor que zero para ficar atrás do fragmento
+            Button buttonOnline = findViewById(R.id.add_curso_online);
+            buttonOnline.setEnabled(false);
+            buttonOnline.setElevation(-1); // Define uma elevação menor que zero para ficar atrás do fragmento
         }
-
-
     }
 
     public void deletarConta(View view) {

@@ -34,11 +34,12 @@
         android:id="@+id/containerComponents"
         style="@style/ContainerComponents"
         android:layout_width="match_parent"
-        android:layout_height="600dp"
+        android:layout_height="550dp"
+        android:layout_marginTop="20dp"
+        android:onClick="Cancelar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/containerComponentsTitulo"
-        />
+        app:layout_constraintTop_toBottomOf="@id/containerComponentsTitulo" />
 
     <EditText
         android:id="@+id/campo_nome_curso"
@@ -82,16 +83,6 @@
         app:layout_constraintTop_toBottomOf="@+id/campo_data_inicial"
         />
 
-    <Spinner
-        android:id="@+id/campo_categoria"
-        style="@style/SpinnerDropdownItemStyle"
-        android:layout_marginTop="8dp"
-        android:prompt="@array/categoria"
-        app:layout_constraintEnd_toEndOf="@id/containerComponents"
-        app:layout_constraintStart_toStartOf="@id/containerComponents"
-        app:layout_constraintTop_toBottomOf="@+id/campo_data_final"
-        />
-
     <EditText
         android:id="@+id/descricao_curso"
         style="@style/Edit_Text"
@@ -103,7 +94,7 @@
         android:gravity="start"
         app:layout_constraintEnd_toEndOf="@id/containerComponents"
         app:layout_constraintStart_toStartOf="@id/containerComponents"
-        app:layout_constraintTop_toBottomOf="@+id/campo_categoria"
+        app:layout_constraintTop_toBottomOf="@+id/campo_data_final"
         />
 
     <LinearLayout
@@ -122,6 +113,7 @@
             android:layout_width="140dp"
             android:layout_marginTop="10dp"
             android:text="Cancelar"
+            android:onClick="Cancelar"
             />
 
         <Space
@@ -135,6 +127,7 @@
             android:layout_width="140dp"
             android:layout_marginTop="10dp"
             android:text="Prosseguir"
+            android:onClick="onClickAtualizarCursoPresencial"
             />
 
     </LinearLayout>

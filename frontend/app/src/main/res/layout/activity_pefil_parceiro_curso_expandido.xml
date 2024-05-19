@@ -75,6 +75,7 @@
         android:layout_height="48dp"
         android:backgroundTint="#4BA405"
         android:text="Editar curso"
+        android:onClick="EditarCurso"
         android:textColor="#fff"
         app:layout_constraintBottom_toTopOf="@+id/button9"
         app:layout_constraintEnd_toEndOf="parent"

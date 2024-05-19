@@ -73,6 +73,8 @@ public class PefilParceiroCursoExpandido extends AppCompatActivity {
 
         curso = (Curso) getIntent().getSerializableExtra("curso");
         Log.d("id do curso", String.valueOf(curso.getCourseId()));
+        Log.d("tipo do curso", String.valueOf(curso.getType()));
+        Log.d("endereco do curso", String.valueOf(curso.getAddress()));
 
         filaRequest = Volley.newRequestQueue(this);
 
@@ -256,6 +258,26 @@ public class PefilParceiroCursoExpandido extends AppCompatActivity {
         recyclerViewUsuariosCadastrados.setAdapter(adapterUsuariosCadastrados);
     }
 
+    public void EditarCurso(View view)
+    {
+        String endereco = curso.getAddress();
+        String zona = curso.getZone();
+        String tipo = curso.getType();
+        int courseId = curso.getCourseId();
+
+        if(tipo.equals("Online")){
+            Intent EditarCursoOnline = new Intent(PefilParceiroCursoExpandido.this, EditarCursoOnline.class);
+            EditarCursoOnline.putExtra("courseId", courseId);
+            startActivity(EditarCursoOnline);
+        }
+        else{
+            Intent EditarCursoPresencial = new Intent(PefilParceiroCursoExpandido.this, EditarCursoPresencial.class);
+            EditarCursoPresencial.putExtra("courseId", courseId);
+            EditarCursoPresencial.putExtra("endereco",endereco);
+            EditarCursoPresencial.putExtra("zona",zona);
+            startActivity(EditarCursoPresencial);
+        }
+    }
 }
 
 

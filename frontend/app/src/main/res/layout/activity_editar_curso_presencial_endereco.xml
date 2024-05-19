@@ -28,21 +28,10 @@
         app:layout_constraintTop_toTopOf="@id/containerComponentsTitulo"
         />
 
-    <ImageView
-        android:id="@+id/voltar_novo_curso_presencial"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@drawable/back_button"
-        app:layout_constraintStart_toStartOf="@id/containerComponentsTitulo"
-        app:layout_constraintTop_toTopOf="@id/containerComponentsTitulo"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        />
-
     <View
         android:id="@+id/containerComponents"
         style="@style/ContainerComponents"
-        android:layout_height="300dp"
+        android:layout_height="320dp"
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -71,25 +60,24 @@
         />
 
     <EditText
-        android:id="@+id/campo_cep"
+        android:id="@+id/campo_bairro"
         style="@style/Edit_Text"
         android:layout_marginTop="8dp"
-        android:hint="CEP:"
-        android:inputType="number"
+        android:hint="Bairro:"
+        android:inputType="text"
         app:layout_constraintEnd_toEndOf="@id/containerComponents"
         app:layout_constraintStart_toStartOf="@id/containerComponents"
         app:layout_constraintTop_toBottomOf="@+id/campo_numero"
         />
 
-    <EditText
+    <Spinner
         android:id="@+id/campo_zona"
-        style="@style/Edit_Text"
+        style="@style/SpinnerDropdownItemStyle"
         android:layout_marginTop="8dp"
-        android:hint="Zona:"
-        android:inputType="text"
+        android:prompt="@array/zona"
         app:layout_constraintEnd_toEndOf="@id/containerComponents"
         app:layout_constraintStart_toStartOf="@id/containerComponents"
-        app:layout_constraintTop_toBottomOf="@+id/campo_cep"
+        app:layout_constraintTop_toBottomOf="@+id/campo_bairro"
         />
 
     <androidx.appcompat.widget.AppCompatButton
@@ -98,6 +86,7 @@
         android:layout_width="140dp"
         android:layout_marginTop="15dp"
         android:text="Salvar"
+        android:onClick="onClickAtualizarEndereco"
         app:layout_constraintEnd_toEndOf="@id/containerComponents"
         app:layout_constraintStart_toStartOf="@id/containerComponents"
         app:layout_constraintTop_toBottomOf="@id/campo_zona"

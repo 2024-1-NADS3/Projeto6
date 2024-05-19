@@ -93,16 +93,6 @@
         app:layout_constraintTop_toBottomOf="@+id/campo_data_final"
         />
 
-    <Spinner
-        android:id="@+id/campo_categoria"
-        style="@style/SpinnerDropdownItemStyle"
-        android:layout_marginTop="8dp"
-        android:prompt="@array/categoria"
-        app:layout_constraintEnd_toEndOf="@id/containerComponents"
-        app:layout_constraintStart_toStartOf="@id/containerComponents"
-        app:layout_constraintTop_toBottomOf="@+id/campo_local"
-        />
-
     <EditText
         android:id="@+id/descricao_curso"
         style="@style/Edit_Text"
@@ -114,7 +104,7 @@
         android:gravity="start"
         app:layout_constraintEnd_toEndOf="@id/containerComponents"
         app:layout_constraintStart_toStartOf="@id/containerComponents"
-        app:layout_constraintTop_toBottomOf="@+id/campo_categoria"
+        app:layout_constraintTop_toBottomOf="@+id/campo_local"
         />
 
     <LinearLayout
@@ -132,8 +122,8 @@
             style="@style/ButtonRed"
             android:layout_width="145dp"
             android:layout_marginTop="12dp"
-            android:text="Cancelar"
-            />
+            android:onClick="Cancelar"
+            android:text="Cancelar" />
 
         <Space
             android:layout_width="20dp"
@@ -146,6 +136,7 @@
             android:layout_width="145dp"
             android:layout_marginTop="12dp"
             android:text="Salvar"
+            android:onClick="onClickAtualizarCursoOnline"
             />
 
     </LinearLayout>

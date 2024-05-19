@@ -154,23 +154,8 @@ public class TelaCursoExpandido extends AppCompatActivity {
 
         courseTitleExpanded.setText(curso.getTitle());
         instituitionNameExpanded.setText(instituitionName);
-        try {
-            SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd"); // Formato da data original
-            SimpleDateFormat outputFormat = new SimpleDateFormat("dd/MM/yyyy"); // Formato desejado
-
-            // Formatação da data inicial
-            Date initialDate = inputFormat.parse(curso.getInitialDate()); // Converte a string de data para um objeto Date
-            String formattedInitialDate = outputFormat.format(initialDate); // Formata o objeto Date para a string desejada
-            courseInitialDateExpanded.setText(formattedInitialDate); // Define o texto do TextView com a data inicial formatada
-
-            // Formatação da data final
-            Date endDate = inputFormat.parse(curso.getEndDate()); // Converte a string de data para um objeto Date
-            String formattedEndDate = outputFormat.format(endDate); // Formata o objeto Date para a string desejada
-            courseEndDateExpanded.setText(formattedEndDate); // Define o texto do TextView com a data final formatada
-        } catch (ParseException e) {
-            e.printStackTrace();
-            // Trate o erro conforme necessário
-        }
+        courseInitialDateExpanded.setText(curso.getInitialDate()); // Define o texto do TextView com a data inicial formatada
+        courseEndDateExpanded.setText(curso.getEndDate()); // Define o texto do TextView com a data final formatada
         courseTypeExpanded.setText(curso.getType());
         courseSlotsAndCapacityExpanded.setText(String.valueOf(curso.getOccupiedSlots()) + " / " + String.valueOf(curso.getMaxCapacity()));
         courseCategoryExpandend.setText(curso.getCategory());

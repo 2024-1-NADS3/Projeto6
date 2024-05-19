@@ -5,12 +5,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -20,12 +23,21 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class NovoCursoPresencialEndereco extends AppCompatActivity {
-    private ImageView voltarNovoCurso;
+
+    private Spinner campo_zona;
+
+    GerenciadorToken token;
 
     private String nomeCurso, vagas, dataInicial, dataFinal, categoria, descricao;
 
-    private EditText campo_cep, campo_rua, campo_numero, campo_zona;
+    private EditText campo_bairro, campo_rua, campo_numero;
 
 
     @SuppressLint("MissingInflatedId")
@@ -33,7 +45,8 @@ public class NovoCursoPresencialEndereco extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_novo_curso_presencial_endereco);
-        getSupportActionBar().hide();
+        token = new GerenciadorToken(this);
+        Log.d("O token está aqui?", token.getToken());
 
         // Recebendo os dados da intent
         Intent intent = getIntent();
@@ -44,52 +57,64 @@ public class NovoCursoPresencialEndereco extends AppCompatActivity {
         categoria = intent.getStringExtra("categoria");
         descricao = intent.getStringExtra("descricao");
 
-        campo_cep = findViewById(R.id.campo_cep);
+        campo_bairro = findViewById(R.id.campo_bairro);
         campo_rua = findViewById(R.id.campo_rua);
         campo_numero = findViewById(R.id.campo_numero);
         campo_zona = findViewById(R.id.campo_zona);
 
-        voltarNovoCurso = findViewById(R.id.voltar_novo_curso_presencial);
+// Crie um ArrayAdapter com os itens da categoria
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.zona, android.R.layout.simple_spinner_item);
 
-        voltarNovoCurso.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                voltarNovoCursoPresencial();
-            }
-        });
+// Especifique o layout a ser usado quando a lista de opções aparecer
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+// Adicionando um item vazio no início da lista para servir como hint
+        List<String> zona = new ArrayList<>(Arrays.asList("Zona:"));
+        zona.addAll(Arrays.asList(getResources().getStringArray(R.array.zona)));
+
+// Configurando o ArrayAdapter personalizado no Spinner
+        campo_zona.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, zona));
     }
 
     public void CriarNovoCursoPresencial(View view)
     {
         // Obtendo os valores dos campos de endereço
-        String cep = campo_cep.getText().toString();
+        String bairro = campo_bairro.getText().toString();
         String rua = campo_rua.getText().toString();
         String numero = campo_numero.getText().toString();
-        String zona = campo_zona.getText().toString();
+        String zona = campo_zona.getSelectedItem().toString();
         String tipo = "Presencial";
+        Integer occupiedSlots = 0;
 
+        String endereco = rua + ", " + numero + ", " + bairro;
 
+        if (rua.isEmpty() || numero.isEmpty() || bairro.isEmpty()) {
+            if (bairro.isEmpty()) campo_bairro.setError("Bairro é obrigatório");
+            if (rua.isEmpty()) campo_rua.setError("Rua é obrigatório");
+            if (numero.isEmpty()) campo_numero.setError("Número é obrigatório");
+            return;
+        }
 
         // Criando um objeto JSON com todas as informações
         JSONObject jsonCurso = new JSONObject();
         try {
-            jsonCurso.put("nome_curso", nomeCurso);
-            jsonCurso.put("vagas", vagas);
-            jsonCurso.put("data_inicial", dataInicial);
-            jsonCurso.put("data_final", dataFinal);
-            jsonCurso.put("categoria", categoria);
-            jsonCurso.put("descricao", descricao);
-            jsonCurso.put("cep", cep);
-            jsonCurso.put("rua", rua);
-            jsonCurso.put("numero", numero);
-            jsonCurso.put("zona", zona);
-            jsonCurso.put("tipo", zona);
+            jsonCurso.put("title", nomeCurso);
+            jsonCurso.put("type", tipo);
+            jsonCurso.put("category", categoria);
+            jsonCurso.put("description", descricao);
+            jsonCurso.put("address", endereco);
+            jsonCurso.put("zone", zona);
+            jsonCurso.put("occupiedSlots", occupiedSlots);
+            jsonCurso.put("maxCapacity", vagas);
+            jsonCurso.put("initialDate", dataInicial);
+            jsonCurso.put("endDate", dataFinal);
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
         // Enviando a requisição POST usando Volley
-        String URL = Constants.BASE_URL + "/curso/cadastrar";
+        String URL = Constants.BASE_URL + "/cursos/cadastrar";
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, URL, jsonCurso,
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -107,8 +132,14 @@ public class NovoCursoPresencialEndereco extends AppCompatActivity {
                         Toast.makeText(NovoCursoPresencialEndereco.this, "Erro ao criar curso: " + error.getMessage(), Toast.LENGTH_SHORT).show();
                         Log.e("POST Error", error.toString());
                     }
-                });
-
+                }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> headers = new HashMap<>();
+                headers.put("Authorization", "Bearer " + token.getToken()); // Substitua "Bearer " + token pelo seu token JWT
+                return headers;
+            }
+        };
         // Adicionando a requisição à fila do Volley
         Volley.newRequestQueue(this).add(request);
     }

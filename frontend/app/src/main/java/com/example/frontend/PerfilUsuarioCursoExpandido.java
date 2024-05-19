@@ -154,23 +154,8 @@ public class PerfilUsuarioCursoExpandido extends AppCompatActivity {
 
             courseTitleExpandedUser.setText(curso.getTitle());
             instituitionNameExpandedUser.setText(instituitionNameUser);
-            try {
-                SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd"); // Formato da data original
-                SimpleDateFormat outputFormat = new SimpleDateFormat("dd/MM/yyyy"); // Formato desejado
-
-                // Formatação da data inicial
-                Date initialDate = inputFormat.parse(curso.getInitialDate()); // Converte a string de data para um objeto Date
-                String formattedInitialDate = outputFormat.format(initialDate); // Formata o objeto Date para a string desejada
-                courseInitialDateExpandedUser.setText(formattedInitialDate); // Define o texto do TextView com a data inicial formatada
-
-                // Formatação da data final
-                Date endDate = inputFormat.parse(curso.getEndDate()); // Converte a string de data para um objeto Date
-                String formattedEndDate = outputFormat.format(endDate); // Formata o objeto Date para a string desejada
-                courseEndDateExpandedUser.setText(formattedEndDate); // Define o texto do TextView com a data final formatada
-            } catch (ParseException e) {
-                e.printStackTrace();
-                // Trate o erro conforme necessário
-            }
+            courseInitialDateExpandedUser.setText(curso.getInitialDate()); // Define o texto do TextView com a data inicial formatada
+            courseEndDateExpandedUser.setText(curso.getEndDate()); // Define o texto do TextView com a data final formatada
             courseTypeExpandedUser.setText(curso.getType());
             courseSlotsAndCapacityExpandedUser.setText(String.valueOf(curso.getOccupiedSlots()) + " / " + String.valueOf(curso.getMaxCapacity()));
             courseCategoryExpandendUser.setText(curso.getCategory());

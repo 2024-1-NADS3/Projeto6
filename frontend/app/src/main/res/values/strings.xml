@@ -36,4 +36,13 @@
         <item>Informática</item>
     </string-array>
 
+    <string-array name="zona">
+        <item>Norte</item>
+        <item>Sul</item>
+        <item>Leste</item>
+        <item>Oeste</item>
+        <item>Centro</item>
+    </string-array>
+
+
 </resources>

@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -20,13 +21,19 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class NovoCursoOnline extends AppCompatActivity implements VolleyCallback {
 
     private Spinner campo_categoria;
+
+    GerenciadorToken token;
 
     private static final String URL_CRIAR_CURSO= Constants.BASE_URL + "/cursos/cadastrar";
 
@@ -36,6 +43,8 @@ public class NovoCursoOnline extends AppCompatActivity implements VolleyCallback
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_novo_curso_online);
+        token = new GerenciadorToken(this);
+        Log.d("O token está aqui?", token.getToken());
 
         campo_nome_curso = findViewById(R.id.campo_nome_curso);
         campo_vagas = findViewById(R.id.campo_vagas);
@@ -60,7 +69,7 @@ public class NovoCursoOnline extends AppCompatActivity implements VolleyCallback
         campo_categoria.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, categorias));
     }
 
-    public void CriarNovoCursoOnline(View view) {
+    public void CriarNovoCursoOnline(View view) throws ParseException {
 
         String nomeCurso = campo_nome_curso.getText().toString();
         String vagas = campo_vagas.getText().toString();
@@ -68,19 +77,80 @@ public class NovoCursoOnline extends AppCompatActivity implements VolleyCallback
         String dataFinal = campo_data_final.getText().toString();
         String categoria = campo_categoria.getSelectedItem().toString();
         String tipo = "Online";
+        Integer occupiedSlots = 0;
         String local = campo_local.getText().toString();
         String descricao = campo_descricao.getText().toString();
 
+        // Verificar se os campos estão vazios
+        if (nomeCurso.isEmpty() || vagas.isEmpty() || dataInicial.isEmpty() || dataFinal.isEmpty() || local.isEmpty() || descricao.isEmpty()) {
+            if (nomeCurso.isEmpty()) campo_nome_curso.setError("Nome do curso é obrigatório");
+            if (vagas.isEmpty()) campo_vagas.setError("Vagas é obrigatório");
+            if (dataInicial.isEmpty()) campo_data_inicial.setError("Data Inicial é obrigatória");
+            if (dataFinal.isEmpty()) campo_data_final.setError("Data Final é obrigatória");
+            if (local.isEmpty()) campo_local.setError("Local é obrigatório");
+            if (descricao.isEmpty()) campo_descricao.setError("Descrição é obrigatória");
+            return;
+        }
+
+        int limiteNome = 20; // Definir o limite de caracteres para o nome
+        int limiteDescricao = 50; // Definir o limite de caracteres para a descrição
+        String formato = "dd/MM/yyyy";
+
+        if (!ValidacaoNewCurso.validarLimiteNome(nomeCurso, limiteNome)) {
+            campo_nome_curso.setError("Nome do curso só pode ter 20 caracteres");
+            return;
+        }
+
+        if (!ValidacaoNewCurso.validarLimiteDescricao(descricao, limiteDescricao)) {
+            campo_descricao.setError("Descrição só pode ter 100 caracteres");
+            return;
+        }
+
+        if (!ValidacaoNewCurso.validarData(dataFinal, formato) || !ValidacaoNewCurso.validarData(dataInicial, formato)){
+            if(!ValidacaoNewCurso.validarData(dataFinal, formato)){
+                campo_data_final.setError("Data invalida, necessário inserir no seguinte formato dd/mm/yyyy");
+            }
+            if (!ValidacaoNewCurso.validarData(dataInicial, formato)){
+                campo_data_inicial.setError("Data invalida, necessário inserir no seguinte formato dd/mm/yyyy");
+            }
+            return;
+        }
+
+        if(!ValidacaoNewCurso.dataMaiorQueHoje(dataFinal, formato) || !ValidacaoNewCurso.dataMaiorQueHoje(dataInicial, formato)){
+            if (!ValidacaoNewCurso.dataMaiorQueHoje(dataFinal, formato)) {
+                campo_data_final.setError("Data inferior ao dia de hoje");
+            }
+            if (!ValidacaoNewCurso.dataMaiorQueHoje(dataInicial, formato)) {
+                campo_data_inicial.setError("Data inferior ao dia de hoje");
+            }
+            return;
+        }
+
+        if (ValidacaoNewCurso.compararData(dataInicial, dataFinal, formato)) {
+            campo_data_final.setError("A data final deve ser posterior à data inicial");
+            return;
+        }
+
+        if(!ValidacaoNewCurso.validarDataFormatoCorreto(dataFinal) || !ValidacaoNewCurso.validarDataFormatoCorreto(dataInicial)){
+            if (!ValidacaoNewCurso.validarDataFormatoCorreto(dataFinal)) {
+                campo_data_final.setError("nao tem 0 a esquerda no dia ou mes");
+            }
+            if (!ValidacaoNewCurso.validarDataFormatoCorreto(dataInicial)) {
+                campo_data_inicial.setError("nao tem 0 a esquerda no dia ou mes");
+            }
+            return;
+        }
         JSONObject jsonCurso = new JSONObject();
         try {
             jsonCurso.put("title", nomeCurso);
+            jsonCurso.put("type", tipo);
+            jsonCurso.put("category", categoria);
+            jsonCurso.put("description", descricao);
+            jsonCurso.put("address", local);
+            jsonCurso.put("occupiedSlots", occupiedSlots);
             jsonCurso.put("maxCapacity", vagas);
             jsonCurso.put("initialDate", dataInicial);
             jsonCurso.put("endDate", dataFinal);
-            jsonCurso.put("type", tipo);
-            jsonCurso.put("address", local);
-            jsonCurso.put("category", categoria);
-            jsonCurso.put("description", descricao);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -103,7 +173,14 @@ public class NovoCursoOnline extends AppCompatActivity implements VolleyCallback
                         Toast.makeText(NovoCursoOnline.this, "Erro ao criar curso: " + error.getMessage(), Toast.LENGTH_SHORT).show();
                         Log.e("VolleyError", "Erro na requisição: " + error.getMessage());
                     }
-                });
+                }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> headers = new HashMap<>();
+                headers.put("Authorization", "Bearer " + token.getToken()); // Substitua "Bearer " + token pelo seu token JWT
+                return headers;
+            }
+        };
 
         Volley.newRequestQueue(this).add(request);
     }
