@@ -158,6 +158,16 @@ public class EditarCursoPresencial extends AppCompatActivity {
             return;
         }
 
+        if(!ValidacaoNewCurso.validarDataFormatoCorreto(dataFinal) || !ValidacaoNewCurso.validarDataFormatoCorreto(dataInicial)){
+            if (!ValidacaoNewCurso.validarDataFormatoCorreto(dataFinal)) {
+                campo_data_final.setError("Por favor, lembre-se de incluir o zero à esquerda para o dia ou mês caso não ultrapassem a unidade.");
+            }
+            if (!ValidacaoNewCurso.validarDataFormatoCorreto(dataInicial)) {
+                campo_data_inicial.setError("Por favor, lembre-se de incluir o zero à esquerda para o dia ou mês caso não ultrapassem a unidade.");
+            }
+            return;
+        }
+
         // Passando os valores para a próxima tela
         Intent intent = new Intent(EditarCursoPresencial.this, EditarCursoPresencialEndereco.class);
         intent.putExtra("courseId", courseId);
