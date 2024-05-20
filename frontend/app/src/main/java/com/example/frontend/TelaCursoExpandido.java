@@ -73,6 +73,8 @@ public class TelaCursoExpandido extends AppCompatActivity {
 
         preencherComDado(curso);
 
+        Log.d("zona", String.valueOf(curso.getZone()));
+        Log.d("zona", String.valueOf( curso.getZone()));
         Log.d("id do curso", String.valueOf(curso.getCourseId()));
     }
 
@@ -160,7 +162,11 @@ public class TelaCursoExpandido extends AppCompatActivity {
         courseSlotsAndCapacityExpanded.setText(String.valueOf(curso.getOccupiedSlots()) + " / " + String.valueOf(curso.getMaxCapacity()));
         courseCategoryExpandend.setText(curso.getCategory());
         courseAdressExpanded.setText(curso.getAddress());
-        courseZoneExpanded.setText(curso.getZone());
+        if(curso.getZone().equals("null")) {
+            courseZoneExpanded.setText("-------------");
+        } else {
+            courseZoneExpanded.setText(curso.getZone());
+        }
         descriptionExpandend.setText(curso.getDescription());
 
         Log.d("nome do curso", "Message: " + instituitionName);

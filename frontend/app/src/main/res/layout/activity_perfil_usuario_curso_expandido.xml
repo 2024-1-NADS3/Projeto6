@@ -65,7 +65,7 @@
     <TextView
         android:id="@+id/textView4User"
         style="@style/TextView"
-        android:text="Endereço:"
+        android:text="Local:"
         android:textColor="#D8000000"
         android:layout_marginTop="8dp"
         android:layout_marginLeft="25dp"
@@ -111,7 +111,7 @@
     <TextView
         android:id="@+id/textView6User"
         style="@style/TextView"
-        android:layout_marginLeft="25dp"
+        android:layout_marginLeft="24dp"
         android:layout_marginTop="8dp"
         android:text="Descrição:"
         android:textColor="#D8000000"

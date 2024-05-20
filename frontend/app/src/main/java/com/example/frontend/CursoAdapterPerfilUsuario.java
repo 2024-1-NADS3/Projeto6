@@ -127,7 +127,7 @@ public class CursoAdapterPerfilUsuario extends RecyclerView.Adapter<CursoAdapter
         holder.courseTitle.setText(curso.getTitle());
         holder.courseType.setText(curso.getType());
         holder.courseCategory.setText("Categoria: " + curso.getCategory());
-        holder.courseAddress.setText("Endereço: " + curso.getAddress());
+        holder.courseAddress.setText("Local: " + curso.getAddress());
         holder.slotsAndMax.setText("Vagas ocupadas: " + curso.getOccupiedSlots() + " / " + curso.getMaxCapacity());
         holder.textView6.setText("Desinscrever-se ↓");
 

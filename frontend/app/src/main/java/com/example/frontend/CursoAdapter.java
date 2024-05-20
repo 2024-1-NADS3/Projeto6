@@ -67,7 +67,7 @@ public class CursoAdapter extends RecyclerView.Adapter<CursoAdapter.ViewHolder> 
         holder.courseTitle.setText(curso.getTitle());
         holder.courseType.setText(curso.getType());
         holder.courseCategory.setText("Categoria: " + curso.getCategory());
-        holder.courseAddress.setText("Endereço: " + curso.getAddress());
+        holder.courseAddress.setText("Local: " + curso.getAddress());
         holder.slotsAndMax.setText("Vagas ocupadas: " + curso.getOccupiedSlots() + " / " + curso.getMaxCapacity());
 
         // Configura um listener de clique para abrir a tela detalhada do curso

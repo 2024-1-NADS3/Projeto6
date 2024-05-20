@@ -140,6 +140,9 @@ public class FormCadastroPJ extends AppCompatActivity implements VolleyCallback 
 
         // Verifica se há uma resposta de rede e um código de status
         if (error.networkResponse!= null && error.networkResponse.statusCode!= 0) {
+            if (error.networkResponse.statusCode == 400) {
+                errorMessage = "CNPJ fornecido é inválido!";
+            }
             if (error.networkResponse.statusCode == 409) {
                 errorMessage = "Email já cadastrado. Por favor, use um email diferente.";
             }

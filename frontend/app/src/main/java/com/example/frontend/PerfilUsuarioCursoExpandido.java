@@ -69,8 +69,6 @@ public class PerfilUsuarioCursoExpandido extends AppCompatActivity {
 
         Log.d("id do curso", String.valueOf(curso.getCourseId()));
 
-
-
     }
 
     /**
@@ -160,7 +158,11 @@ public class PerfilUsuarioCursoExpandido extends AppCompatActivity {
             courseSlotsAndCapacityExpandedUser.setText(String.valueOf(curso.getOccupiedSlots()) + " / " + String.valueOf(curso.getMaxCapacity()));
             courseCategoryExpandendUser.setText(curso.getCategory());
             courseAdressExpandedUser.setText(curso.getAddress());
-            courseZoneExpandedUser.setText(curso.getZone());
+            if(curso.getZone().equals("null")) {
+                courseZoneExpandedUser.setText("-------------");
+            } else {
+                courseZoneExpandedUser.setText(curso.getZone());
+            }
             descriptionExpandendUser.setText(curso.getDescription());
 
             Log.d("nome do curso", "Message: " + instituitionNameUser);

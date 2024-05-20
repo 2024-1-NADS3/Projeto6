@@ -67,23 +67,21 @@
         android:id="@+id/campo_data_inicial"
         style="@style/Edit_Text"
         android:layout_marginTop="8dp"
-        android:hint="Data Inicial:"
+        android:hint="Data de Início"
         android:inputType="date"
         app:layout_constraintEnd_toEndOf="@id/containerComponents"
         app:layout_constraintStart_toStartOf="@id/containerComponents"
-        app:layout_constraintTop_toBottomOf="@+id/campo_vagas"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/campo_vagas" />
 
     <EditText
         android:id="@+id/campo_data_final"
         style="@style/Edit_Text"
         android:layout_marginTop="8dp"
-        android:hint="Data Final:"
+        android:hint="Data de Termino:"
         android:inputType="date"
         app:layout_constraintEnd_toEndOf="@id/containerComponents"
         app:layout_constraintStart_toStartOf="@id/containerComponents"
-        app:layout_constraintTop_toBottomOf="@+id/campo_data_inicial"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/campo_data_inicial" />
 
     <Spinner
         android:id="@+id/campo_categoria"
