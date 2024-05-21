@@ -29,6 +29,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Esta classe é responsável por permitir a edição do endereço de um curso presencial.
+ */
 public class EditarCursoPresencialEndereco extends AppCompatActivity {
     private String nomeCurso, vagas, dataInicial, dataFinal, descricao, endereco, zona;
 
@@ -91,6 +94,12 @@ public class EditarCursoPresencialEndereco extends AppCompatActivity {
         }
     }
 
+    /**
+     * Este método é chamado quando o botão de atualização de endereço é clicado.
+     * Ele obtém o ID do curso da intent e chama o método AtualizandoCursoPresencial para atualizar o endereço do curso presencial.
+     *
+     * @param view A view que acionou o clique no botão.
+     */
     public void onClickAtualizarEndereco(View view) {
         // Obtenha o courseId novamente, pois ele pode ter mudado desde a criação da atividade
         Intent intent = getIntent();
@@ -105,6 +114,13 @@ public class EditarCursoPresencialEndereco extends AppCompatActivity {
         }
     }
 
+    /**
+     * Este método é responsável por atualizar o endereço de um curso presencial no servidor.
+     *
+     * @param view     A view que acionou a ação de atualização.
+     * @param courseId O ID do curso que está sendo atualizado.
+     * @throws ParseException Exceção que pode ser lançada durante a análise dos dados.
+     */
     public void AtulizandoCursoPresencial(View view, int courseId) throws ParseException
     {
         // Obtendo os valores dos campos de endereço
@@ -161,6 +177,9 @@ public class EditarCursoPresencialEndereco extends AppCompatActivity {
         Volley.newRequestQueue(this).add(request);
     }
 
+    /**
+     * Este método é responsável por voltar para a tela de edição de curso presencial.
+     */
     private void voltarNovoCursoPresencial() {
         Intent voltarTelaLogin = new Intent(EditarCursoPresencialEndereco.this, EditarCursoPresencial.class);
         startActivity(voltarTelaLogin);

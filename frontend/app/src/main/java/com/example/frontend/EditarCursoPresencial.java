@@ -23,6 +23,9 @@ import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Classe que define a atividade para editar um curso presencial.
+ */
 public class EditarCursoPresencial extends AppCompatActivity {
 
     private EditText campo_nome_curso, campo_vagas, campo_data_inicial, campo_data_final, campo_descricao;
@@ -45,6 +48,11 @@ public class EditarCursoPresencial extends AppCompatActivity {
         obterDadosDoCursoPresencial(courseId);
     }
 
+    /**
+     * Método para obter os dados de um curso presencial específico do servidor.
+     *
+     * @param courseId O ID do curso a ser obtido.
+     */
     private void obterDadosDoCursoPresencial(int courseId) {
         String finalURL = Constants.BASE_URL + "/cursos/" + courseId;
 
@@ -85,6 +93,11 @@ public class EditarCursoPresencial extends AppCompatActivity {
         Volley.newRequestQueue(this).add(jsonObjectRequest);
     }
 
+    /**
+     * Método chamado quando o botão "Atualizar" é clicado na atividade para editar um curso presencial.
+     *
+     * @param view A view associada ao método.
+     */
     public void onClickAtualizarCursoPresencial(View view) {
         // Obtenha o courseId novamente, pois ele pode ter mudado desde a criação da atividade
         Intent intent = getIntent();
@@ -101,6 +114,15 @@ public class EditarCursoPresencial extends AppCompatActivity {
         }
     }
 
+    /**
+     * Método chamado para prosseguir para a próxima tela ao editar um curso presencial.
+     *
+     * @param view      A view associada ao método.
+     * @param courseId  O ID do curso.
+     * @param endereco  O endereço do curso.
+     * @param zona      A zona do curso.
+     * @throws ParseException Se ocorrer um erro de parsing.
+     */
     public void Prosseguir(View view, int courseId, String endereco, String zona ) throws ParseException {
         // Obtendo os valores dos campos
         String nomeCurso = campo_nome_curso.getText().toString();
@@ -120,7 +142,7 @@ public class EditarCursoPresencial extends AppCompatActivity {
         }
 
         int limiteNome = 20; // Definir o limite de caracteres para o nome
-        int limiteDescricao = 50; // Definir o limite de caracteres para a descrição
+        int limiteDescricao = 150; // Definir o limite de caracteres para a descrição
         String formato = "dd/MM/yyyy";
 
         if (!ValidacaoNewCurso.validarLimiteNome(nomeCurso, limiteNome)) {
@@ -129,7 +151,7 @@ public class EditarCursoPresencial extends AppCompatActivity {
         }
 
         if (!ValidacaoNewCurso.validarLimiteDescricao(descricao, limiteDescricao)) {
-            campo_descricao.setError("Descrição só pode ter 100 caracteres");
+            campo_descricao.setError("Descrição só pode ter 150 caracteres");
             return;
         }
 
@@ -181,6 +203,11 @@ public class EditarCursoPresencial extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * Método chamado para cancelar a edição de um curso presencial e voltar para o perfil do usuário com o curso expandido.
+     *
+     * @param view A view associada ao método.
+     */
     public void Cancelar(View view)
     {
         Intent Cancelar = new Intent(EditarCursoPresencial.this, PerfilUsuarioCursoExpandido.class);

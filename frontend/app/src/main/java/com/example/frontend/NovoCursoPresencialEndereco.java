@@ -29,6 +29,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Esta classe é responsável por criar a interface de entrada de endereço para um novo curso presencial.
+ */
 public class NovoCursoPresencialEndereco extends AppCompatActivity {
 
     private Spinner campo_zona;
@@ -77,6 +80,13 @@ public class NovoCursoPresencialEndereco extends AppCompatActivity {
         campo_zona.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, zona));
     }
 
+    /**
+     * Este método é chamado quando o usuário deseja criar um novo curso presencial após preencher o endereço.
+     * Ele obtém os valores dos campos de endereço, valida-os e cria um objeto JSON com todas as informações do curso.
+     * Em seguida, envia uma requisição POST usando Volley para cadastrar o curso no servidor.
+     *
+     * @param view A view que acionou o método.
+     */
     public void CriarNovoCursoPresencial(View view)
     {
         // Obtendo os valores dos campos de endereço
@@ -144,6 +154,9 @@ public class NovoCursoPresencialEndereco extends AppCompatActivity {
         Volley.newRequestQueue(this).add(request);
     }
 
+    /**
+     * Este método é usado para retornar à tela de criação de um novo curso presencial.
+     */
     private void voltarNovoCursoPresencial() {
         Intent voltarTelaLogin = new Intent(NovoCursoPresencialEndereco.this, NovoCursoPresencial.class);
         startActivity(voltarTelaLogin);

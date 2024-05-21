@@ -24,6 +24,10 @@ import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Map;
 
+
+/**
+ * Classe que define a atividade para editar um curso online.
+ */
 public class EditarCursoOnline extends AppCompatActivity {
 
     private EditText campo_nome_curso, campo_vagas, campo_data_inicial, campo_data_final, campo_local, campo_descricao;
@@ -47,6 +51,11 @@ public class EditarCursoOnline extends AppCompatActivity {
         obterDadosDoCurso(courseId);
     }
 
+    /**
+     * Método para obter os dados de um curso específico do servidor.
+     *
+     * @param courseId O ID do curso a ser obtido.
+     */
     private void obterDadosDoCurso(int courseId) {
         String finalURL = Constants.BASE_URL + "/cursos/" + courseId;
 
@@ -89,6 +98,11 @@ public class EditarCursoOnline extends AppCompatActivity {
         Volley.newRequestQueue(this).add(jsonObjectRequest);
     }
 
+    /**
+     * Método chamado quando o botão "Atualizar" é clicado.
+     *
+     * @param view A view que foi clicada.
+     */
     public void onClickAtualizarCursoOnline(View view) {
         // Obtenha o courseId novamente, pois ele pode ter mudado desde a criação da atividade
         Intent intent = getIntent();
@@ -103,7 +117,13 @@ public class EditarCursoOnline extends AppCompatActivity {
         }
     }
 
-
+    /**
+     * Método para atualizar os dados de um curso no servidor.
+     *
+     * @param view     A view associada ao método.
+     * @param courseId O ID do curso a ser atualizado.
+     * @throws ParseException Se ocorrer um erro de parsing.
+     */
     public void AtualizandoCurso(View view, int courseId) throws ParseException
     {
         String nomeCurso = campo_nome_curso.getText().toString();
@@ -125,7 +145,7 @@ public class EditarCursoOnline extends AppCompatActivity {
         }
 
         int limiteNome = 15; // Definir o limite de caracteres para o nome
-        int limiteDescricao = 40; // Definir o limite de caracteres para a descrição
+        int limiteDescricao = 150; // Definir o limite de caracteres para a descrição
         String formato = "dd/MM/yyyy";
 
         if (!ValidacaoNewCurso.validarLimiteNome(nomeCurso, limiteNome)) {
@@ -134,7 +154,7 @@ public class EditarCursoOnline extends AppCompatActivity {
         }
 
         if (!ValidacaoNewCurso.validarLimiteDescricao(descricao, limiteDescricao)) {
-            campo_descricao.setError("Descrição só pode ter 100 caracteres");
+            campo_descricao.setError("Descrição só pode ter 150 caracteres");
             return;
         }
 
@@ -210,6 +230,13 @@ public class EditarCursoOnline extends AppCompatActivity {
 
         Volley.newRequestQueue(this).add(request);
     }
+
+
+    /**
+     * Método chamado quando o botão "Cancelar" é clicado.
+     *
+     * @param view A view que foi clicada.
+     */
     public void Cancelar(View view)
     {
         Intent Cancelar = new Intent(EditarCursoOnline.this, PerfilUsuarioCursoExpandido.class);

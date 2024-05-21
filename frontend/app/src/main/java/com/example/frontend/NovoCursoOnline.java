@@ -29,6 +29,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Activity responsável pela criação de um novo curso online.
+ */
 public class NovoCursoOnline extends AppCompatActivity implements VolleyCallback {
 
     private Spinner campo_categoria;
@@ -69,6 +72,11 @@ public class NovoCursoOnline extends AppCompatActivity implements VolleyCallback
         campo_categoria.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, categorias));
     }
 
+    /**
+     * Método responsável por criar um novo curso online com os dados fornecidos.
+     * @param view A visualização associada ao método.
+     * @throws ParseException Exceção lançada se ocorrer um erro durante a análise de uma data.
+     */
     public void CriarNovoCursoOnline(View view) throws ParseException {
 
         String nomeCurso = campo_nome_curso.getText().toString();
@@ -93,7 +101,7 @@ public class NovoCursoOnline extends AppCompatActivity implements VolleyCallback
         }
 
         int limiteNome = 20; // Definir o limite de caracteres para o nome
-        int limiteDescricao = 50; // Definir o limite de caracteres para a descrição
+        int limiteDescricao = 150; // Definir o limite de caracteres para a descrição
         String formato = "dd/MM/yyyy";
 
         if (!ValidacaoNewCurso.validarLimiteNome(nomeCurso, limiteNome)) {
@@ -102,7 +110,7 @@ public class NovoCursoOnline extends AppCompatActivity implements VolleyCallback
         }
 
         if (!ValidacaoNewCurso.validarLimiteDescricao(descricao, limiteDescricao)) {
-            campo_descricao.setError("Descrição só pode ter 100 caracteres");
+            campo_descricao.setError("Descrição só pode ter 150 caracteres");
             return;
         }
 
@@ -140,6 +148,11 @@ public class NovoCursoOnline extends AppCompatActivity implements VolleyCallback
             }
             return;
         }
+
+        List<String> categoriasValidas = Arrays.asList("Música", "Diversos", "Esportes", "Esportes"); // Lista de categorias válidas
+
+        boolean categoriaValida = ValidacaoNewCurso.validarCategoriaSelecionada(categoria, categoriasValidas);
+        if (categoriaValida) {
         JSONObject jsonCurso = new JSONObject();
         try {
             jsonCurso.put("title", nomeCurso);
@@ -183,19 +196,40 @@ public class NovoCursoOnline extends AppCompatActivity implements VolleyCallback
         };
 
         Volley.newRequestQueue(this).add(request);
+
+        } else {
+            Toast.makeText(this, "Por favor, selecione uma categoria.", Toast.LENGTH_SHORT).show();
+        }
     }
 
+    /**
+     * Método chamado quando a requisição é bem-sucedida.
+     * @param response O objeto JSON de resposta da requisição.
+     */
     public void onSuccess(JSONObject response) {
         // Ajustar depois para mostrar resposta do servidor
         Log.e("VolleySucess", "Resquisição recebida: " + response);
     }
 
+    /**
+     * Método chamado quando ocorre um erro durante a requisição.
+     * @param error O objeto VolleyError contendo informações sobre o erro.
+     */
+
+    /**
+     * Método chamado quando ocorre um erro durante a requisição.
+     * @param error O objeto VolleyError contendo informações sobre o erro.
+     */
     @Override
     public void onError(VolleyError error) {
         // Ajustar depois para mostrar resposta do servidor
         Log.e("VolleyError", "Erro na requisição: " + error.getMessage());
     }
 
+    /**
+     * Método chamado para cancelar a criação do novo curso e retornar à tela do perfil do parceiro.
+     * @param view A view que disparou o evento.
+     */
     public void Cancelar(View view)
     {
         Intent Cancelar = new Intent(NovoCursoOnline.this, PerfilPaceiro.class);

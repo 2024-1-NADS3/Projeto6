@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,6 +15,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Esta classe é responsável por criar um novo curso presencial.
+ */
 public class NovoCursoPresencial extends AppCompatActivity {
 
     private Spinner campo_categoria;
@@ -49,6 +53,15 @@ public class NovoCursoPresencial extends AppCompatActivity {
         campo_categoria.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, categorias));
     }
 
+    /**
+     * Este método é chamado quando o usuário deseja prosseguir para a próxima etapa ao criar um novo curso presencial.
+     * Ele valida os campos preenchidos, incluindo nome do curso, vagas, datas, descrição e categoria.
+     * Se todos os campos estiverem preenchidos corretamente, ele passa os valores para a próxima tela.
+     * Caso contrário, exibe mensagens de erro nos campos correspondentes.
+     *
+     * @param view A view que acionou o método.
+     * @throws ParseException Exceção lançada se houver erro de análise de data.
+     */
     public void Prosseguir(View view) throws ParseException {
         // Obtendo os valores dos campos
         String nomeCurso = campo_nome_curso.getText().toString();
@@ -69,7 +82,7 @@ public class NovoCursoPresencial extends AppCompatActivity {
         }
 
         int limiteNome = 20; // Definir o limite de caracteres para o nome
-        int limiteDescricao = 50; // Definir o limite de caracteres para a descrição
+        int limiteDescricao = 150; // Definir o limite de caracteres para a descrição
         String formato = "dd/MM/yyyy";
 
         if (!ValidacaoNewCurso.validarLimiteNome(nomeCurso, limiteNome)) {
@@ -78,7 +91,7 @@ public class NovoCursoPresencial extends AppCompatActivity {
         }
 
         if (!ValidacaoNewCurso.validarLimiteDescricao(descricao, limiteDescricao)) {
-            campo_descricao.setError("Descrição só pode ter 100 caracteres");
+            campo_descricao.setError("Descrição só pode ter 150 caracteres");
             return;
         }
 
@@ -117,17 +130,31 @@ public class NovoCursoPresencial extends AppCompatActivity {
             return;
         }
 
-        // Passando os valores para a próxima tela
-        Intent intent = new Intent(NovoCursoPresencial.this, NovoCursoPresencialEndereco.class);
-        intent.putExtra("nome_curso", nomeCurso);
-        intent.putExtra("vagas", vagas);
-        intent.putExtra("data_inicial", dataInicial);
-        intent.putExtra("data_final", dataFinal);
-        intent.putExtra("categoria", categoria);
-        intent.putExtra("descricao", descricao);
-        startActivity(intent);
+        List<String> categoriasValidas = Arrays.asList("Música", "Diversos", "Esportes", "Esportes"); // Lista de categorias válidas
+
+        boolean categoriaValida = ValidacaoNewCurso.validarCategoriaSelecionada(categoria, categoriasValidas);
+        if (categoriaValida) {
+            // Passando os valores para a próxima tela
+            Intent intent = new Intent(NovoCursoPresencial.this, NovoCursoPresencialEndereco.class);
+            intent.putExtra("nome_curso", nomeCurso);
+            intent.putExtra("vagas", vagas);
+            intent.putExtra("data_inicial", dataInicial);
+            intent.putExtra("data_final", dataFinal);
+            intent.putExtra("categoria", categoria);
+            intent.putExtra("descricao", descricao);
+            startActivity(intent);
+
+        } else {
+            Toast.makeText(this, "Por favor, selecione uma categoria.", Toast.LENGTH_SHORT).show();
+        }
     }
 
+    /**
+     * Este método é chamado quando o usuário deseja cancelar a criação de um novo curso presencial.
+     * Ele retorna à tela do perfil do parceiro.
+     *
+     * @param view A view que acionou o método.
+     */
     public void Cancelar(View view)
     {
         Intent Cancelar = new Intent(NovoCursoPresencial.this, PerfilPaceiro.class);
