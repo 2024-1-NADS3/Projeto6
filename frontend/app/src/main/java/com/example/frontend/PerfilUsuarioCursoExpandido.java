@@ -65,10 +65,9 @@ public class PerfilUsuarioCursoExpandido extends AppCompatActivity {
 
         pegarNomeDaInstituicao();
 
-
-
         Log.d("id do curso", String.valueOf(curso.getCourseId()));
 
+        preencherComDado(curso);
     }
 
     /**
@@ -105,6 +104,7 @@ public class PerfilUsuarioCursoExpandido extends AppCompatActivity {
                             Log.d("Resposta", "onResponse: " + message);
                             instituitionNameUser = message;
                             // Atualiza a UI aqui
+
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
@@ -131,8 +131,6 @@ public class PerfilUsuarioCursoExpandido extends AppCompatActivity {
      */
     void preencherComDado(Curso curso) {
 
-        if (instituitionNameUser != null) {
-            Log.d("Curso", curso.toString());
             instituitionNameExpandedUser = findViewById(R.id.instituitionNameExpandedUser);
             courseInitialDateExpandedUser = findViewById(R.id.courseInitialDateExpandedUser);
             courseEndDateExpandedUser = findViewById(R.id.courseEndDateExpandedUser);
@@ -147,7 +145,6 @@ public class PerfilUsuarioCursoExpandido extends AppCompatActivity {
 
             String imagePath = curso.getImg();
             String imageUrl = Constants.BASE_URL + imagePath;
-            Log.d("Img url", imageUrl);
             Picasso.get().load(imageUrl).into(courseImgExpandedUser);
 
             courseTitleExpandedUser.setText(curso.getTitle());
@@ -166,19 +163,8 @@ public class PerfilUsuarioCursoExpandido extends AppCompatActivity {
             descriptionExpandendUser.setText(curso.getDescription());
 
             Log.d("nome do curso", "Message: " + instituitionNameUser);
-        } else {
-            // Se o nome da instituição ainda não estiver disponível, aguarde um pouco e tente novamente
-            Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    preencherComDado(curso);
-                }
-            }, 100); // Espere 100 milissegundos antes de tentar novamente
-        }
-
-
     }
+
 
     /** Método para fazer a inscrição do usuário no backend */
     public void cancelarInscricao(View view) {

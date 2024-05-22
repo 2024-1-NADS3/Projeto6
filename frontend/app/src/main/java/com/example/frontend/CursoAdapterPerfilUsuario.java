@@ -51,8 +51,7 @@ public class CursoAdapterPerfilUsuario extends RecyclerView.Adapter<CursoAdapter
         Log.d("Filtro selecionado", filtroSelecionado);
         Log.d("Data hoje", String.valueOf(hoje));
 
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
         for (Curso curso : allCursos) {
             Log.d("Data atual", String.valueOf(hoje));
