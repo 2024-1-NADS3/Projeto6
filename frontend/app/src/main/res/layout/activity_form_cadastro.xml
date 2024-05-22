@@ -120,7 +120,7 @@
         android:id="@+id/bot_cadastrar_fis"
         android:layout_width="250dp"
         style="@style/ButtonGreen"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="40dp"
         android:onClick="cadastrarUsuario"
         android:text="Cadastrar"
         app:layout_constraintEnd_toEndOf="@id/containerComponents"

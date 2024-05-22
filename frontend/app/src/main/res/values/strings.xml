@@ -45,6 +45,20 @@
     </string-array>
 
     <string name="subtitulo_redefinir_senha">Por favor, insira no campo abaixo o código que você recebeu por e-mail e redefina uma nova senha</string>
-
     <string name="subtitulo_recuperar_senha">Insira seu endereço de e-mail e lhe enviaremos instruções para redefinir sua senha</string>
+
+
+    <string name="educaliza">Educaliza</string>
+    <string name="sobre_nos_titulo">Quem somos</string>
+    <string name="sobre_nos_descricao">O Educaliza é um aplicativo que facilita o acesso a cursos e aulas gratuitos na cidade de São Paulo. Esses cursos são oferecidos por intituições parceiras, garantindo a diversidade e a qualidade das opções disponíveis.</string>
+    <string name="sobre_nos">Aqui você encontra o conteúdo que deseja, como cursos de esportes, música, informática entre outras diversas opções! Esses cursos são oferecidos por instituições parceiras, como ONGs, garantindo a diversidade e a qualidade das opções disponíveis.</string>
+    <string name="nossa_missao">Nossa Missão</string>
+    <string name="nossa_visao">Nossa Visão</string>
+    <string name="missao_descricao">Nossa missão é democratizar o acesso à educação, simplificando o e conectando pessoas a oportunidades de aprendizado por meio de nosso aplicativo. Facilitamos a busca por cursos presenciais e online, capacitando indivíduos e promovendo o desenvolvimento contínuo.</string>
+    <string name="visao_descricao">Visualizamos um mundo onde a educação é acessível a todos, independentemente de barreiras físicas ou econômicas. Sonhamos em capacitar indivíduos e comunidades através da educação, promovendo um futuro de igualdade e oportunidade para todos.</string>
+    <string name="informatica_descricao">Cursos gratuitos de informática abrangem desde fundamentos básicos até áreas avançadas como programação e cibersegurança.</string>
+    <string name="musica_descricao">Cursos de música gratuitos incluem teoria musical, leitura de partituras, prática de instrumentos e produção musical.</string>
+    <string name="diversos_descricao">Há cursos gratuitos em áreas como desenvolvimento pessoal, negócios, arte e humanidades</string>
+    <string name="esportes_descricao">Cursos gratuitos de esportes cobrem teoria e prática de várias modalidades, fisiologia do exercício e gestão esportiva.</string>
+
 </resources>

@@ -45,6 +45,6 @@ public class ValidacaoFormCadastro {
      * @return true se o valor é uma senha válida (não nula e com pelo menos 4 caracteres), false caso contrário.
      */
     public static boolean isValidPassword(String password) {
-        return password!= null && password.length() >= 4;
+        return password!= null && password.length() >= 8;
     }
 }

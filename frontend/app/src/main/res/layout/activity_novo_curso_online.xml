@@ -65,21 +65,23 @@
         android:id="@+id/campo_data_inicial"
         style="@style/Edit_Text"
         android:layout_marginTop="8dp"
-        android:hint="Data de Início:"
-        android:inputType="date"
+        android:hint="Data de Início. DD/MM/AAAA"
+        android:inputType="text"
         app:layout_constraintEnd_toEndOf="@id/containerComponents"
         app:layout_constraintStart_toStartOf="@id/containerComponents"
-        app:layout_constraintTop_toBottomOf="@+id/campo_vagas" />
+        app:layout_constraintTop_toBottomOf="@+id/campo_vagas"
+        />
 
     <EditText
         android:id="@+id/campo_data_final"
         style="@style/Edit_Text"
         android:layout_marginTop="8dp"
-        android:hint="Data de Termino:"
-        android:inputType="date"
+        android:hint="Data de Termino. DD/MM/AAAA"
+        android:inputType="text"
         app:layout_constraintEnd_toEndOf="@id/containerComponents"
         app:layout_constraintStart_toStartOf="@id/containerComponents"
-        app:layout_constraintTop_toBottomOf="@+id/campo_data_inicial" />
+        app:layout_constraintTop_toBottomOf="@+id/campo_data_inicial"
+        />
 
     <EditText
         android:id="@+id/campo_local"

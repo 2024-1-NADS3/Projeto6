@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.method.LinkMovementMethod;
@@ -82,6 +83,7 @@ public class FormLogin extends AppCompatActivity {
                 startActivity(mudarTelaCadastro);
             }
         });
+        esqueci_senha.setPaintFlags(esqueci_senha.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         esqueci_senha.setOnClickListener(v -> {
 
             Intent mudarTelaRecSenha= new Intent(FormLogin.this,TelaRecuperarSenha.class);

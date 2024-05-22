@@ -290,11 +290,13 @@ public class NavigationDrawer extends Fragment {
                 token.clearToken();
 
                 if (getActivity() instanceof MainActivity) {
-                    ((MainActivity) getActivity()).abrirDrawer();;
+                    ((MainActivity) getActivity()).abrirDrawer();
+                    Intent intent = new Intent(getActivity(), TelaInicio.class);
+                    startActivity(intent);
 
                 } else {
                     // Redirecionar para outra atividade após logout
-                    Intent intent = new Intent(getActivity(), MainActivity.class);
+                    Intent intent = new Intent(getActivity(), TelaInicio.class);
                     startActivity(intent);
                 }
             }
