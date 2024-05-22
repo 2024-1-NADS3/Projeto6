@@ -8,7 +8,7 @@
 
 ## Integrantes: Wilson Testoni, Gabriel Italo, Matheus Adaniya, Cleiton
 
-## Professores Orientadores: 
+## Professores Orientadores: Adriano Felix Valente, Victor Bruno Alexander Rosetti de Quiroz
 
 ## Descrição
 
