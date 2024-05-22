@@ -44,5 +44,7 @@
         <item>Centro</item>
     </string-array>
 
+    <string name="subtitulo_redefinir_senha">Por favor, insira no campo abaixo o código que você recebeu por e-mail e redefina uma nova senha</string>
 
+    <string name="subtitulo_recuperar_senha">Insira seu endereço de e-mail e lhe enviaremos instruções para redefinir sua senha</string>
 </resources>

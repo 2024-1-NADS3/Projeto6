@@ -9,7 +9,7 @@
     <View
         android:id="@+id/containerComponents"
         style="@style/ContainerComponents"
-        android:layout_height="450dp"
+        android:layout_height="360dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -27,29 +27,15 @@
         android:layout_marginLeft="10dp"
         />
 
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="30dp"
-        android:src="@drawable/educalizalogo"
-        app:layout_constraintStart_toStartOf="@+id/containerComponents"
-        app:layout_constraintEnd_toEndOf="@id/containerComponents"
-        app:layout_constraintTop_toTopOf="@id/containerComponents"
-        />
-
     <TextView
         android:id="@+id/titulo_recuperar_senha"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/TextView"
         android:text="Redefinir senha"
         android:textSize="30sp"
-        android:textStyle="bold"
-        android:textColor="@color/white"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="56dp"
         app:layout_constraintStart_toStartOf="@id/containerComponents"
         app:layout_constraintEnd_toEndOf="@id/containerComponents"
-        app:layout_constraintTop_toBottomOf="@+id/logo"
+        app:layout_constraintTop_toTopOf="@id/containerComponents"
         />
 
     <TextView
@@ -57,7 +43,7 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:maxLines="2"
-        android:text="Insira seu endereço de e-mail e lhe enviaremos instruções para redefinir sua senha."
+        android:text="@string/subtitulo_recuperar_senha"
         android:textSize="18sp"
         android:textStyle="bold"
         android:textColor="@color/white"
@@ -69,12 +55,11 @@
         />
 
     <EditText
-        android:id="@+id/email"
+        android:id="@+id/campo_email_rec"
         style="@style/Edit_Text_Cadastro"
         android:hint="Email"
         android:drawableRight="@drawable/ic_email"
         android:inputType="textEmailAddress"
-        android:onClick="EnviarEmailRecuperacao"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="@id/containerComponents"
         app:layout_constraintEnd_toEndOf="@id/containerComponents"
@@ -85,11 +70,26 @@
         android:id="@+id/enviar_email"
         style="@style/ButtonGreen"
         android:layout_width="200dp"
-        android:text="Enviar"
         android:layout_marginTop="20dp"
+        android:onClick="EnviarEmailBackEnd"
+        android:text="Enviar"
+        app:layout_constraintEnd_toEndOf="@id/containerComponents"
+        app:layout_constraintStart_toStartOf="@id/containerComponents"
+        app:layout_constraintTop_toBottomOf="@id/campo_email_rec" />
+
+    <TextView
+        android:id="@+id/text_tela_cadastro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_cadastro"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:layout_marginTop="15dp"
         app:layout_constraintStart_toStartOf="@id/containerComponents"
         app:layout_constraintEnd_toEndOf="@id/containerComponents"
-        app:layout_constraintTop_toBottomOf="@id/email"
+        app:layout_constraintTop_toBottomOf="@id/enviar_email"
         />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
