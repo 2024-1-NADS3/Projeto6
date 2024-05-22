@@ -42,7 +42,7 @@ public class ValidacaoFormCadastro {
 
     /**
      * Verifica se o valor fornecido é uma senha válida.
-     * @return true se o valor é uma senha válida (não nula e com pelo menos 4 caracteres), false caso contrário.
+     * @return true se o valor é uma senha válida (não nula e com pelo menos 8 caracteres), false caso contrário.
      */
     public static boolean isValidPassword(String password) {
         return password!= null && password.length() >= 8;

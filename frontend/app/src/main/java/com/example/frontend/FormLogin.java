@@ -119,7 +119,7 @@ public class FormLogin extends AppCompatActivity {
         }
 
         if (!ValidacaoFormCadastro.isValidPassword(password)) {
-            campo_senha.setError("Senha deve ter pelo menos 4 dígitos");
+            campo_senha.setError("Senha deve ter pelo menos 8 dígitos");
             return;
         }
 
