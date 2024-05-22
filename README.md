@@ -13,7 +13,7 @@
 ## Descrição
 
 <p align="center">
-<img src="./imagens/educaliza_logo.png" alt="NOME DO JOGO" border="0">
+<img src="./imagens/educaliza_logo.png" height="250px" alt="Logo educaliza" border="0">
 </p>
 
 
