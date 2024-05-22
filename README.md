@@ -16,11 +16,33 @@
 <img src="./imagens/educaliza_logo.png" height="250px" alt="Logo educaliza" border="0">
 </p>
 
-
 O Educaliza é um aplicativo que facilita o acesso a cursos e aulas gratuitos na cidade de São Paulo, fornecendo uma plataforma onde parceiros podem publicar 
 informações detalhadas sobre seus cursos, como datas de início e término, localização e mais. Com ele, você encontra o conteúdo que deseja estudar sem 
 nenhum custo! Esses cursos são oferecidos por instituições parceiras, como ONGs, garantindo a diversidade e a qualidade das opções disponíveis.
 
+## 💻 Tecnologias: <br>
+### Front-end
+- **Android Studio**: Um ambiente de desenvolvimento integrado (IDE) usado principalmente para desenvolver aplicativos Android. Ele fornece ferramentas para escrever código, depurar e testar aplicativos Android.
+
+- **Java**: Uma linguagem de programação amplamente utilizada, especialmente para desenvolvimento de aplicativos Android. É uma linguagem orientada a objetos com uma ampla gama de bibliotecas e frameworks disponíveis.
+
+### Back-end 
+- **Node.js**: Ambiente de execução JavaScript, utilizado para construir aplicações escaláveis e de alta performance.
+- **SQLite**: Sistema de gerenciamento de banco de dados para armazenamento de dados do aplicativo.
+
+## 💻 Bibliotecas: <br> 
+- **Android Studio**:
+   <p>Picasso: Uma biblioteca para carregamento e exibição de imagens em aplicativos Android. Ele fornece uma maneira simples e fácil de carregar imagens de URLs ou do sistema de arquivos.</p>
+   <p>Volley: Uma biblioteca de rede do Android que simplifica o processo de fazer solicitações de rede, como solicitações HTTP. É útil para realizar operações de rede de forma eficiente e assíncrona em aplicativos Android.</p>
+  
+- **Node.js**:
+  <p>Nodemailer: Uma biblioteca de e-mail para Node.js que permite enviar e-mails facilmente através de servidores SMTP ou outros meios de transporte.</p>
+  <p>Bcrypt: Uma biblioteca utilizada para encriptar senhas dos usuários. É comumente usada para armazenar senhas de forma segura em bancos de dados.</p>
+  <p>jsonwebtoken: Uma biblioteca para Node.js que facilita a geração e verificação de tokens de autenticação. É comumente usado em sistemas de autenticação baseados em tokens, como JSON Web Tokens (JWT).</p>
+  <p>Express: Um framework web para Node.js que simplifica a criação de aplicativos web e APIs. Ele fornece uma camada fina sobre o HTTP, permitindo o roteamento fácil, middleware e manipulação de requisições e respostas. </p>
+  <p>dotenv: Uma biblioteca para carregar variáveis de ambiente de arquivos .env em Node.js. É útil para configurar facilmente variáveis de ambiente em diferentes ambientes de desenvolvimento.</p>
+  <p>cors: Uma biblioteca utilizada para habilitar o Cross-Origin Resource Sharing (CORS) em aplicativos Node.js. Isso permite que os navegadores solicitem recursos de um servidor em um domínio diferente.</p>
+  
 
 ## 🛠 Estrutura de pastas
 
