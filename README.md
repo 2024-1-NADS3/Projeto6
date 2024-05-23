@@ -51,8 +51,9 @@ nenhum custo! Esses cursos são oferecidos por instituições parceiras, como ON
 |-->documentos<br>
   &emsp;|-->backend<br>
   &emsp;|-->frontend<br>
-  &emsp;|-->Google docs<br>
-  &emsp;|Documentação devops<br>
+  &emsp;|-->google-docs<br>
+  &emsp;|documentação devops<br>
+  &emsp;|Projetos_de_Extensão_Educaliza<br>
 |-->executáveis<br>
   &emsp;|-->android<br>
 |-->imagens<br>
