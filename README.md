@@ -84,7 +84,7 @@ node index
 
 Configuração do Frontend (App Android)
 
-Clone o repositório e vá para o diretório frontend
+Clone o repositório
 ```sh
 git clone https://github.com/2024-1-NADS3/Projeto6.git
 ```
