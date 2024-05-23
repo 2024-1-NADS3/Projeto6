@@ -47,18 +47,20 @@ nenhum custo! Esses cursos são oferecidos por instituições parceiras, como ON
 ## 🛠 Estrutura de pastas
 
 -Raiz<br>
-|<br>
+|-->BUILD/realease<br>
+  &emsp;|-->app-realese.aab<br>
 |-->documentos<br>
   &emsp;|-->backend<br>
-  &emsp;|-->frontend<br>
   &emsp;|-->google-docs<br>
-  &emsp;|documentação devops<br>
-  &emsp;|Projetos_de_Extensão_Educaliza<br>
-|-->executáveis<br>
-  &emsp;|-->android<br>
+  &emsp;|-->Projeto_de_Extenção_Educaliza.pdf<br>
+  &emsp;|-->documentação devops<br>
+|-->executavéis<br>
+  &emsp;|--> android<br>
 |-->imagens<br>
-|-->backend<br>
-|-->frontend<br>
+  &emsp;|-->educaliza_logo.png<br>
+|-->src<br>
+  &emsp;|-->backend<br>
+  &emsp;|-->frontend<br>
 |readme.md<br>
 
 
