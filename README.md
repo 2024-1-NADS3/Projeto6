@@ -64,45 +64,42 @@ nenhum custo! Esses cursos são oferecidos por instituições parceiras, como ON
 |readme.md<br>
 
 
+## 💻 Instalação Local
 
-## 🛠 Instalação
+### Requisitos: NodeJS, AndroidStudio
 
-<b>Android:</b>
+Configuração do Backend (API)
 
-Faça o Download do JOGO.apk no seu celular.
-Execute o APK e siga as instruções de seu telefone.
-
+Clone o repositório e vá para o diretório backend
 ```sh
-Coloque código do prompt de comnando se for necessário
+git clone https://github.com/2024-1-NADS3/Projeto6.git
+cd src/backend
 ```
 
-<b>Windows:</b>
-
-Não há instalação! Apenas executável!
-Encontre o JOGO.exe na pasta executáveis e execute-o como qualquer outro programa.
-
+Abra o terminal e execute os comandos para instalar as dependências e iniciar o servidor
 ```sh
-Coloque código do prompt de comnando se for necessário
+npm i
+node index
 ```
 
-<b>HTML:</b>
+Configuração do Frontend (App Android)
 
-Não há instalação!
-Encontre o index.html na pasta executáveis e execute-o como uma página WEB (através de algum browser).
-
-## 💻 Configuração para Desenvolvimento
-
-Descreva como instalar todas as dependências para desenvolvimento e como rodar um test-suite automatizado de algum tipo. Se necessário, faça isso para múltiplas plataformas.
-
-Para abrir este projeto você necessita das seguintes ferramentas:
-
--<a href="https://godotengine.org/download">GODOT</a>
-
+Clone o repositório e vá para o diretório frontend
 ```sh
-make install
-npm test
-Coloque código do prompt de comnando se for necessário
+git clone https://github.com/2024-1-NADS3/Projeto6.git
 ```
+
+Abra o Android Studio.
+Selecione "Open an existing Android Studio project" e navegue até o diretório Projeto6/src/frontend.
+
+O Android Studio deve automaticamente instalar todas as dependências necessárias ao abrir o projeto. Certifique-se de que o Gradle esteja sincronizado.
+Configure o emulador ou dispositivo físico.
+
+Configure um emulador Android ou conecte um dispositivo físico via USB para testar a aplicação.
+Execute a aplicação
+
+Clique no botão "Run".
+
 
 ## 🗃 Histórico de lançamentos
 
