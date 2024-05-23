@@ -34,6 +34,19 @@ import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Método chamado quando a activity é criada.
+ *
+ * Este método é chamado quando a activity é criada pela primeira vez. Ele configura
+ * a interface do usuário e inicializa os elementos de interface, como campos de texto
+ * e botões. Também define os ouvintes de eventos para os elementos de interface, como
+ * mudar para a tela de cadastros, voltar para a tela inicial, mudar para a tela de recuperação
+ * de senha e permitir que um link dentro do texto seja clicável para mudar para a tela de cadastros.
+ *
+ * @param savedInstanceState Um objeto Bundle contendo o estado anterior da activity,
+ *                           que é usado para reconstruir a activity após uma mudança
+ *                           de configuração, como uma rotação de tela.
+ */
 public class FormLogin extends AppCompatActivity {
 
     private TextView esqueci_senha;
@@ -242,6 +255,16 @@ public class FormLogin extends AppCompatActivity {
         requestQueueInfo.add(jsonObjectRequestInfo);
     }
 
+    /**
+     * Método para obter o nome do usuário ou parceiro.
+     *
+     * Este método faz uma solicitação GET para obter o nome do usuário ou parceiro, dependendo do tipo especificado.
+     * O nome obtido é armazenado na classe Constants para uso posterior. Se ocorrer um erro durante a solicitação,
+     * será registrado um log do erro.
+     *
+     * @param userType O tipo de usuário, pode ser "partner" para parceiro ou qualquer outra coisa para usuário.
+     * @param token    O token de autenticação usado na solicitação.
+     */
     public void pegarNomeDoUsuarioOuParceiro(String userType, String token) {
         String urlInfo;
 

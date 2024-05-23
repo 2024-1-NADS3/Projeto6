@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
+/**
+ * Classe para exibir uma tela de carregamento antes de redirecionar para outra tela.
+ */
 public class TelaLoading extends AppCompatActivity {
 
 

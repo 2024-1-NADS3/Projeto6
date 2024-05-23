@@ -44,6 +44,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Método para exibir um diálogo informativo sobre o ícone de advertência.
+ * Este método cria um AlertDialog que mostra informações sobre as advertências do usuário ao clicar no ícone de advertência.
+ */
 public class PerfilUsuario extends AppCompatActivity {
 
     GerenciadorToken token;
@@ -118,12 +122,19 @@ public class PerfilUsuario extends AppCompatActivity {
         Log.d("O token está aqui no USER?", token.getToken());
         filtroSpinner();
     }
+
+    /**
+     * Método chamado quando a atividade é retomada. Verifica se o usuário está logado.
+     */
     @Override
     protected void onResume() {
         super.onResume();
         verificarSeEstaLogado();
     }
 
+    /**
+     * Configura a ActionBar, incluindo o botão de usuário e o título, e define os comportamentos dos cliques nos botões.
+     */
     public void actionBar() {
         Button botaoUsuario = findViewById(R.id.ic_usuarioPerfil);
         botaoUsuario.setOnClickListener(new View.OnClickListener() {
@@ -143,6 +154,9 @@ public class PerfilUsuario extends AppCompatActivity {
         });
     }
 
+    /**
+     * Abre ou fecha o Navigation Drawer, adicionando ou removendo o fragment correspondente.
+     */
     public void abrirDrawer() {
 
         //Obtendo o FragmentManager
@@ -170,10 +184,11 @@ public class PerfilUsuario extends AppCompatActivity {
             transaction.commit();
             drawerAberto = true; //Atualiza a flag
         }
-
-
     }
 
+    /**
+     * Configura o Spinner que permite filtrar os cursos com base em seu estado.
+     */
     public void filtroSpinner() {
         Spinner spinnerFiltros = findViewById(R.id.spinner_filtros);
 
@@ -209,6 +224,9 @@ public class PerfilUsuario extends AppCompatActivity {
         });
     }
 
+    /**
+     * Obtém o número de advertências do usuário fazendo uma solicitação ao servidor e exibe o resultado na interface do usuário.
+     */
     public void getUserWarnings() {
         RequestQueue mRequestQueue;
 
@@ -247,11 +265,10 @@ public class PerfilUsuario extends AppCompatActivity {
         mRequestQueue.add(stringRequest);
     }
 
-    public void sair(View view) {
-        token.clearToken();
-        Intent mudarTelaParaMainAcitivity = new Intent(PerfilUsuario.this, MainActivity.class);
-        startActivity(mudarTelaParaMainAcitivity);
-    }
+    /**
+     * Verifica se o usuário está logado verificando se há um token válido.
+     * Se não estiver logado, redireciona para a tela de login.
+     */
     public void verificarSeEstaLogado() {
         Log.d("erro na activity Perfil Usuario", "aaaaa");
         if (token != null) {
@@ -264,68 +281,9 @@ public class PerfilUsuario extends AppCompatActivity {
         }
     }
 
-    public void deletarConta(View view) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(PerfilUsuario.this);
-        builder.setTitle("Deletar Conta")
-                .setMessage("Você tem certeza que deseja deletar a conta?")
-                .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        Log.d("CAIU NO IF SIM", "DELETAR CONTA E MUDA DE ACTIVITY");
-                        deletarContaReq();
-                        // Aqui você pode adicionar a lógica para deletar a conta
-                        // Por exemplo, chamar um método que faz uma requisição ao servidor
-                    }
-                })
-                .setNegativeButton("Não", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        Log.d("CAIU NO IF NÃO", "FECHAR DIALOG SEM FAZER NADA");
-                        // Fechar o dialog sem fazer nada
-                    }
-                });
-        AlertDialog dialog = builder.create();
-        dialog.show();
-    }
-
-    public void deletarContaReq() {
-        String deleteUrl = Constants.BASE_URL + "/usuario/deletar-usuario";
-
-        RequestQueue queue = Volley.newRequestQueue(this);
-
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.DELETE, deleteUrl, null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        // Trate a resposta JSON aqui
-                        System.out.println(response.toString());
-                        Toast.makeText(PerfilUsuario.this, "Conta deletada com sucesso.", Toast.LENGTH_SHORT).show();
-                        token.clearToken();
-                        // Redireciona para a tela inicial após 3 segundos
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                Intent retornarTelaInicio = new Intent(PerfilUsuario.this, TelaInicio.class);
-                                startActivity(retornarTelaInicio);
-                                finish(); // Encerra a atividade atual
-                            }
-                        }, 3000); // 3000 milissegundos = 3 segundos
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                // Trate o erro aqui
-                System.out.println(error.getMessage());
-            }
-        }) {
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                Map<String, String> headers = new HashMap<>();
-                headers.put("Authorization", "Bearer " + token.getToken()); // Substitua "Bearer " + token pelo seu token JWT
-                return headers;
-            }
-        };
-
-        queue.add(jsonObjectRequest);
-    }
+    /**
+     * Obtém os cursos em que o usuário está inscrito fazendo uma solicitação ao servidor e exibe os dados na interface do usuário.
+     */
     public void fetchUserCoursesData() {
         String finalURL = Constants.BASE_URL + "/usuario/cursos-inscritos";
         progressBarUser.setVisibility(View.VISIBLE); // Mostra o ProgressBar enquanto os dados são carregados.
@@ -364,6 +322,11 @@ public class PerfilUsuario extends AppCompatActivity {
 
         filaRequest.add(request); // Adiciona a requisição à fila de requisições.
     }
+
+    /**
+     * Processa a resposta JSON dos cursos do usuário e os adiciona à lista de cursos do usuário.
+     * Em seguida, configura o RecyclerView com os dados dos cursos.
+     */
     private void processCoursesResponse(JSONArray response) {
         if (response.length() > 0) {
             for (int i = 0; i < response.length(); i++) {
@@ -392,12 +355,15 @@ public class PerfilUsuario extends AppCompatActivity {
             Log.d("Data", "Sem Dados");
         }
     }
+
+    /**
+     * Configura o RecyclerView para exibir os cursos do usuário.
+     */
     private void setupRecyclerView() {
         recyclerViewCursosUsuarios.setLayoutManager(new LinearLayoutManager(PerfilUsuario.this));
         adapterUser = new CursoAdapterPerfilUsuario(PerfilUsuario.this, userCourses);
         recyclerViewCursosUsuarios.setAdapter(adapterUser);
     }
-
 }
 
 

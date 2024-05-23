@@ -29,6 +29,9 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+/**
+ * Classe para a tela de redefinição de senha.
+ */
 public class TelaRedefinirSenha extends AppCompatActivity {
 
     TextView email_usuario_recuperar;
@@ -59,6 +62,10 @@ public class TelaRedefinirSenha extends AppCompatActivity {
 
     }
 
+    /**
+     * Método para enviar os dados de redefinição de senha para o backend.
+     * @param view A view associada ao botão de enviar dados.
+     */
     public void enviarDados(View view) {
         final String codigoDigitado = campo_codigoDigitadoUsuario.getText().toString().trim();
         final String novaSenha = campo_novaSenha.getText().toString().trim();
@@ -96,6 +103,10 @@ public class TelaRedefinirSenha extends AppCompatActivity {
         recuperarSenhaReq(novaSenha);
     }
 
+    /**
+     * Método para enviar uma solicitação ao backend para atualizar a senha.
+     * @param senha A nova senha a ser atualizada.
+     */
     public void recuperarSenhaReq(String senha){
 
         RequestQueue requestQueue;

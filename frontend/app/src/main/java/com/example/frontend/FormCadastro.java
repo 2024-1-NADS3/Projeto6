@@ -21,6 +21,18 @@ import com.android.volley.VolleyError;
 
 import org.json.JSONObject;
 
+/**
+ * Método chamado quando a activity é criada.
+ *
+ * Este método é chamado quando a activity é criada pela primeira vez. Ele configura
+ * a interface do usuário e inicializa os elementos de interface, como campos de texto
+ * e botões. Também define os ouvintes de eventos para os elementos de interface, como
+ * o clique do botão voltar para o login.
+ *
+ * @param savedInstanceState Um objeto Bundle contendo o estado anterior da activity,
+ *                           que é usado para reconstruir a activity após uma mudança
+ *                           de configuração, como uma rotação de tela.
+ */
 public class FormCadastro extends AppCompatActivity implements VolleyCallback {
 
     private ImageView voltarLogin;
@@ -165,6 +177,14 @@ public class FormCadastro extends AppCompatActivity implements VolleyCallback {
         startActivity(voltarTelaLogin);
     }
 
+    /**
+     * Método chamado para ir para a tela de login.
+     *
+     * Este método é chamado quando o usuário clica em um botão para voltar para a tela de login.
+     * Ele cria uma nova intenção para iniciar a activity FormLogin e navegar para essa tela.
+     *
+     * @param view A vista (botão) que acionou o evento de clique.
+     */
     public void PFIrLogin(View view)
     {
         Intent irTelaLogin = new Intent(FormCadastro.this, FormLogin.class);

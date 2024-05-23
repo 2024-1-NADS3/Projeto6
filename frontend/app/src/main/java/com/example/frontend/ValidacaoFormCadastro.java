@@ -5,6 +5,9 @@ import android.util.Patterns;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Classe responsável por validar os dados fornecidos em formulários de cadastro.
+ */
 public class ValidacaoFormCadastro {
     /**
      * Verifica se o valor fornecido é um endereço de email válido.

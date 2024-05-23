@@ -9,6 +9,9 @@ import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+/**
+ * Activity para exibir informações e voltar à tela inicial.
+ */
 public class TelaInfo extends AppCompatActivity {
 
     private ScrollView scrollView;
@@ -36,6 +39,6 @@ public class TelaInfo extends AppCompatActivity {
             }
         });
     }
-    private void VoltarInicio() {voltar = findViewById(R.id.voltar);}
 
+    private void VoltarInicio() {voltar = findViewById(R.id.voltar);}
 }

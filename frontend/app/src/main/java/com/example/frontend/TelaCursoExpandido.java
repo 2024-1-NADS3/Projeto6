@@ -42,6 +42,9 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Activity que exibe os detalhes de um curso na tela expandida.
+ */
 public class TelaCursoExpandido extends AppCompatActivity {
 
     ImageView courseImgExpandend;

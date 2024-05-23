@@ -27,6 +27,9 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+/**
+ * Classe para a tela de recuperação de senha.
+ */
 public class TelaRecuperarSenha extends AppCompatActivity {
     private ImageView voltar_tela_login;
 
@@ -46,10 +49,17 @@ public class TelaRecuperarSenha extends AppCompatActivity {
         });
     }
 
+    /**
+     * Método para inicializar os componentes da interface relacionados ao botão de voltar à tela de login.
+     */
     private void VoltarTela() {
         voltar_tela_login = findViewById(R.id.voltar_tela_login);
     }
 
+    /**
+     * Método para enviar um e-mail de recuperação de senha para o backend.
+     * @param view A view associada ao botão de enviar e-mail.
+     */
     public void EnviarEmailBackEnd(View view) {
         RequestQueue requestQueue;
         String url = Constants.BASE_URL + "/pegar-codigo";

@@ -45,6 +45,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Método chamado quando a activity é criada.
+ *
+ * Este método é chamado quando a activity é criada pela primeira vez. Ele configura os elementos
+ * de interface do usuário, como o RecyclerView e a barra de progresso. Além disso, obtém o token
+ * JWT do usuário, recupera os cursos registrados pelo parceiro e exibe-os na interface do usuário.
+ *
+ * @param savedInstanceState Um objeto Bundle contendo o estado anterior da activity,
+ *                           que é usado para reconstruir a activity após uma mudança
+ *                           de configuração, como uma rotação de tela.
+ */
 public class PerfilPaceiro extends AppCompatActivity {
 
     GerenciadorToken token;
@@ -90,17 +101,24 @@ public class PerfilPaceiro extends AppCompatActivity {
                 return false;
             }
         });
-
     }
 
 
-    /* Método que aciona o verficarSeEstáLogado toda vez que a activity estiver em primeiro plano */
+    /** Método que aciona o verficarSeEstáLogado toda vez que a activity estiver em primeiro plano */
     @Override
     protected void onResume() {
         super.onResume();
         verificarSeEstaLogado();
     }
 
+    /**
+     * Método para configurar a action bar.
+     *
+     * Este método configura a action bar para exibir um botão de usuário e um título.
+     * Quando o botão de usuário é clicado, ele chama o método `abrirDrawer()` para
+     * abrir o drawer do perfil do parceiro. Quando o título é clicado, ele retorna à
+     * tela principal.
+     */
     public void actionBar() {
      Button botaoUsuario = findViewById(R.id.ic_usuarioParceiro);
         botaoUsuario.setOnClickListener(new View.OnClickListener() {
@@ -120,14 +138,14 @@ public class PerfilPaceiro extends AppCompatActivity {
         });
     }
 
-    /* Método para deslogar no perfil do parceiro */
+    /** Método para deslogar no perfil do parceiro */
     public void sair(View view) {
         token.clearToken();
         Intent mudarTelaParaMainAcitivity = new Intent(PerfilPaceiro.this, MainActivity.class);
         startActivity(mudarTelaParaMainAcitivity);
     }
 
-    /* Método para verificar se tem um token valido */
+    /** Método para verificar se tem um token valido */
     public void verificarSeEstaLogado() {
         if (token != null) {
             String tokenString = token.getToken();
@@ -139,6 +157,14 @@ public class PerfilPaceiro extends AppCompatActivity {
         }
     }
 
+    /**
+     * Método para abrir ou fechar o Navigation Drawer do perfil do parceiro.
+     *
+     * Este método verifica se o Navigation Drawer está aberto. Se estiver aberto, ele
+     * remove o fragmento do Drawer. Caso contrário, adiciona o fragmento ao Drawer.
+     * Ele também ajusta a elevação dos botões para que fiquem atrás do Drawer quando
+     * estiver aberto.
+     */
     public void abrirDrawer() {
 
         //Obtendo o FragmentManager
@@ -182,6 +208,11 @@ public class PerfilPaceiro extends AppCompatActivity {
         }
     }
 
+    /**
+     * Método para exibir um diálogo de confirmação para deletar a conta do parceiro.
+     * Este método exibe um diálogo de confirmação com as opções "Sim" e "Não". Se o usuário
+     * selecionar "Sim", a conta do parceiro será deletada. Caso contrário, o diálogo será fechado.
+     */
     public void deletarConta(View view) {
         AlertDialog.Builder builder = new AlertDialog.Builder(PerfilPaceiro.this);
         builder.setTitle("Deletar Conta")
@@ -204,6 +235,13 @@ public class PerfilPaceiro extends AppCompatActivity {
         dialog.show();
     }
 
+    /**
+     * Método para fazer uma requisição para deletar a conta do parceiro no servidor.
+     * Este método envia uma requisição DELETE para o endpoint responsável por deletar a conta
+     * do parceiro. Se a requisição for bem-sucedida, a conta é deletada e o usuário é redirecionado
+     * para a tela inicial. Se ocorrer algum erro, como falha de conexão ou erro no servidor, uma mensagem
+     * de erro é exibida e tratada adequadamente.
+     */
     public void deletarContaReq() {
         String deleteUrl = Constants.BASE_URL + "/parceiro/deletar-parceiro";
 
@@ -267,6 +305,12 @@ public class PerfilPaceiro extends AppCompatActivity {
         queue.add(jsonObjectRequest);
     }
 
+    /**
+     * Método para buscar os cursos cadastrados pelo parceiro no servidor.
+     * Este método faz uma requisição GET para o endpoint responsável por obter os cursos
+     * cadastrados pelo parceiro. Se os dados forem recuperados com sucesso, eles são processados
+     * e exibidos na interface do usuário. Caso contrário, uma mensagem de erro é exibida.
+     */
     public void fetchPartnerCoursesData() {
         String finalURL = Constants.BASE_URL + "/parceiro/cursos-cadastrados";
         progressBarPerfilParceiro.setVisibility(View.VISIBLE); // Mostra o ProgressBar enquanto os dados são carregados.
@@ -307,6 +351,12 @@ public class PerfilPaceiro extends AppCompatActivity {
         filaRequest.add(request); // Adiciona a requisição à fila de requisições.
     }
 
+    /**
+     * Método para processar a resposta dos cursos cadastrados pelo parceiro.
+     * Este método percorre a resposta JSON e extrai as informações de cada curso,
+     * em seguida, cria objetos Curso e adiciona à lista de cursos cadastrados.
+     * Por fim, configura o RecyclerView para exibir os cursos na interface do usuário.
+     */
     private void processCoursesResponse(JSONArray response) {
         if (response.length() > 0) {
             for (int i = 0; i < response.length(); i++) {
@@ -336,18 +386,31 @@ public class PerfilPaceiro extends AppCompatActivity {
         }
     }
 
+    /**
+     * Método para configurar o RecyclerView com os cursos cadastrados pelo parceiro.
+     * Este método define o layout do RecyclerView e cria um adaptador personalizado
+     * para exibir os cursos na interface do usuário.
+     */
     private void setupRecyclerView() {
         recyclerViewPartner.setLayoutManager(new LinearLayoutManager(PerfilPaceiro.this));
         adapterPartner = new CursoAdapterPerfil(PerfilPaceiro.this, registeredCourses);
         recyclerViewPartner.setAdapter(adapterPartner);
     }
 
+    /**
+     * Método para iniciar a atividade para adicionar um novo curso online.
+     * Este método cria e inicia um intent para abrir a atividade NovoCursoOnline.
+     */
     public void irParaNovoCursoOnline(View view)
     {
         Intent irNovoCursoOnline = new Intent(PerfilPaceiro.this, NovoCursoOnline.class);
         startActivity(irNovoCursoOnline);
     }
 
+    /**
+     * Método para iniciar a atividade para adicionar um novo curso presencial.
+     * Este método cria e inicia um intent para abrir a atividade NovoCursoPresencial.
+     */
     public void irParaNovoCursoPresencial(View view)
     {
         Intent irNovoCursoPresencial = new Intent(PerfilPaceiro.this, NovoCursoPresencial.class);

@@ -8,6 +8,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+/**
+ * Activity para exibir a tela inicial do aplicativo.
+ */
 public class TelaInicio extends AppCompatActivity {
 
     private TextView sobre_nos;
@@ -27,31 +30,43 @@ public class TelaInicio extends AppCompatActivity {
             }
         });
     }
-    //Navega para a tela principal da aplicação
+
+    /**
+     * Método para navegar para a tela principal da aplicação.
+     * Este método é chamado quando um botão é clicado na tela inicial.
+     */
     public void Navegar(View view) {
         Intent mudatTelaMain = new Intent(TelaInicio.this, MainActivity.class);
         startActivity(mudatTelaMain);
     }
 
-    //Navega para a tela de login
+    /**
+     * Método para acessar a tela de login.
+     * Este método é chamado quando um botão é clicado na tela inicial para acessar a tela de login.
+     */
     public void Acessar(View view)
     {
         Intent mudarTelaLogin = new Intent(TelaInicio.this, FormLogin.class);
         startActivity(mudarTelaLogin);
     }
 
-    //Navega para a tela de cadastrod do usuário
+    /**
+     * Método para acessar a tela de cadastro.
+     * Este método é chamado quando um botão é clicado na tela inicial para acessar a tela de cadastro.
+     */
     public void Cadastrar(View view)
     {
         Intent mudarTelaCadastro = new Intent(TelaInicio.this, FormCadastro.class);
         startActivity(mudarTelaCadastro);
     }
 
-    //Navega para a tela de cadastro do parceiro
+    /**
+     * Método para acessar a tela de cadastro de parceiro.
+     * Este método é chamado quando um botão é clicado na tela inicial para acessar a tela de cadastro de parceiro.
+     */
     public void VirarParceiro(View view)
     {
         Intent mudarTelaParceiro = new Intent(TelaInicio.this, FormCadastroPJ.class);
         startActivity(mudarTelaParceiro);
     }
-
 }

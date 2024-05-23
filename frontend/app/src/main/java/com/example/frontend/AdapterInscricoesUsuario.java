@@ -129,6 +129,18 @@ public class    AdapterInscricoesUsuario extends RecyclerView.Adapter<AdapterIns
         }
     }
 
+    /**
+     * Deleta um usuário de um curso específico.
+     *
+     * Este método envia uma solicitação DELETE para o servidor para remover um usuário
+     * de um determinado curso. Após a exclusão bem-sucedida, atualiza a lista de usuários
+     * e notifica o adaptador para refletir as mudanças na interface do usuário. Se a lista
+     * de usuários ficar vazia após a exclusão, uma mensagem de erro será exibida indicando
+     * que não há usuários cadastrados.
+     *
+     * @param userId    O ID do usuário a ser excluído do curso.
+     * @param position  A posição do usuário na lista de usuários.
+     */
     public void deletarUsuarioDoCurso(int userId, int position) {
         String deleteUserUrl = Constants.BASE_URL + "/parceiro/tirar-inscricao-do-usuario/curso/" + courseId + "/usuario/" + userId;
 

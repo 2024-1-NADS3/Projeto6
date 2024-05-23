@@ -36,6 +36,9 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Activity que exibe os detalhes de um curso para o usuário.
+ */
 public class PerfilUsuarioCursoExpandido extends AppCompatActivity {
 
     ImageView courseImgExpandedUser;

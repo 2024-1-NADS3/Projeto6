@@ -103,7 +103,13 @@ public class Usuario {
         Volley.newRequestQueue(mContext).add(request);
     }
 
-
+    /**
+     * Construtor da classe Usuario.
+     * @param userId O ID do usuário.
+     * @param name O nome do usuário.
+     * @param email O e-mail do usuário.
+     * @param cellnumber O número de celular do usuário.
+     */
     public Usuario(Integer userId, String name, String email, String cellnumber) { // Adicionando Context ao construtor
         this.userId = userId;
         this.name = name;

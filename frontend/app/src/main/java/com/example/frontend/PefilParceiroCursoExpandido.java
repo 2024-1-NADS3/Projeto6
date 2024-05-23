@@ -39,6 +39,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Método chamado quando a activity é criada.
+ *
+ * Este método é chamado quando a activity é criada pela primeira vez. Ele configura os elementos
+ * de interface do usuário, como o RecyclerView e a barra de progresso. Além disso, obtém o token
+ * JWT do usuário, recupera os dados do curso expandido do parceiro e exibe-os na interface do usuário.
+ *
+ * @param savedInstanceState Um objeto Bundle contendo o estado anterior da activity,
+ *                           que é usado para reconstruir a activity após uma mudança
+ *                           de configuração, como uma rotação de tela.
+ */
 public class PefilParceiroCursoExpandido extends AppCompatActivity {
 
     AdapterInscricoesUsuario adapterUsuariosCadastrados;
@@ -81,7 +92,15 @@ public class PefilParceiroCursoExpandido extends AppCompatActivity {
         fetchPartnerCoursesData();
     }
 
-
+    /**
+     * Método para confirmar a exclusão de um curso.
+     *
+     * Este método exibe um diálogo de confirmação para garantir que o usuário
+     * realmente deseja excluir o curso. Se o usuário confirmar a exclusão,
+     * o método chama `deletarCursoReq()` para fazer a solicitação de exclusão do curso.
+     *
+     * @param view A view que foi clicada para acionar o método.
+     */
     public void deletarCurso(View view) {
         AlertDialog.Builder builder = new AlertDialog.Builder(PefilParceiroCursoExpandido.this);
         builder.setTitle("Deletar Curso")
@@ -102,6 +121,14 @@ public class PefilParceiroCursoExpandido extends AppCompatActivity {
         dialog.show();
     }
 
+    /**
+     * Método para solicitar a exclusão de um curso.
+     *
+     * Este método faz uma solicitação DELETE para excluir o curso específico do parceiro.
+     * Ele trata as respostas e os erros da solicitação e executa ações apropriadas, como
+     * redirecionar para a tela do perfil do parceiro após a exclusão bem-sucedida do curso
+     * ou mostrar uma mensagem de erro em caso de falha na solicitação.
+     */
     public void deletarCursoReq() {
         String courseId = String.valueOf(curso.getCourseId());
         Log.d("id do curso", courseId);
@@ -177,7 +204,14 @@ public class PefilParceiroCursoExpandido extends AppCompatActivity {
         queue.add(jsonObjectRequest);
     }
 
-    /** Ajustar abaixo */
+    /**
+     * Método para buscar os dados dos usuários cadastrados em um curso específico do parceiro.
+     *
+     * Este método faz uma solicitação GET para recuperar os dados dos usuários cadastrados em um
+     * curso específico do parceiro. Ele trata as respostas e os erros da solicitação e executa
+     * ações apropriadas, como exibir os dados dos usuários ou mostrar mensagens de erro caso ocorra
+     * algum problema durante a solicitação.
+     */
 
     public void fetchPartnerCoursesData() {
         String finalURL = Constants.BASE_URL + "/parceiro/usuarios-cadastrados-no-curso/" + curso.getCourseId();
@@ -233,6 +267,15 @@ public class PefilParceiroCursoExpandido extends AppCompatActivity {
         filaRequest.add(request); // Adiciona a requisição à fila de requisições.
     }
 
+    /**
+     * Método para processar a resposta contendo os dados dos usuários cadastrados em um curso.
+     *
+     * Este método analisa a resposta JSON recebida do servidor, extrai os dados dos usuários
+     * cadastrados no curso e os adiciona à lista de informações do usuário. Em seguida, chama
+     * o método `setupRecyclerView()` para configurar o RecyclerView com os dados dos usuários.
+     *
+     * @param response A resposta JSON contendo os dados dos usuários cadastrados no curso.
+     */
     private void processCoursesResponse(JSONArray response) {
         if (response.length() > 0) {
             for (int i = 0; i < response.length(); i++) {
@@ -250,7 +293,13 @@ public class PefilParceiroCursoExpandido extends AppCompatActivity {
         }
     }
 
-
+    /**
+     * Método para configurar o RecyclerView com os dados dos usuários cadastrados no curso.
+     *
+     * Este método configura o RecyclerView para exibir os dados dos usuários cadastrados
+     * no curso expandido do parceiro. Ele define um LinearLayoutManager e define o
+     * AdapterInscricoesUsuario personalizado para exibir os dados dos usuários.
+     */
     private void setupRecyclerView() {
         recyclerViewUsuariosCadastrados = findViewById(R.id.recyclerViewUsuariosCadastrados);
         recyclerViewUsuariosCadastrados.setLayoutManager(new LinearLayoutManager(PefilParceiroCursoExpandido.this));
@@ -258,6 +307,16 @@ public class PefilParceiroCursoExpandido extends AppCompatActivity {
         recyclerViewUsuariosCadastrados.setAdapter(adapterUsuariosCadastrados);
     }
 
+    /**
+     * Método para editar um curso.
+     *
+     * Este método é chamado quando o usuário deseja editar um curso específico.
+     * Dependendo do tipo de curso (Online ou Presencial), ele inicia a atividade
+     * correspondente para editar o curso, passando os dados necessários através
+     * dos extras.
+     *
+     * @param view A view que foi clicada para acionar o método.
+     */
     public void EditarCurso(View view)
     {
         String endereco = curso.getAddress();

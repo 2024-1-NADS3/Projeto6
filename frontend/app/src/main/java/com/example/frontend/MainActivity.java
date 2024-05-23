@@ -43,6 +43,17 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+/**
+ * Método chamado quando a activity é criada.
+ *
+ * Este método é chamado quando a activity é criada pela primeira vez. Ele inicializa a interface
+ * do usuário, configura os componentes da UI, como RecyclerView e SearchView, e inicia a busca
+ * de dados dos cursos. Também configura o SearchView para permitir a busca por título de curso.
+ *
+ * @param savedInstanceState Um objeto Bundle contendo o estado anterior da activity,
+ *                           que é usado para reconstruir a activity após uma mudança
+ *                           de configuração, como uma rotação de tela.
+ */
 public class MainActivity extends AppCompatActivity {
 
     // Inicializa variáveis

@@ -20,6 +20,19 @@ import com.android.volley.VolleyError;
 
 import org.json.JSONObject;
 
+/**
+ * Método chamado quando a activity é criada.
+ *
+ * Este método é chamado quando a activity é criada pela primeira vez. Ele configura
+ * a interface do usuário e inicializa os elementos de interface, como campos de texto
+ * e botões. Também define os ouvintes de eventos para os elementos de interface, como
+ * o clique do botão voltar para o login.
+ *
+ * @param savedInstanceState Um objeto Bundle contendo o estado anterior da activity,
+ *                           que é usado para reconstruir a activity após uma mudança
+ *                           de configuração, como uma rotação de tela.
+ */
+
 public class FormCadastroPJ extends AppCompatActivity implements VolleyCallback {
 
 
@@ -65,11 +78,6 @@ public class FormCadastroPJ extends AppCompatActivity implements VolleyCallback 
             if (cnpj.isEmpty()) campo_cnpj.setError("CNPJ é obrigatório");
             return;
         }
-
-
-//        if (!ValidacaoFormCadastro.isValidName(instituitionName)) {
-//            campo_nome_pj.setError("Nome inválido");
-//        }
 
         // Verificar se o email é válido
         if (!ValidacaoFormCadastro.isValidEmail(email)) {
@@ -165,11 +173,25 @@ public class FormCadastroPJ extends AppCompatActivity implements VolleyCallback 
                 .show();
     }
 
+    /**
+     * Método privado chamado para voltar para a tela inicial.
+     *
+     * Este método cria uma nova intenção para iniciar a activity TelaInicio e navegar para essa tela.
+     * É chamado quando o usuário clica no botão para voltar para a tela inicial.
+     */
     private void voltarTelaInicio() {
         Intent voltarTelaLogin = new Intent(FormCadastroPJ.this, TelaInicio.class);
         startActivity(voltarTelaLogin);
     }
 
+    /**
+     * Método chamado para ir para a tela de login.
+     *
+     * Este método é chamado quando o usuário clica em um botão para ir para a tela de login.
+     * Ele cria uma nova intenção para iniciar a activity FormLogin e navegar para essa tela.
+     *
+     * @param view A vista (botão) que acionou o evento de clique.
+     */
     public void PJIrLogin(View view)
     {
         Intent irTelaLogin = new Intent(FormCadastroPJ.this, FormLogin.class);

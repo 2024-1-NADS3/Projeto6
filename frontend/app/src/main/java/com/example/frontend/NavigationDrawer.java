@@ -34,7 +34,13 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-
+/**
+ * Método para obter o tipo de usuário.
+ *
+ * Este método faz uma solicitação GET para obter o tipo de usuário do servidor.
+ * Dependendo do tipo de usuário obtido na resposta, executa a ação correspondente,
+ * como excluir a conta ou redirecionar para a activity correta.
+ */
 public class NavigationDrawer extends Fragment {
 
     GerenciadorToken token;
@@ -91,6 +97,17 @@ public class NavigationDrawer extends Fragment {
         requestQueueInfo = Volley.newRequestQueue(requireContext());
         requestQueueInfo.add(jsonObjectRequestInfo);
     }
+
+    /**
+     * Método para solicitar a exclusão da conta do usuário.
+     *
+     * Este método faz uma solicitação DELETE para excluir a conta do usuário ou parceiro,
+     * dependendo do tipo de usuário. O método trata as respostas e os erros da solicitação
+     * e executa ações apropriadas, como limpar o token JWT, redirecionar para a tela de login
+     * ou para a tela inicial após a exclusão da conta.
+     *
+     * @param userType O tipo de usuário, pode ser "partner" para parceiro ou qualquer outra coisa para usuário.
+     */
     public void deletarContaReq(String userType) {
         String deleteUrl;
 
@@ -160,6 +177,20 @@ public class NavigationDrawer extends Fragment {
         queue.add(jsonObjectRequest);
     }
 
+    /**
+     * Método chamado para criar a exibição do fragmento.
+     *
+     * Este método infla o layout do fragmento e configura os elementos de interface do usuário,
+     * como botões para acessar o perfil, deletar conta e sair da conta. Ele também define os
+     * ouvintes de clique para executar as ações apropriadas quando os botões são clicados.
+     *
+     * @param inflater           O LayoutInflater usado para inflar o layout do fragmento.
+     * @param container          O ViewGroup pai ao qual a view gerada pelo inflater deve ser anexada.
+     * @param savedInstanceState Um objeto Bundle contendo o estado anterior do fragmento,
+     *                           que é usado para reconstruir o fragmento após uma mudança
+     *                           de configuração, como uma rotação de tela.
+     * @return A View do fragmento que foi inflada e configurada.
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

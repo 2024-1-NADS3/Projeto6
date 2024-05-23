@@ -2,7 +2,12 @@ package com.example.frontend;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-
+/**
+ * Classe para gerenciar o token JWT armazenado nas preferências compartilhadas.
+ *
+ * Esta classe fornece métodos para salvar, recuperar e limpar o token JWT nas preferências compartilhadas.
+ * O token JWT é usado para autenticar solicitações ao servidor.
+ */
 public class GerenciadorToken {
 
     // é uma constante que define o nome do arquivo de preferências compartilhadas usado para armazenar o token JWT.
@@ -10,6 +15,11 @@ public class GerenciadorToken {
     private static final String TOKEN_KEY = "access_token";
     private SharedPreferences sharedPreferences;
 
+    /**
+     * Construtor da classe GerenciadorToken.
+     *
+     * @param context O contexto da aplicação.
+     */
     public GerenciadorToken(Context context) {
         sharedPreferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
     }
