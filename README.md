@@ -51,13 +51,12 @@ nenhum custo! Esses cursos são oferecidos por instituições parceiras, como ON
   &emsp;|-->app-realese.aab<br>
 |-->documentos<br>
   &emsp;|-->backend<br>
+  &emsp;|-->frontend<br>
   &emsp;|-->google-docs<br>
   &emsp;|-->Projeto_de_Extenção_Educaliza.pdf<br>
   &emsp;|-->Testequaldevops_Atividade_PI.pdf<br>
   &emsp;|-->Testequaldevops_Teste_sistema_parceiro.mp4<br>
   &emsp;|-->Testequaldevops_Teste_sistema_usuário.mp4<br>
-|-->executavéis<br>
-  &emsp;|--> android<br>
 |-->imagens<br>
   &emsp;|-->educaliza_logo.png<br>
 |-->src<br>
