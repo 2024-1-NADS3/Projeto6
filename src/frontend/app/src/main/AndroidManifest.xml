@@ -16,28 +16,36 @@
         tools:targetApi="31">
         <activity
             android:name=".TelaInfo"
-            android:exported="false" />
+            android:exported="false" 
+            android:screenOrientation="portrait" />
         <activity
             android:name=".TelaRedefinirSenha"
-            android:exported="false" />
+            android:exported="false" 
+            android:screenOrientation="portrait" />
         <activity
             android:name=".NovoCursoPresencialEndereco"
-            android:exported="false" />
+            android:exported="false" 
+            android:screenOrientation="portrait" />
         <activity
             android:name=".NovoCursoPresencial"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".NovoCursoOnline"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".EditarCursoPresencialEndereco"
-            android:exported="false" />
+            android:exported="false" 
+            android:screenOrientation="portrait" />
         <activity
             android:name=".EditarCursoPresencial"
-            android:exported="false" />
+            android:exported="false" 
+            android:screenOrientation="portrait" />
         <activity
             android:name=".EditarCursoOnline"
-            android:exported="false" />
+            android:exported="false" 
+            android:screenOrientation="portrait" />
         <activity
             android:name=".PerfilUsuarioCursoExpandido"
             android:exported="false"
