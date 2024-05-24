@@ -95,7 +95,7 @@ public class FormCadastro extends AppCompatActivity implements VolleyCallback {
 
         // Verificar se a senha tem pelo menos 4 dígitos
         if (!ValidacaoFormCadastro.isValidPassword(password)) {
-            campo_senha.setError("Senha deve ter pelo menos 4 dígitos");
+            campo_senha.setError("Senha deve ter pelo menos 8 dígitos");
             return;
         }
 
