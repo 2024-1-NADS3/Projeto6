@@ -36,20 +36,49 @@ const createUser = async (newUser) => {
   });
 };
 
-/** Deleta o usuário do banco de dados pelo Id */
+/** Deleta o usuário do banco de dados pelo Id e libera vagas nos cursos caso o usuário estivesse inscrito quando deletou a conta*/
 const deleteUserById = async (userId) => {
-  console.log("Dentro do Service para deltar", userId);
+  console.log("Dentro do Service para deletar", userId);
   console.log(typeof userId);
 
-  const sql = `DELETE FROM user WHERE userId = ?`;
+  const getRegistrationsSql = `SELECT courseId FROM registrations WHERE userId = ?`;
+  const deleteUserSql = `DELETE FROM user WHERE userId = ?`;
+  const updateCourseSql = `UPDATE courses SET occupiedSlots = occupiedSlots - 1 WHERE courseId = ?`;
 
   return new Promise((resolve, reject) => {
-    db.run(sql, [userId], function (err) {
-      if (err) {
-        reject(err);
-      } else {
-        resolve({ message: "Usuário deletado com sucesso" });
-      }
+    db.serialize(() => {
+      
+      db.all(getRegistrationsSql, [userId], (err, rows) => {
+        if (err) {
+          reject(err);
+          return;
+        }
+
+        const courseIds = rows.map((row) => row.courseId);
+
+        db.run(deleteUserSql, [userId], function (err) {
+          if (err) {
+            reject(err);
+            return;
+          }
+
+          db.serialize(() => {
+            courseIds.forEach((courseId) => {
+              db.run(updateCourseSql, [courseId], function (err) {
+                if (err) {
+                  reject(err);
+                  return;
+                }
+              });
+            });
+
+            resolve({
+              message: "Usuário deletado com sucesso e cursos atualizados",
+            });
+
+          });
+        });
+      });
     });
   });
 };
