@@ -106,21 +106,35 @@ Clique no botão "Run".
 
 A cada atualização os detalhes devem ser lançados aqui.
 
-* 0.2.1 - 25/01/2022
-    * MUDANÇA: Atualização de docs (código do módulo permanece inalterado)
-* 0.2.0 - 15/01/2022
-    * MUDANÇA: Remove `setDefaultXYZ()`
-    * ADD: Adiciona `init()`
-* 0.1.1 - 11/01/2022
-    * CONSERTADO: Crash quando chama `baz()` (Obrigado @NomeDoContribuidorGeneroso!)
-* 0.1.0 - 10/01/2022
-    * O primeiro lançamento adequado
-    * MUDANÇA: Renomeia `foo()` para `bar()`
-* 0.0.1 - 01/01/2022
-    * Trabalho em andamento
+Mudanças durante o desenvolvimento:
+
+* 0.0.1 - 23/05/2024
+    * ADD: Documentação do backend e do frontend
+* 0.0.1 - 22/05/2024
+    * ADD: Finalizando o Projeto pt1
+    * ADD: Documentação Readme.md
+    * CONSERTANDO: Filtros e cartão expandido do usuário
+* 0.0.1 - 21/05/2024
+    * ADD: Lógica de redefinição de senha
+    * ADD: Documentação
+* 0.0.1 - 19/05/2024
+    * ADD: Criação das telas de adicionar novos cursos do parceiro
+* 0.0.1 - 15/05/2024
+    * MUDANÇA: Sair e deletar conta 
+    * ADD: Barra de navegação 
+* 0.0.1 - 05/05/2024
+    * CONSERTANDO: Validações nos formulários
+    * CONSERTANDO: Tipos de input no formulário do parceiro 
+* 0.0.1 - 30/04/2024
+    * ADD: Sistema de login
+    * ADD: Funcionalidades de sair e deletar a conta
+    * CONSERTANDO: Erros dos formulários
+* 0.0.1 - 24/04/2024
+    * ADD: Tela de início, tela do filtro e tela do curso expandido
+* 0.0.1 - 10/03/2024
+    * Início do desenvolvimento do trabalho 
 
 ## 📋 Licença/License
-
 
 ## 🎓 Referências
 
