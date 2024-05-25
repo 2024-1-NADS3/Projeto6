@@ -16,7 +16,9 @@
 <img src="./imagens/educaliza_logo.png" height="250px" alt="Logo educaliza" border="0">
 </p>
 
+<p align="center">
 Logo do aplicativo: <a href="https://www.flaticon.com/free-icons/education" title="education icons">Education icons created by Vitaly Gorbachev - Flaticon</a>
+</p>
 
 O Educaliza é um aplicativo que facilita o acesso a cursos e aulas gratuitos na cidade de São Paulo, fornecendo uma plataforma onde parceiros podem publicar 
 informações detalhadas sobre seus cursos, como datas de início e término, localização e mais. Com ele, você encontra o conteúdo que deseja estudar sem 
